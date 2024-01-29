@@ -16,7 +16,7 @@ import com.vino.vino.model.mo.Wine;
 
 public class ShowcaseDAOMySQLJDBCImpl implements ShowcaseDAO {
 
-    private final String COUNTER_ID = "showcase_id";
+    //private final String COUNTER_ID = "showcase_id";
     Connection conn;
 
     public ShowcaseDAOMySQLJDBCImpl(Connection conn) { this.conn = conn; }
@@ -64,7 +64,7 @@ public class ShowcaseDAOMySQLJDBCImpl implements ShowcaseDAO {
                 ps.executeUpdate();
             }
             else {
-
+/*
                 sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
 
                 ps = conn.prepareStatement(sql);
@@ -79,17 +79,19 @@ public class ShowcaseDAOMySQLJDBCImpl implements ShowcaseDAO {
                 showcase.setShowcaseId(resultSet.getLong("counterValue"));
 
                 resultSet.close();
+
+ */
                 sql
                         = " INSERT INTO showcase "
-                        + "   ( showcase_id,"
-                        + "     wine_id, "
+                 //       + "   ( showcase_id,"
+                        + "     (wine_id, "
                         + "     deleted "
                         + "   ) "
-                        + " VALUES (?,?,'N')";
+                        + " VALUES (?,'N')";    //se reimplemento, ricontrolla
 
                 ps = conn.prepareStatement(sql);
                 i = 1;
-                ps.setLong(i++, showcase.getShowcaseId());
+            //    ps.setLong(i++, showcase.getShowcaseId());
                 ps.setLong(i++, showcase.getWineId());
                 ps.executeUpdate();
             }

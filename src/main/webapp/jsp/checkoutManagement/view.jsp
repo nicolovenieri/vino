@@ -146,7 +146,7 @@
                                         <label class="block text-grey-darker text-sm font-bold mb-2" for="Data di scadenza">
                                             Data di scadenza
                                         </label>
-                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Data di scadenza" name="exp_date" type="text" placeholder="12/2022"
+                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Data di scadenza" name="exp_date" type="text" placeholder="12/2026"
                                                value="<%=(user.getExp_date() != null) ? user.getExp_date() : ""%>" maxlength="7" required>
                                     </div>
                                 </div>

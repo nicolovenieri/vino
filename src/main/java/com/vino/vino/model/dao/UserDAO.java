@@ -1,5 +1,8 @@
 package com.vino.vino.model.dao;
 
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
+import com.vino.vino.model.dao.exception.DataTruncationException;
+import com.vino.vino.model.dao.exception.DuplicatedObjectException;
 import com.vino.vino.model.mo.User;
 
 import java.util.List;
@@ -21,7 +24,7 @@ public interface UserDAO {
             Long card_n,
             Long cvc,
             String exp_date,
-            boolean admin);
+            boolean admin) throws DuplicatedObjectException, MysqlDataTruncation;
 
     public void update(User user);
 

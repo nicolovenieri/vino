@@ -20,7 +20,7 @@ import java.util.List;
 
 public class CouponDAOMySQLJDBCImpl implements CouponDAO {
 
-    private final String COUNTER_ID = "coupon_id";
+//    private final String COUNTER_ID = "coupon_id";
     Connection conn;
 
     public CouponDAOMySQLJDBCImpl(Connection conn) {
@@ -81,7 +81,7 @@ public class CouponDAOMySQLJDBCImpl implements CouponDAO {
                 ps.executeUpdate();
             }
             else {
-
+/*
                 sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
 
                 ps = conn.prepareStatement(sql);
@@ -96,19 +96,20 @@ public class CouponDAOMySQLJDBCImpl implements CouponDAO {
                 coupon.setCouponId(resultSet.getLong("counterValue"));
 
                 resultSet.close();
+
+ */
                 sql
                         = " INSERT INTO coupon "
-                        + "   ( coupon_id,"
-                        + "     name,"
+                        + "     (name,"
                         + "     discount,"
                         + "     exp_date,"
                         + "     deleted "
                         + "   ) "
-                        + " VALUES (?,?,?,?,'N')";
+                        + " VALUES (?,?,?,'N')";
 
                 ps = conn.prepareStatement(sql);
                 i = 1;
-                ps.setLong(i++, coupon.getCouponId());
+                //ps.setLong(i++, coupon.getCouponId());
                 ps.setString(i++, coupon.getName());
                 ps.setLong(i++, coupon.getDiscount());
                 ps.setDate(i++, coupon.getExp_date());

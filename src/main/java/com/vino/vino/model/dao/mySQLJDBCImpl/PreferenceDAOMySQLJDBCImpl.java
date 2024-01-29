@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PreferenceDAOMySQLJDBCImpl implements PreferenceDAO {
 
-    private final String COUNTER_ID = "preference_id";
+    //private final String COUNTER_ID = "preference_id";
     Connection conn;
 
     public PreferenceDAOMySQLJDBCImpl(Connection conn) {
@@ -72,7 +72,7 @@ public class PreferenceDAOMySQLJDBCImpl implements PreferenceDAO {
                 ps.executeUpdate();
             }
             else {
-
+        /*
                 sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
 
                 ps = conn.prepareStatement(sql);
@@ -87,19 +87,21 @@ public class PreferenceDAOMySQLJDBCImpl implements PreferenceDAO {
                 preference.setPreferenceId(resultSet.getLong("counterValue"));
 
                 resultSet.close();
+
+         */
                 sql
                         = " INSERT INTO preference "
-                        + "   ( preference_id,"
-                        + "     user_id,"
+                //      = "     (preference_id,"
+                        + "     (user_id,"
                         + "     category,"
                         + "     times,"
                         + "     deleted"
                         + "   ) "
-                        + " VALUES (?,?,?,?,'N')";
+                        + " VALUES (?,?,?,'N')";    //se reimplemento, ricontrolla
 
                 ps = conn.prepareStatement(sql);
                 i = 1;
-                ps.setLong(i++, preference.getPreferenceId());
+               // ps.setLong(i++, preference.getPreferenceId());
                 ps.setLong(i++, preference.getUserId());
                 ps.setString(i++, preference.getCategory());
                 ps.setLong(i++, preference.getTimes());

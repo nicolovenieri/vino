@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CartDAOMySQLJDBCImpl implements CartDAO {
 
-    private final String COUNTER_ID = "cart_id";
+    //private final String COUNTER_ID = "cart_id";
     Connection conn;
 
     public CartDAOMySQLJDBCImpl(Connection conn) {
@@ -86,7 +86,7 @@ public class CartDAOMySQLJDBCImpl implements CartDAO {
 
                 throw new DuplicatedObjectException("CartDAOJDBCImpl.create: Tentativo di creazione di un oggetto nel careello gia esistente");
             }
-
+/*
             sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
 
             ps = conn.prepareStatement(sql);
@@ -101,19 +101,21 @@ public class CartDAOMySQLJDBCImpl implements CartDAO {
             cart.setCartId(resultSet.getLong("counterValue"));
 
             resultSet.close();
+
+ */
             sql
                     = " INSERT INTO cart "
-                    + "   ( cart_id,"
-                    + "     user_id,"
+            //      + "     (cart_id, "
+                    + "     (user_id,"
                     + "     wine_id,"
                     + "     quantity,"
                     + "     deleted "
                     + "   ) "
-                    + " VALUES (?,?,?,1,'N')";
+                    + " VALUES (?,?,1,'N')";    //se reimplemento, ricontrolla
 
             ps = conn.prepareStatement(sql);
             i = 1;
-            ps.setLong(i++, cart.getCartId());
+            //ps.setLong(i++, cart.getCartId());
             ps.setLong(i++, cart.getUser().getUserId());
             ps.setLong(i++, cart.getWine().getWineId());
 

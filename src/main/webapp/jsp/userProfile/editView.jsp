@@ -127,7 +127,7 @@
                                         Telefono
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="phone" name="phone" type="text" placeholder="333 1231234"
-                                           value="<%=(user.getPhone() != null) ? user.getPhone() : ""%>" maxlength="40" >
+                                           value="<%=(user.getPhone() != null) ? user.getPhone() : ""%>" maxlength="10" >
                                 </div>
                             </div>
 

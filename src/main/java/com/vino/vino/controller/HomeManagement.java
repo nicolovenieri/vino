@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
+import com.vino.vino.model.dao.exception.DataTruncationException;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -333,11 +336,11 @@ public class HomeManagement {
 
             if (user == null || !user.getPassword().equals(password) || user.isDeleted() == true) {
                 sessionUserDAO.delete(null);
-                applicationMessage = "Username e password errati!";
+                applicationMessage = "Username o password errati!";
                 loggedUser = null;
                 wineRetrieve(daoFactory, sessionDAOFactory, request);
                 showcaseWineRetrieve(daoFactory, sessionDAOFactory, request);
-                request.setAttribute("viewUrl", "homeManagement/view");
+                request.setAttribute("viewUrl", "homeManagement/loginView");
             } else {
                 loggedUser = sessionUserDAO.create(user.getUserId(), null, null, null, user.getName(), user.getSurname(), null, null, null, null, null, null, null, null, user.isAdmin());
 
@@ -469,7 +472,7 @@ public class HomeManagement {
                         null,
                         request.getParameter("username"),
                         request.getParameter("password"),
-                        null,
+                        request.getParameter("email"),
                         request.getParameter("name"),
                         request.getParameter("surname"),
                         null,
@@ -483,10 +486,17 @@ public class HomeManagement {
                         false);
 
                 applicationMessage = "Registrazione avvenuta con successo. Clicca su Login per effettuare l'accesso";
+                request.setAttribute("viewUrl", "homeManagement/view");
 
-            } catch (Exception e) {
-                applicationMessage = "Errore di registrazione: " + e;
-                logger.log(Level.INFO, "Errore di registrazione: " + e);
+
+            } catch (DuplicatedObjectException e) {
+                applicationMessage = "Username già in uso.";
+                logger.log(Level.INFO,"Tentativo di inserimento di un username già esistente.");
+                request.setAttribute("viewUrl", "homeManagement/registerView");
+            } catch (Exception e){
+                applicationMessage = "Username troppo lungo - MAX 12 CARATTERI.";
+                logger.log(Level.INFO,"Tentativo di inserimento di un username già esistente.");
+                request.setAttribute("viewUrl", "homeManagement/registerView");
             }
 
             daoFactory.commitTransaction();
@@ -495,7 +505,6 @@ public class HomeManagement {
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
-            request.setAttribute("viewUrl", "homeManagement/view");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Controller Error", e);

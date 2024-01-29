@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
+import com.vino.vino.model.dao.exception.DataTruncationException;
 import com.vino.vino.model.dao.exception.DuplicatedObjectException;
 import com.vino.vino.model.mo.Cart;
 import com.vino.vino.model.mo.User;
@@ -16,7 +18,7 @@ import com.vino.vino.model.mo.Wine;
 
 public class UserDAOMySQLJDBCImpl implements UserDAO {
 
-    private final String COUNTER_ID = "user_id";
+    // private final String COUNTER_ID = "user_id";
     Connection conn;
 
     public UserDAOMySQLJDBCImpl(Connection conn) {
@@ -39,11 +41,11 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
             Long card_n,
             Long cvc,
             String exp_date,
-            boolean admin){
+            boolean admin) throws DuplicatedObjectException, MysqlDataTruncation{
 
         PreparedStatement ps;
         User user = new User();
-        user.setUserId(createUserId());
+        //user.setUserId(createUserId());
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
@@ -52,39 +54,66 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
 
 
         try {
-
+            //controllo se USERNAME esiste già in una tupla
             String sql
-                    = " INSERT INTO user "
-                    + "   ( user_id,"
-                    + "     username,"
-                    + "     password,"
-                    + "     email,"
-                    + "     name,"
-                    + "     surname,"
-                    + "     phone,"
-                    + "     city,"
-                    + "     cap,"
-                    + "     street,"
-                    + "     civic,"
-                    + "     card_n,"
-                    + "     cvc,"
-                    + "     exp_date,"
-                    + "     admin,"
-                    + "     deleted "
-                    + "   ) "
-                    + " VALUES (?,?,?,?,?,?,null,null,null,null,null,null,null,null,'N','N')";
+                    = " SELECT * "
+                    + " FROM user "
+                    + " WHERE "
+                    + " username = ?";
 
-            ps = conn.prepareStatement(sql);
+                    ps = conn.prepareStatement(sql);
             int i = 1;
-            ps.setLong(i++, user.getUserId());
             ps.setString(i++, user.getUsername());
-            ps.setString(i++, user.getPassword());
-            ps.setString(i++, user.getEmail());
-            ps.setString(i++, user.getName());
-            ps.setString(i++, user.getSurname());
 
-            ps.executeUpdate();
+            ResultSet resultSet = ps.executeQuery();
 
+            boolean exist;
+            boolean deleted = true;
+
+            exist = resultSet.next();
+            //se esiste
+            if (exist) {
+                deleted = resultSet.getString("username").equals(user.getUsername());
+            }
+
+            resultSet.close();
+            if(exist && deleted) {
+                throw new DuplicatedObjectException("UserDAOJDBCImpl.create: Tentativo di inserimento di un username già esistente.");
+            }
+                else {
+                sql
+                        = " INSERT INTO user "
+//                      + "     (user_id,"
+                        + "     (username,"
+                        + "     password,"
+                        + "     email,"
+                        + "     name,"
+                        + "     surname,"
+                        + "     phone,"
+                        + "     city,"
+                        + "     cap,"
+                        + "     street,"
+                        + "     civic,"
+                        + "     card_n,"
+                        + "     cvc,"
+                        + "     exp_date,"
+                        + "     admin,"
+                        + "     deleted "
+                        + "   ) "
+                        + " VALUES (?,?,?,?,?,null,null,null,null,null,null,null,null,'N','N')";    //se reimplemento, ricontrolla
+
+                    ps = conn.prepareStatement(sql);
+                    i = 1;
+                    //ps.setLong(i++, user.getUserId());
+                    ps.setString(i++, user.getUsername());
+                    ps.setString(i++, user.getPassword());
+                    ps.setString(i++, user.getEmail());
+                    ps.setString(i++, user.getName());
+                    ps.setString(i++, user.getSurname());
+
+                    ps.executeUpdate();
+
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -181,7 +210,6 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
             throw new RuntimeException(e);
         }
     }
-
 
     @Override
     public User findLoggedUser() {
@@ -388,7 +416,7 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
             throw new RuntimeException(e);
         }
     }
-
+/*
     Long createUserId() {
 
         long user_id;
@@ -415,7 +443,7 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
 
         return user_id;
     }
-
+*/
 
     User read(ResultSet rs) {
 

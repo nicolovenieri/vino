@@ -55,7 +55,7 @@
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
                         Username
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="username" name="username" type="text" placeholder="mario" maxlength="40" required>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="username" name="username" type="text" placeholder="mario" maxlength="12" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="password">

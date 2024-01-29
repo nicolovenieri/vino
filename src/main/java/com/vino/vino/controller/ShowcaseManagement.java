@@ -224,17 +224,38 @@ public class ShowcaseManagement {
             } catch (DuplicatedObjectException e) {
                 applicationMessage = "Vino già in vetrina";
                 logger.log(Level.INFO, "Tentativo di inserimento di vino già in vetrina");
+            //    request.setAttribute("viewUrl", "adminManagement/showcaseInsModView");
             }
 
-            wineRetrieve(daoFactory, sessionDAOFactory, request);
+            //wineRetrieve(daoFactory, sessionDAOFactory, request);
 
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            showcaseRetrieve(daoFactory, sessionDAOFactory, request);
+
+            List<Wine> wines = new ArrayList<Wine>();
+
+            try {
+                List<Showcase> showcases = (List<Showcase>)request.getAttribute("showcases");
+                WineDAO wineDAO = daoFactory.getWineDAO();
+                Wine wine;
+
+                for(int i = 0; i < showcases.size(); i++) {
+
+                    wine = wineDAO.findByWineId(showcases.get(i).getWineId());
+                    wines.add(wine);
+                }
+            } catch(Exception e) {
+                logger.log(Level.SEVERE, "Controller Error", e);
+                applicationMessage = "Error: " + e;
+            }
+
+            request.setAttribute("wines", wines);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
-            request.setAttribute("viewUrl", "adminManagement/view");
+            request.setAttribute("viewUrl", "adminManagement/showcaseManagement");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Controller Error", e);
@@ -259,6 +280,7 @@ public class ShowcaseManagement {
 
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
+        String applicationMessage = null;
         User loggedUser;
 
         Logger logger = LogService.getApplicationLogger();
@@ -294,9 +316,28 @@ public class ShowcaseManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            showcaseRetrieve(daoFactory, sessionDAOFactory, request);
+
+            List<Wine> wines = new ArrayList<Wine>();
+
+            try {
+                List<Showcase> showcases = (List<Showcase>)request.getAttribute("showcases");
+
+                for(int i = 0; i < showcases.size(); i++) {
+
+                    wine = wineDAO.findByWineId(showcases.get(i).getWineId());
+                    wines.add(wine);
+                }
+            } catch(Exception e) {
+                logger.log(Level.SEVERE, "Controller Error", e);
+                applicationMessage = "Error: " + e;
+            }
+
+            request.setAttribute("wines", wines);
+
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
-            request.setAttribute("viewUrl", "adminManagement/view");
+            request.setAttribute("viewUrl", "adminManagement/showcaseManagement");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Controller Error", e);

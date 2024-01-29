@@ -17,7 +17,7 @@ import java.util.List;
 
 public class WishlistDAOMySQLJDBCImpl implements WishlistDAO {
 
-    private final String COUNTER_ID = "wishlist_id";
+    //private final String COUNTER_ID = "wishlist_id";
     Connection conn;
 
     public WishlistDAOMySQLJDBCImpl(Connection conn) {
@@ -34,16 +34,15 @@ public class WishlistDAOMySQLJDBCImpl implements WishlistDAO {
         wishlist.setUser(user);
         wishlist.setWine(wine);
 
-        //provo a vedere se esite gia una tupla con wined_id e user_id
+        //provo a vedere se esite gia una tupla con wined_id, user_id
         try {
 
             String sql
                     = " SELECT * "
                     + " FROM wishlist "
                     + " WHERE "
-                    + " deleted ='N' AND "
                     + " user_id = ? AND"
-                    + " wine_id = ?";
+                    + " wine_id = ? ";
 
             ps = conn.prepareStatement(sql);
             int i = 1;
@@ -56,9 +55,10 @@ public class WishlistDAOMySQLJDBCImpl implements WishlistDAO {
             boolean deleted = true;
             Long retrived_wishlist_id = null;
             exist = resultSet.next();
+
             // leggo deleted e wishlist_id solo se esiste, altrimento ricevo nullPointer Exception
             if (exist){
-                deleted = resultSet.getString("deleted").equals("Y");
+                deleted = resultSet.getString("deleted").equals("Y");   //verifica se deleted è Y
                 retrived_wishlist_id = (resultSet.getLong("wishlist_id"));
             }
 
@@ -67,16 +67,21 @@ public class WishlistDAOMySQLJDBCImpl implements WishlistDAO {
                 throw new DuplicatedObjectException("WishlistDAOJDBCImpl.create: Tentativo di inserimento di un elemento di wishlist già esistente.");
             }
 
+            // esiste ma è cancellato -> torna in wish
             if (exist && deleted){
-                sql = "update wishlist set deleted='N' where wishlist_id=?";
+                sql
+                        = " UPDATE wishlist "
+                        + " SET deleted = 'N' "
+                        + " WHERE wishlist_id = ? ";
+
                 ps = conn.prepareStatement(sql);
                 i = 1;
                 ps.setLong(i++, retrived_wishlist_id);
                 ps.executeUpdate();
             }
-            else {
+            else {  //non esiste --> LO CREO
 
-                sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
+ /*               sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
 
                 ps = conn.prepareStatement(sql);
                 ps.executeUpdate();
@@ -90,18 +95,20 @@ public class WishlistDAOMySQLJDBCImpl implements WishlistDAO {
                 wishlist.setWishlistId(resultSet.getLong("counterValue"));
 
                 resultSet.close();
+
+*/
                 sql
                         = " INSERT INTO wishlist "
-                        + "   ( wishlist_id,"
-                        + "     user_id,"
+                //      = "     (wishlist_id,"
+                        + "     (user_id,"
                         + "     wine_id,"
                         + "     deleted "
                         + "   ) "
-                        + " VALUES (?,?,?,'N')";
+                        + " VALUES (?,?,'N')";      //se reimplemento, ricontrolla
 
                 ps = conn.prepareStatement(sql);
                 i = 1;
-                ps.setLong(i++, wishlist.getWishlistId());
+                //ps.setLong(i++, wishlist.getWishlistId());
                 ps.setLong(i++, wishlist.getUser().getUserId());
                 ps.setLong(i++, wishlist.getWine().getWineId());
 

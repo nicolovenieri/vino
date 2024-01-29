@@ -19,7 +19,7 @@ import com.vino.vino.model.dao.exception.DuplicatedObjectException;
 
 public class WineDAOMySQLJDBCImpl implements WineDAO {
 
-    private final String COUNTER_ID = "wine_id";
+    //private final String COUNTER_ID = "wine_id";
     Connection conn;
 
     public WineDAOMySQLJDBCImpl(Connection conn) {
@@ -113,14 +113,17 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             }
 
             if (exist && deleted){
-                sql = "update wine set deleted='N' where wine_id=?";
+                sql
+                        = " UPDATE wine "
+                        + " SET deleted = 'N' "
+                        + " WHERE wine_id = ? ";
                 ps = conn.prepareStatement(sql);
                 i = 1;
                 ps.setLong(i++, retrived_wine_id);
                 ps.executeUpdate();
             }
             else {
-
+                /*
                 sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
 
                 ps = conn.prepareStatement(sql);
@@ -135,10 +138,12 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                 wine.setWineId(resultSet.getLong("counterValue"));
 
                 resultSet.close();
+
+                 */
                 sql
                         = " INSERT INTO wine "
-                        + "   ( wine_id,"
-                        + "     name,"
+//                      = "     (wine_id,"
+                        + "     (name,"
                         + "     product_image,"
                         + "     price,"
                         + "     denominazione,"
@@ -152,11 +157,11 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                         + "     description, "
                         + "     deleted "
                         + "   ) "
-                        + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,'N')";
+                        + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,'N')";  //se reimplemento, ricontrolla
 
                 ps = conn.prepareStatement(sql);
                 i = 1;
-                ps.setLong(i++, wine.getWineId());
+                //ps.setLong(i++, wine.getWineId());
                 ps.setString(i++, wine.getName());
                 ps.setString(i++, wine.getProductImage());
                 ps.setBigDecimal(i++, wine.getPrice());
@@ -240,7 +245,6 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             throw new RuntimeException(e);
         }
     }
-
 
     @Override
     public Wine findByWineId(Long wine_id) {
