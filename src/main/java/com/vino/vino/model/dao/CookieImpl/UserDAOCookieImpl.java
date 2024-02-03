@@ -34,7 +34,8 @@ public class UserDAOCookieImpl implements UserDAO {
                        Long card_n,
                        Long cvc,
                        String exp_date,
-                       boolean admin) {
+                       boolean admin
+    ) {
 
         User loggedUser = new User();
         loggedUser.setUserId(user_id);

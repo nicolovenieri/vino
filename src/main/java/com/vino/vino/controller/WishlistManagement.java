@@ -20,6 +20,7 @@ public class    WishlistManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -33,6 +34,8 @@ public class    WishlistManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -42,6 +45,7 @@ public class    WishlistManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -70,6 +74,7 @@ public class    WishlistManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -86,6 +91,8 @@ public class    WishlistManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             Long wine_id = Long.parseLong(request.getParameter("wine_id"));
 
@@ -131,7 +138,7 @@ public class    WishlistManagement {
             sessionDAOFactory.commitTransaction();
 
             request.setAttribute("arrayPos", arrayPos);
-
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -162,6 +169,7 @@ public class    WishlistManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -178,6 +186,8 @@ public class    WishlistManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             Long wine_id = Long.parseLong(request.getParameter("wine_id"));
             String viewUrl = new String(request.getParameter("viewUrl"));
@@ -204,6 +214,7 @@ public class    WishlistManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);

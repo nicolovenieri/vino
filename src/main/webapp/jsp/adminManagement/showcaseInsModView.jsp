@@ -49,7 +49,7 @@
 <%@include file="/include/adminHeader.jsp"%>
 <main class="w-full flex flex-col justify-center items-center">
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl">Lista Vini</p>
+        <p class="uppercase font-medium text-gray-800 text-xl"> <%if (languageString.equals("ita")){%>Lista vini<%}if (languageString.equals("eng")){ %>Wines list<% }%></p>
     </div>
     <div class="w-full flex justify-center">
         <div class="w-1/6 flex flex-row flex-no-wrap justify-between items-center m-4 p-2">
@@ -79,7 +79,7 @@
                     <p class="float-left text-gray-900 font-medium pr-4"><%=wines.get(i).getName()%></p>
                 </section>
                 <section id="wine-avalaibility" class="pt-2 w-full flex p-1 border-t border-gray-400">
-                    <p>Quantita disponibile in magazzino: <%=wines.get(i).getAvalaibility()%></p>
+                    <p> <%if (languageString.equals("ita")){%>Quantita disponibile in magazzino: <%}if (languageString.equals("eng")){ %>Quantity available in stock<% }%>: <%=wines.get(i).getAvalaibility()%></p>
                 </section>
             </div>
             <div class="order-2 float-right flex flex-no-wrap flex-row mx-4">

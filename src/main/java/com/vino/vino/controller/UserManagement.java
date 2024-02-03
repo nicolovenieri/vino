@@ -1,10 +1,8 @@
 package com.vino.vino.controller;
 
-import com.vino.vino.model.dao.DAOFactory;
-import com.vino.vino.model.dao.OrderDAO;
-import com.vino.vino.model.dao.UserDAO;
-import com.vino.vino.model.dao.WineDAO;
+import com.vino.vino.model.dao.*;
 import com.vino.vino.model.dao.exception.DuplicatedObjectException;
+import com.vino.vino.model.mo.Language;
 import com.vino.vino.model.mo.Order;
 import com.vino.vino.model.mo.User;
 import com.vino.vino.model.mo.Wine;
@@ -34,10 +32,11 @@ public class UserManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
-        try {
+        try     {
 
             Map sessionFactoryParameters=new HashMap<String,Object>();
             sessionFactoryParameters.put("request",request);
@@ -47,6 +46,8 @@ public class UserManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -66,6 +67,8 @@ public class UserManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+
+            request.setAttribute("language",language);
             request.setAttribute("maxViewSize", maxViewSize);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("loggedOn",loggedUser!=null);
@@ -94,6 +97,7 @@ public class UserManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -107,6 +111,8 @@ public class UserManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -132,6 +138,8 @@ public class UserManagement {
 
             usersRetrieve(daoFactory, sessionDAOFactory, request);
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -161,6 +169,7 @@ public class UserManagement {
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -174,6 +183,8 @@ public class UserManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -197,6 +208,8 @@ public class UserManagement {
 
             usersRetrieve(daoFactory, sessionDAOFactory, request);
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "adminManagement/userManagement");
@@ -225,6 +238,7 @@ public class UserManagement {
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -238,6 +252,8 @@ public class UserManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -247,6 +263,8 @@ public class UserManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "adminManagement/userManagement");
@@ -273,6 +291,7 @@ public class UserManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -286,6 +305,8 @@ public class UserManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -295,6 +316,8 @@ public class UserManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -323,6 +346,7 @@ public class UserManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -336,6 +360,8 @@ public class UserManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -345,6 +371,8 @@ public class UserManagement {
 
             singleOrderRetrieve(daoFactory, sessionDAOFactory, request);
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -374,6 +402,7 @@ public class UserManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -387,6 +416,8 @@ public class UserManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -401,6 +432,8 @@ public class UserManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);

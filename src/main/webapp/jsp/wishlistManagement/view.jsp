@@ -86,7 +86,7 @@
             </div>
             <%if(wishlist_tuples.isEmpty()){%>
             <div class="text-center w-full flex justify-center items-center">
-                <p class="font-medium mt-6">La Whishlist e' vuota.</p>
+                <p class="font-medium mt-6"><%if (languageString.equals("ita")){%>La Whishlist e' vuota.<%}if (languageString.equals("eng")){ %>The wishlist is empty<% }%></p>
             </div>
             <%}%>
         </div>

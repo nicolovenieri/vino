@@ -43,9 +43,9 @@
 
             <div class="w-full bg-gray-100 flex justify-center">
                 <div class="w-1/6 flex flex-row flex-no-wrap justify-between items-center m-4 p-2">
-                    <p class="p-1 font-medium">Non sei registrato?</p>
+                    <p class="p-1 font-medium"><%if (languageString.equals("ita")){%>Non sei registrato?<%}if (languageString.equals("eng")){ %>You aren't registered yet? <% }%></p>
                     <a class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-28" href="javascript:registerViewForm.requestSubmit()">
-                        Registrati
+                        <%if (languageString.equals("ita")){%>Registrati<%}if (languageString.equals("eng")){ %>Register<% }%>
                     </a>
                 </div>
             </div>
@@ -53,7 +53,7 @@
             <div class="px-8 pt-6 pb-8 mb-4 flex flex-col w-1/4">
                     <div class="mb-4">
                         <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
-                            Username
+                            <%if (languageString.equals("ita")){%>NomeUtente<%}if (languageString.equals("eng")){ %>Username<% }%>
                         </label>
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="loginForm" id="username" name="username" type="text" placeholder="Username" maxlength="12" required>
                     </div>
@@ -64,7 +64,7 @@
                         <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" form="loginForm" id="password" name="password" type="password" placeholder="**************" maxlength="40" required>
                     </div>
                     <button class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" type="submit" form="loginForm">
-                        Log In
+                        <%if (languageString.equals("ita")){%>Accedi<%}if (languageString.equals("eng")){ %>Login <% }%>
                     </button>
             </div>
 

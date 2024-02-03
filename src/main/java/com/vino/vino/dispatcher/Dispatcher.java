@@ -23,7 +23,9 @@ public class Dispatcher extends HttpServlet {
 
             String controllerAction=request.getParameter("controllerAction");
 
-            if (controllerAction==null) controllerAction="HomeManagement.view";
+            if (controllerAction==null) {
+                controllerAction="HomeManagement.view";
+            }
 
             String[] splittedAction=controllerAction.split("\\.");
             Class<?> controllerClass=Class.forName("com.vino.vino.controller."+splittedAction[0]);

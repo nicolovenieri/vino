@@ -25,6 +25,7 @@ public class CheckoutManagement {
         User loggedUser;
         String applicationMessage = null;
         String viewUrl = "checkoutManagement/view";
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -38,6 +39,8 @@ public class CheckoutManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -58,6 +61,7 @@ public class CheckoutManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("user", user);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
@@ -87,6 +91,7 @@ public class CheckoutManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -103,6 +108,9 @@ public class CheckoutManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
 
             OrderDAO orderDAO = daoFactory.getOrderDAO();
 
@@ -186,6 +194,7 @@ public class CheckoutManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);

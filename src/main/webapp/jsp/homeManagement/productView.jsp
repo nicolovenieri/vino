@@ -57,7 +57,7 @@
                     <div class="ml-4 mr-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-gray-500" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm0-9a1 1 0 011 1v4a1 1 0 01-2 0v-4a1 1 0 011-1zm0-4a1 1 0 110 2 1 1 0 010-2z"/></svg>
                     </div>
-                    <p>Loggati per aggiungere un prodotto al carrello</p>
+                    <p><%if (languageString.equals("ita")){%>Accedi per aggiungere un prodotto al carrello<%}if (languageString.equals("eng")){ %>Login to add products to cart <% }%></p>
                 </div>
                 <%}%>
                 <div class="flex flex-row">
@@ -68,7 +68,7 @@
                         <h1 class="pt-3 text-gray-900 font-bold text-2xl"><%=wine.getName()%></h1>
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
-                        Vitigni
+                        <%if (languageString.equals("ita")){%>Vitigni<%}if (languageString.equals("eng")){ %>Vines<% }%>
                     </span><%=wine.getVitigni()%>
                         </p>
                         <p class="pt-3 text-gray-900 font-regular">
@@ -78,22 +78,22 @@
                         </p>
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
-                        Formato
+                        <%if (languageString.equals("ita")){%>Formato<%}if (languageString.equals("eng")){ %>Size<% }%>
                     </span><%=wine.getFormat()%>l
                         </p>
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
-                        Annata
+                        <%if (languageString.equals("ita")){%>Annata<%}if (languageString.equals("eng")){ %>Wine age<% }%>
                     </span><%=wine.getAnnata()%>
                         </p>
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
-                        Denominazione
+                        <%if (languageString.equals("ita")){%>Denominazione<%}if (languageString.equals("eng")){ %>Designation of Origin<% }%>
                     </span><%=wine.getDenominazione()%>
                         </p>
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
-                        Temperatura di servizio
+                        <%if (languageString.equals("ita")){%>Temperatura di Servizio<%}if (languageString.equals("eng")){ %>Service temperature<% }%>
                     </span><%=wine.getTemperature()%>c
                         </p>
                         <p class="pt-3 text-gray-900 text-3xl">
@@ -102,24 +102,26 @@
                         <%if(loggedOn){%>
                         <div class="float">
                             <a class="zoom-animation float-left bg-gray-700 hover:bg-blue-dark text-white font-bold px-4 py-2 mt-6 rounded-full w-28" href="javascript:AddToCart(<%=wine.getWineId()%>)">
-                                Aggiungi al carrello
+                                <%if (languageString.equals("ita")){%>Aggiungi al carrello<%}if (languageString.equals("eng")){ %>Add to cart<% }%>
                             </a>
                             <a class="zoom-animation float-left bg-red-400 hover:bg-blue-dark text-white font-bold px-4 py-2 ml-6 mt-6 rounded-full w-28" href="javascript:AddToWishlist(<%=wine.getWineId()%>)">
-                                Aggiungi alla Wishlist
+                                <%if (languageString.equals("ita")){%>Aggiungi alla wishlist <%}if (languageString.equals("eng")){ %>Add to wishlist<% }%>
                             </a>
                         </div>
                         <%}%>
                     </section>
                 </div>
                 <section class="mx-auto container p-4 border-t border-gray-300">
-                    <h1 class="my-4 pt-3 text-gray-900 font-bold text-2xl">Note di degustazione</h1>
+                    <h1 class="my-4 pt-3 text-gray-900 font-bold text-2xl">
+                        <%if (languageString.equals("ita")){%>Descrizione<%}if (languageString.equals("eng")){ %>Description<% }%>
+                    </h1>
                     <p><%=wine.getDescription()%></p>
                 </section>
             </div>
 
             <%if(preferencesEnable){%>
             <div class="flex justify-center items-center my-">
-                <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl">Vini della categoria '<%=preferred_wines.get(0).getCategory()%>' consigliati</h2>
+                <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><%if (languageString.equals("ita")){%>Vini della categoria '<%=preferred_wines.get(0).getCategory()%>' consigliati<%}if (languageString.equals("eng")){ %>'<%=preferred_wines.get(0).getCategory()%>' Category suggested Wines<% }%></h2>
             </div>
             <section id="suggested-products" class="container mx-auto flex flex-wrap mt-4 mb-8">
                 <%for(i = 0; i < preferred_wines.size(); i++){%>

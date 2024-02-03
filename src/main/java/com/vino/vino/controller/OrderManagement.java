@@ -1,16 +1,9 @@
 package com.vino.vino.controller;
 
-import com.vino.vino.model.dao.DAOFactory;
-import com.vino.vino.model.dao.CartDAO;
-import com.vino.vino.model.dao.UserDAO;
-import com.vino.vino.model.dao.WineDAO;
-import com.vino.vino.model.dao.OrderDAO;
+import com.vino.vino.model.dao.*;
 
 import com.vino.vino.model.dao.exception.DuplicatedObjectException;
-import com.vino.vino.model.mo.Cart;
-import com.vino.vino.model.mo.Order;
-import com.vino.vino.model.mo.User;
-import com.vino.vino.model.mo.Wine;
+import com.vino.vino.model.mo.*;
 import com.vino.vino.services.config.Configuration;
 import com.vino.vino.services.logservice.LogService;
 
@@ -37,7 +30,7 @@ public class OrderManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -51,6 +44,10 @@ public class OrderManagement {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
+
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
 
@@ -59,6 +56,8 @@ public class OrderManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -87,6 +86,8 @@ public class OrderManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
+
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -100,6 +101,9 @@ public class OrderManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -109,6 +113,8 @@ public class OrderManagement {
 
             singleOrderRetrieve(daoFactory, sessionDAOFactory, request);
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -137,6 +143,7 @@ public class OrderManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -150,6 +157,9 @@ public class OrderManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -166,6 +176,8 @@ public class OrderManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);

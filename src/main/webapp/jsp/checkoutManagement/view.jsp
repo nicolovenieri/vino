@@ -116,7 +116,7 @@
     <%@include file="/include/header.jsp"%>
     <div class="w-full flex justify-center items-center">
         <div class=" flex justify-center mt-8 w-2/3 pb-4">
-            <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl">Checkout</p>
+            <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Pagamento<%}if (languageString.equals("eng")){ %>Checkout<% }%></p>
         </div>
     </div>
     <main class="flex justify-center mx-8">
@@ -126,11 +126,11 @@
                     <div class="float-right flex-row bg-gray-200 rounded-lg border-bg-gray-500 mx-2 my-4 p-4 w-2/3">
                         <div class="flex flex-col m-2">
                             <div class="border-b border-bg-gray-500">
-                                <p class="font-bold pt-2 m-4">Info di pagamento</p>
+                                <p class="font-bold pt-2 m-4"><%if (languageString.equals("ita")){%>Pagamento<%}if (languageString.equals("eng")){ %>Checkout Info<% }%></p></p>
                             </div>
                             <div class="m-4">
                                 <label class="block text-grey-darker text-sm font-bold mb-2" for="Numero di Carta">
-                                    Numero di Carta
+                                    <%if (languageString.equals("ita")){%>Numero di carta<%}if (languageString.equals("eng")){ %>Card number<% }%></p>
                                 </label>
                                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Numero di Carta" name="card_n" type="text" placeholder="1234 1234 1234 1234"
                                        value="<%=(user.getCard_n() != null) ? user.getCard_n() : ""%>" maxlength="16" required>
@@ -144,7 +144,7 @@
                                     </div>
                                     <div class="ml-2">
                                         <label class="block text-grey-darker text-sm font-bold mb-2" for="Data di scadenza">
-                                            Data di scadenza
+                                            <%if (languageString.equals("ita")){%>Data di scadenza<%}if (languageString.equals("eng")){ %>Date of expire<% }%></p>
                                         </label>
                                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Data di scadenza" name="exp_date" type="text" placeholder="12/2026"
                                                value="<%=(user.getExp_date() != null) ? user.getExp_date() : ""%>" maxlength="7" required>
@@ -155,17 +155,17 @@
                     </div>
                     <div class="float-right flex-row bg-gray-200 rounded-lg border-bg-gray-500 mx-2 my-4 p-4 w-2/3">
                         <div class="flex flex-col m-2">
-                            <p class="font-bold pt-2 m-4 border-b border-bg-gray-400">Info di spedizione</p>
+                            <p class="font-bold pt-2 m-4 border-b border-bg-gray-400"><%if (languageString.equals("ita")){%>Spedzione<%}if (languageString.equals("eng")){ %>Shipping<% }%></p></p>
                             <div class="m-4">
                                 <label class="block text-grey-darker text-sm font-bold mb-2" for="street">
-                                    Via
+                                    <%if (languageString.equals("ita")){%>Via<%}if (languageString.equals("eng")){ %>Adress<% }%></p>
                                 </label>
                                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="street" name="street" type="text" placeholder="Via Rossi"
                                        value="<%=(user.getStreet() != null) ? user.getStreet() : ""%>" maxlength="50" required>
                                 <div class="flex flex-row flex-no-wrap justify-between my-2 py-2 w-full">
                                     <div class="mr-2">
                                         <label class="block text-grey-darker text-sm font-bold mb-2" for="civic">
-                                            Civico
+                                            <%if (languageString.equals("ita")){%>Civico<%}if (languageString.equals("eng")){ %>Civic<% }%></p>
                                         </label>
                                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="civic" name="civic" type="text" placeholder="1"
                                                value="<%=(user.getCivic() != null) ? user.getCivic() : ""%>"maxlength="10" required>
@@ -179,7 +179,7 @@
                                     </div>
                                     <div class="ml-2">
                                         <label class="block text-grey-darker text-sm font-bold mb-2" for="city">
-                                            Citta
+                                            <%if (languageString.equals("ita")){%>Citta<%}if (languageString.equals("eng")){ %>City<% }%></p>
                                         </label>
                                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="city" name="city" type="text" placeholder="Roma"
                                                value="<%=(user.getCity() != null) ? user.getCity() : ""%>" maxlength="30" required>
@@ -200,7 +200,7 @@
                                   required size="20" maxlength="48"/>
                            <div class="w-2/3 mt-4">
                                <a href="javascript:ApplyCoupon()" class="mb-2 bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">
-                                   Applica coupon
+                                   <%if (languageString.equals("ita")){%>Applica coupon<%}if (languageString.equals("eng")){ %>Apply coupon<% }%>
                                </a>
                            </div>
                        </div>
@@ -209,7 +209,7 @@
                <div class="m-4 order-2">
                    <div class="bg-gray-300 rounded-lg mx-4 my-4 p-4">
                        <div class="border-b border-gray-400">
-                           <p class="font-bold m-4">Riepilogo</p>
+                           <p class="font-bold m-4"><%if (languageString.equals("ita")){%>Riepilogo<%}if (languageString.equals("eng")){ %>Summary<% }%></p></p>
                        </div>
                        <section id="cart-list" class="=flex flex-col flex-wrap pt-2 p-2">
                            <%for (i = 0; i < carts.size(); i++) {%>
@@ -223,11 +223,11 @@
                            <div class="m-2 md-6 flex flex-row flex-no-wrap justify-between border-t border-gray-400">
                                <div class="order-1 flex flex-col flex-wrap content-around pt-3">
                                    <%if(total_discounted==null){%>
-                                   <p class="pb-4 font-bold text-xl">Totale (IVA inclusa)</p>
-                                   <p class="pb-2">Subtotale</p>
-                                   <p class="pb-2">Spedizione (5% del totale)</p>
+                                   <p class="pb-4 font-bold text-xl"><%if (languageString.equals("ita")){%>Totale(IVA inclusa)<%}if (languageString.equals("eng")){ %>Total(IVA included)<% }%></p></p>
+                                   <p class="pb-2"><%if (languageString.equals("ita")){%>Subtotale<%}if (languageString.equals("eng")){ %>Subtotal<% }%></p>
+                                   <p class="pb-2"><%if (languageString.equals("ita")){%>Spedizione (5% del totale)<%}if (languageString.equals("eng")){ %>Shipping (5% from total)<% }%></p>
                                    <%} else {%>
-                                   <p class="pb-4 font-bold text-xl">Totale (IVA inclusa) (- <%=coupon.getDiscount()%>%)</p>
+                                   <p class="pb-4 font-bold text-xl"><%if (languageString.equals("ita")){%>Totale(IVA inclusa)<%}if (languageString.equals("eng")){ %>Total(IVA included)<% }%> (- <%=coupon.getDiscount()%>%)</p>
                                    <%}%>
                                </div>
                                <div class="order-2 flex flex-col flex-wrap content-around">
@@ -245,15 +245,15 @@
                        </section>
                        <%if(coupon != null){%>
                        <a href="javascript:CompleteOrder(<%=coupon.getCouponId()%>)" class="zoom-animation m-4 bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-32">
-                           Acquista
+                           <%if (languageString.equals("ita")){%>Acquista<%}if (languageString.equals("eng")){ %>Buy<% }%>
                        </a>
                        <%}else{%>
                        <a href="javascript:CompleteOrder()" class="zoom-animation m-4 bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-32">
-                           Acquista
+                           <%if (languageString.equals("ita")){%>Acquista<%}if (languageString.equals("eng")){ %>Buy<% }%>
                        </a>
                        <%}%>
                        <button class="m-4 bg-red-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-32" type="submit" form="backForm">
-                           Annulla
+                           <%if (languageString.equals("ita")){%>Annulla<%}if (languageString.equals("eng")){ %>Abort<% }%>
                        </button>
                    </div>
                </div>

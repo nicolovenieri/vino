@@ -68,7 +68,7 @@
 <%@include file="/include/adminHeader.jsp"%>
 <main class="w-full flex flex-col justify-center items-center">
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl">Lista Utenti</p>
+        <p class="uppercase font-medium text-gray-800 text-xl"><%if(languageString.equals("ita")){%>Lista Utenti<%}if(languageString.equals("eng")){%>User List<%}%></p>
     </div>
     <div class="w-full flex justify-center">
         <div class="w-1/6 flex flex-row flex-no-wrap justify-center items-center m-4 p-2">
@@ -76,7 +76,7 @@
                 <div class="pt-2 relative mx-auto text-gray-600">
                     <form id="searchForm" name="searchForm" action="Dispatcher" method="post">
                         <input type="hidden" name="controllerAction" value="UserManagement.searchView">
-                        <input type="text" name="searchString" placeholder="Cerca username" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none">
+                        <input type="text" name="searchString" placeholder="<%if(languageString.equals("ita")){%>Trova NomeUtente<%}if(languageString.equals("eng")){%>Find Username<%}%>" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none">
                         <button type="submit" form="searchForm" class="absolute right-0 top-0 mt-5 mr-4">
                             <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
@@ -98,12 +98,12 @@
                     <div class="flex flex-row flex-no-wrap justify-center items-center">
                         <a href="javascript:orderManagement(<%=users.get(i).getUserId()%>)" class="pt-3 text-gray-900 font-medium pr-4"><%=users.get(i).getName()%> <%=users.get(i).getSurname()%></a>
                         <%if(users.get(i).isAdmin()){%>
-                        <p class="pt-3 text-green-400 font-bold ml-1">Admin</p>
+                            <p class="pt-3 text-green-400 font-bold ml-1"><%if(languageString.equals("ita")){%>Amministratore<%}if(languageString.equals("eng")){%>Admin User<%}%></p>
                         <%}%>
                     </div>
                     <p class="pt-3 text-gray-900 font-normal text-sm pr-4">
-                        <span class="font-medium">Username</span> <%=users.get(i).getUsername()%>
-                        <span class="font-normal"> (<%=users.get(i).getUserId()%>)</span>
+                        <span class="font-medium"><%if(languageString.equals("ita")){%>Nome Utente<%}if(languageString.equals("eng")){%>Username<%}%></span> <%=users.get(i).getUsername()%>
+                        <span class="font-medium"><%if(languageString.equals("ita")){%>Id Utente<%}if(languageString.equals("eng")){%>User Id<%}%></span> (<%=users.get(i).getUserId()%>)
                     </p>
                 </div>
             </div>
@@ -125,12 +125,12 @@
         <%}%>
         <div class="w-full m-4 flex justify-center items-center">
             <%if(maxViewSize == users.size()){%>
-            <p class="bg-gray-500 text-white font-bold py-2 px-4 rounded-full">Altri</p>
+            <p class="bg-gray-500 text-white font-bold py-2 px-4 rounded-full"><%if(languageString.equals("ita")){%>Altro<%}if(languageString.equals("eng")){%>More<%}%></p>
             <%} else {%>
 
             <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                href="javascript:maxViewSizeInc(<%=maxViewSize%>)">
-                Altri
+                <%if(languageString.equals("ita")){%>Altri<%}if(languageString.equals("eng")){%>More<%}%>
             </a>
             <%}%>
         </div>

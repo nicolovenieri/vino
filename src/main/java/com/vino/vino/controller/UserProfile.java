@@ -4,17 +4,15 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.vino.vino.model.mo.*;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 
 import com.vino.vino.model.dao.*;
-import com.vino.vino.model.mo.Preference;
-import com.vino.vino.model.mo.Showcase;
 import com.vino.vino.services.config.Configuration;
 import com.vino.vino.services.logservice.LogService;
 
-import com.vino.vino.model.mo.User;
-import com.vino.vino.model.mo.Wine;
 import com.vino.vino.model.dao.exception.DuplicatedObjectException;
 
 public class UserProfile {
@@ -28,6 +26,7 @@ public class UserProfile {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -42,6 +41,9 @@ public class UserProfile {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
 
@@ -50,6 +52,7 @@ public class UserProfile {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -78,6 +81,7 @@ public class UserProfile {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -92,6 +96,9 @@ public class UserProfile {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
 
@@ -100,6 +107,7 @@ public class UserProfile {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -128,6 +136,7 @@ public class UserProfile {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -141,6 +150,9 @@ public class UserProfile {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -177,6 +189,7 @@ public class UserProfile {
             sessionDAOFactory.commitTransaction();
 
             userRetrieve(daoFactory, sessionDAOFactory, request);
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -206,6 +219,7 @@ public class UserProfile {
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         User oldUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -220,6 +234,9 @@ public class UserProfile {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             oldUser = sessionUserDAO.findLoggedUser();
             sessionUserDAO.delete(null);
+
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -249,7 +266,7 @@ public class UserProfile {
             sessionDAOFactory.commitTransaction();
 
             request.setAttribute("arrayPos", arrayPos);
-
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",false);
             request.setAttribute("loggedUser", null);
             request.setAttribute("viewUrl", "homeManagement/view");

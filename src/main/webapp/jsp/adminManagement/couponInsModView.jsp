@@ -73,33 +73,33 @@
 <body>
 <%@include file="/include/adminHeader.jsp"%>
 <main class="flex flex-col justify-center items-center pt-8 pb-8">
-    <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl">Gestione: <%=(action.equals("modify")) ? "Modifica Coupon" : "Nuovo Coupon"%></h1>
+    <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Gestione<%}if (languageString.equals("eng")){ %>Management<% }%>: <%=(action.equals("modify")) ? "Modifica Coupon" : "Nuovo Coupon"%></h1>
     <section id="insModFormSection" class="w-2/5">
         <form name="insModForm" action="Dispatcher" method="post">
             <div class="field">
-                <label class="font-medium" for="name">Nome</label>
+                <label class="font-medium" for="name"><%if (languageString.equals("ita")){%>Nome<%}if (languageString.equals("eng")){ %>Name<% }%></label>
                 <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 mt-1" type="text" id="name" name="name"
                        value="<%=(action.equals("modify")) ? coupon.getName() : ""%>"
-                       placeholder="SUMMER"
+                       placeholder="Coupon name"
                        required size="20" maxlength="50"/>
             </div>
             <div class="field">
-                <label class="font-medium" for="% di sconto">% di sconto</label>
+                <label class="font-medium" for="% di sconto"><%if (languageString.equals("ita")){%>Sconto (%)<%}if (languageString.equals("eng")){ %>Discount (%)<% }%></label>
                 <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 mt-1" type="text" id="% di sconto" name="discount"
                        value="<%=(action.equals("modify")) ? coupon.getDiscount() : ""%>"
-                       placeholder="50"
+                       placeholder="10"
                        required size="20" maxlength="50"/>
             </div>
             <div class="field">
-                <label class="font-medium" for="data di scadenza">Data di Scadenza</label>
+                <label class="font-medium" for="data di scadenza"><%if (languageString.equals("ita")){%>Data di scadenza<%}if (languageString.equals("eng")){ %>Date of expire<% }%></label>
                 <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 mt-1" type="date" id="data di scadenza" name="exp_date"
                        value="<%=(action.equals("modify")) ? coupon.getExp_date() : ""%>"
-                       placeholder="2020-11-25"
+                       placeholder="2025-03-24"
                        required size="20" maxlength="50"/>
             </div>
             <div class="field my-4">
-                <input type="button" name ="Invia" class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" value="Invia"/>
-                <input type="button" name="backButton" class="bg-red-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-24 ml-2" value="Annulla"/>
+                <input type="button" name ="Invia" class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" value="<%if (languageString.equals("ita")){%>Invia<%}if (languageString.equals("eng")){ %>Done<% }%>"/>
+                <input type="button" name="backButton" class="bg-red-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-24 ml-2" value="<%if (languageString.equals("ita")){%>Annulla<%}if (languageString.equals("eng")){ %>Delete<% }%>"/>
             </div>
             <%if (action.equals("modify")) {%>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3 mt-1" type="hidden" name="coupon_id" value="<%=coupon.getCouponId()%>"/>

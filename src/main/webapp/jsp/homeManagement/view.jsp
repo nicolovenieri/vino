@@ -18,6 +18,7 @@
     List<Wine> wines = (List<Wine>) request.getAttribute("wines");
     List<Wine> showcase_wines = (List<Wine>) request.getAttribute("showcase_wines");
 
+
     //gestisco vini suggeriti
     List<Wine> preferred_wines = new ArrayList<Wine>();
     boolean preferencesEnable = false;
@@ -76,6 +77,8 @@
     if(searchMode) {
         searchedItem = (String) request.getAttribute("searchedItem");
     }
+
+
 %>
 
 <!DOCTYPE html>
@@ -102,7 +105,7 @@
               document.AddToCartForm.requestSubmit();
           }
 
-          function AddToWishlist(wine_id) {
+          function AddToWishlist(wine_id,language) {
               alert("Aggiunto alla wishlist");
               document.AddToWishlistForm.wine_id.value = wine_id;
               document.AddToWishlistForm.requestSubmit();
@@ -121,7 +124,7 @@
                 <div class="pt-2 relative mx-auto text-gray-600">
                     <form id="searchForm" name="searchForm" action="Dispatcher" method="post">
                         <input type="hidden" name="controllerAction" value="HomeManagement.searchView">
-                        <input type="text" name="searchString" placeholder="Ricerca" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none">
+                        <input type="text" name="searchString" placeholder="<% if(languageString.equals("eng")){ %>Search<%} if(languageString.equals("ita")){ %>Ricerca <%}%>" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none">
                         <button type="submit" form="searchForm" class="absolute right-0 top-0 mt-5 mr-4">
                             <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
@@ -135,8 +138,10 @@
             </div>
         </div>
     </div>
-
     <%if(!searchMode){%>
+    <div class="w-full flex justify-center items-center my-4">
+        <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>Today's Wines<%} if(languageString.equals("ita")){ %>Vini del Giorno <%}%></h2>
+    </div>
     <div id="showcase" class="carousel container mx-auto p-6">
         <div class="carousel-inner relative overflow-hidden w-full rounded-md shadow-md">
             <!--Slide 1-->
@@ -147,7 +152,7 @@
                     <div class="container mx-auto flex justify-center items-center">
                         <div class="flex flex-col w-full lg:w-1/2 items-center px-6 tracking-wide">
                             <p class="text-white text-2xl my-4"><%=showcase_wines.get(0).getName()%></p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(0).getWineId()%>)">visualizza prodotto</a>
+                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(0).getWineId()%>)"><% if(languageString.equals("eng")){ %>View Product<%} if(languageString.equals("ita")){ %>Visualizza Prodotto <%}%></a>
                         </div>
                     </div>
                 </div>
@@ -168,7 +173,7 @@
                     <div class="container mx-auto flex justify-center items-center">
                         <div class="flex flex-col w-full lg:w-1/2 items-center px-6 tracking-wide">
                             <p class="text-white text-2xl my-4"><%=showcase_wines.get(1).getName()%></p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(1).getWineId()%>)">visualizza prodotto</a>
+                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(1).getWineId()%>)"><% if(languageString.equals("eng")){ %>View Product<%} if(languageString.equals("ita")){ %>Visualizza Prodotto <%}%></a>
                         </div>
                     </div>
 
@@ -190,7 +195,7 @@
                     <div class="container mx-auto flex justify-center items-center">
                         <div class="flex flex-col w-full lg:w-1/2 items-center px-6 tracking-wide">
                             <p class="text-white text-2xl my-4"><%=showcase_wines.get(2).getName()%></p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(2).getWineId()%>)">visualizza prodotto</a>
+                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(2).getWineId()%>)"><% if(languageString.equals("eng")){ %>View Product<%} if(languageString.equals("ita")){ %>Visualizza Prodotto <%}%></a>
                         </div>
                     </div>
 
@@ -227,18 +232,18 @@
           <nav id="page-title" class="w-full z-30 top-0 px-6 py-1">
               <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
                   <%if(searchMode && !wines.isEmpty()){%>
-                  <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl">Risultato ricerca per '<%=searchedItem%>'</h2>
+                  <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>Search results for<%} if(languageString.equals("ita")){ %>Risultato ricerca per<%}%> '<%=searchedItem%>'</h2>
                   <%}else if(showcaseMode && !wines.isEmpty()){%>
-                  <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl">Vetrina</h2>
+                  <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>Showcase<%} if(languageString.equals("ita")){ %>Vetrina<%}%></h2>
                   <%} if(!wines.isEmpty() && !searchMode && !showcaseMode){%>
-                  <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl">Store</h2>
+                  <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>Store<%} if(languageString.equals("ita")){ %>Negozio<%}%></h2>
                   <%}%>
               </div>
           </nav>
 
           <%if(searchMode && wines.isEmpty()){%>
           <div class="w-full flex justify-center">
-              <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl">Nessun risultato per '<%=searchedItem%>'</h2>
+              <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><% if(languageString.equals("eng")){ %>No results for<%} if(languageString.equals("ita")){ %>Nessun risultato per<%}%> '<%=searchedItem%>'</h2>
           </div>
           <%}%>
 
@@ -269,23 +274,23 @@
 
                 <%if(arrayPos < 8) {%>
                 <p class="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-l">
-                    Precedente
+                    <% if(languageString.equals("eng")){ %>Back<%} if(languageString.equals("ita")){ %>Precedente<%}%>
                 </p>
                 <%}else{%>
                 <a class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
                    href="javascript:backwardForm.requestSubmit()">
-                    Precedente
+                    <% if(languageString.equals("eng")){ %>Back<%} if(languageString.equals("ita")){ %>Precedente<%}%>
                 </a>
                 <%}%>
 
             <%if(arrayPos + viewSize >= wines.size()) {%>
                 <p class="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-r">
-                    Successiva
+                    <% if(languageString.equals("eng")){ %>Next<%} if(languageString.equals("ita")){ %>Successiva<%}%>
                 </p>
                 <%}else{%>
                 <a class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
                    href="javascript:forwardForm.requestSubmit()">
-                    Successiva
+                    <% if(languageString.equals("eng")){ %>Next<%} if(languageString.equals("ita")){ %>Successiva<%}%>
                 </a>
                 <%}%>
             </div>
@@ -295,7 +300,7 @@
 <%--        vini suggeriti--%>
         <%if(preferencesEnable){%>
         <div class="w-full flex justify-center items-center my-4">
-            <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl">Vini della categoria '<%=preferred_wines.get(0).getCategory()%>' consigliati</h2>
+            <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>Wines of Category<%} if(languageString.equals("ita")){ %>Vini della Categoria<%}%> '<%=preferred_wines.get(0).getCategory()%>' <% if(languageString.equals("eng")){ %>Suggested<%} if(languageString.equals("ita")){ %>Consigliati<%}%></h2>
         </div>
         <section id="suggested-products" class="container mx-auto flex flex-wrap mt-4 mb-8">
             <%for(i = 0; i < preferred_wines.size(); i++){%>

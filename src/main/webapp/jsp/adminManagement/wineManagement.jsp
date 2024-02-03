@@ -68,7 +68,7 @@
 <%@include file="/include/adminHeader.jsp"%>
 <main class="w-full flex flex-col justify-center items-center">
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl">Lista Vini</p>
+        <p class="uppercase font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Lista vini<%}if (languageString.equals("eng")){ %>Wines list<% }%></p>
         <a class="ml-2 mt-1" href="javascript:insertWine()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z"/></svg>
         </a>
@@ -79,7 +79,7 @@
                 <div class="pt-2 relative mx-auto text-gray-600">
                     <form id="searchForm" name="searchForm" action="Dispatcher" method="post">
                         <input type="hidden" name="controllerAction" value="WineManagement.searchView">
-                        <input type="text" name="searchString" placeholder="Cerca nome vino" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none">
+                        <input type="text" name="searchString" placeholder="<%if (languageString.equals("ita")){%>Cerca nome vino<%}if (languageString.equals("eng")){ %>Find wine name<% }%>" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none">
                         <button type="submit" form="searchForm" class="absolute right-0 top-0 mt-5 mr-4">
                             <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
@@ -101,7 +101,7 @@
                     <p class="float-left text-gray-900 font-medium pr-4"><%=wines.get(i).getName()%></p>
                 </section>
                 <section id="wine-avalaibility" class="pt-2 w-full flex p-1 border-t border-gray-400">
-                    <p>Quantita disponibile in magazzino: <%=wines.get(i).getAvalaibility()%></p>
+                    <p><%if (languageString.equals("ita")){%>Quantita disponibile in magazzino<%}if (languageString.equals("eng")){ %>Stock available quantity<% }%> <%=wines.get(i).getAvalaibility()%></p>
                 </section>
             </div>
             <div class="order-2 float-right flex flex-no-wrap flex-row mx-4">
@@ -117,12 +117,12 @@
 
         <div class="w-full m-4 flex justify-center items-center">
             <%if(maxViewSize == wines.size()){%>
-            <p class="bg-gray-500 text-white font-bold py-2 px-4 rounded-full">Altri</p>
+            <p class="bg-gray-500 text-white font-bold py-2 px-4 rounded-full"><%if (languageString.equals("ita")){%>Altri<%}if (languageString.equals("eng")){ %>Others<% }%></p>
             <%} else {%>
 
             <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                href="javascript:maxViewSizeInc(<%=maxViewSize%>)">
-                Altri
+                <%if (languageString.equals("ita")){%>Altri<%}if (languageString.equals("eng")){ %>Others<% }%>
             </a>
             <%}%>
         </div>

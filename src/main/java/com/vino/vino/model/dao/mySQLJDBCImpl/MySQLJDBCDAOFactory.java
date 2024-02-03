@@ -91,4 +91,9 @@ public class MySQLJDBCDAOFactory extends DAOFactory {
 
     @Override
     public PreferenceDAO getPreferenceDAO() { return new PreferenceDAOMySQLJDBCImpl(connection); }
+
+    @Override
+    public LanguageDAO getLanguageDAO() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

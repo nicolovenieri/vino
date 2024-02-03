@@ -62,7 +62,8 @@
     <main>
         <div class="container mx-auto flex flex-wrap py-4">
             <div class="flex justify-center w-full m-4 mt-8">
-                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl">Ordini</p>
+                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Ordini<%}if (languageString.equals("eng")){ %>Orders<% }%>
+                </p>
             </div>
             <%if(!order_tuples.isEmpty()){%>
             <div class="w-full flex flex-col flex-wrap justify-center py-4 bg-gray-100 divide-y rounded-md mb-8">
@@ -76,7 +77,7 @@
             </div>
             <%} else {%>
             <div class="text-center w-full mb-4">
-                <p class="font-medium mt-6">Nessun ordine effettuato.</p>
+                <p class="font-medium mt-6"><%if (languageString.equals("ita")){%>Nessun ordine effettuato<%}if (languageString.equals("eng")){ %>No orders placed<% }%></p>
             </div>
             <%}%>
         </div>

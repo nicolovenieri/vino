@@ -25,45 +25,12 @@ public class HomeManagement {
 
     private HomeManagement() {
     }
-    public static void temp(HttpServletRequest request, HttpServletResponse response){
-        DAOFactory sessionDAOFactory= null;
-        User loggedUser;
-        Logger logger = LogService.getApplicationLogger();
-
-
-        try {
-            Map sessionFactoryParameters=new HashMap<String,Object>();
-            sessionFactoryParameters.put("request",request);
-            sessionFactoryParameters.put("response",response);
-            sessionDAOFactory = DAOFactory.getDAOFactory(Configuration.COOKIE_IMPL,sessionFactoryParameters);
-            sessionDAOFactory.beginTransaction();
-
-            sessionDAOFactory.commitTransaction();
-
-            //List<Prodotto> prodotti = ListaProdotti(daoFactory, sessionDAOFactory, request);
-            request.setAttribute("viewUrl", "HomeManagement/view");
-        }catch (Exception e) {
-
-            try {logger.log(Level.SEVERE, "Controller Error", e);
-                if (sessionDAOFactory != null) sessionDAOFactory.rollbackTransaction();
-            } catch (Throwable t) {
-            }
-            throw new RuntimeException(e);
-
-        } finally {
-            try {
-                if (sessionDAOFactory != null) sessionDAOFactory.closeTransaction();
-            } catch (Throwable t) {
-            }
-        }
-    }
-    public static void view(HttpServletRequest request, HttpServletResponse response) {
-
+    public static void changelang(HttpServletRequest request, HttpServletResponse response){
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         User loggedUser = null;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -74,6 +41,8 @@ public class HomeManagement {
             sessionDAOFactory = DAOFactory.getDAOFactory(Configuration.COOKIE_IMPL,sessionFactoryParameters);
             sessionDAOFactory.beginTransaction();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.create(request.getParameter("language"));
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
@@ -111,7 +80,86 @@ public class HomeManagement {
 
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
+            System.out.println("controller"+language);
+            request.setAttribute("language",language);
+            request.setAttribute("loggedOn",loggedUser!=null);
+            request.setAttribute("loggedUser", loggedUser);
+            request.setAttribute("applicationMessage", applicationMessage);
+            request.setAttribute("viewUrl", "homeManagement/view");
 
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Controller Error", e);
+            try {
+                if (sessionDAOFactory != null) sessionDAOFactory.rollbackTransaction();
+            } catch (Throwable t) {
+            }
+            throw new RuntimeException(e);
+
+        } finally {
+            try {
+                if (sessionDAOFactory != null) sessionDAOFactory.closeTransaction();
+            } catch (Throwable t) {
+            }
+        }
+    }
+    public static void view(HttpServletRequest request, HttpServletResponse response) {
+
+        DAOFactory sessionDAOFactory= null;
+        DAOFactory daoFactory = null;
+        User loggedUser = null;
+        String applicationMessage = null;
+        Language language;
+        Logger logger = LogService.getApplicationLogger();
+
+        try {
+
+            Map sessionFactoryParameters=new HashMap<String,Object>();
+            sessionFactoryParameters.put("request",request);
+            sessionFactoryParameters.put("response",response);
+            sessionDAOFactory = DAOFactory.getDAOFactory(Configuration.COOKIE_IMPL,sessionFactoryParameters);
+            sessionDAOFactory.beginTransaction();
+
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+            UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
+            loggedUser = sessionUserDAO.findLoggedUser();
+
+            daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
+            daoFactory.beginTransaction();
+
+            wineRetrieve(daoFactory, sessionDAOFactory, request);
+            showcaseWineRetrieve(daoFactory, sessionDAOFactory, request);
+
+            List<Order> orders = new ArrayList<Order>();
+            if(loggedUser != null && !loggedUser.isAdmin()) {
+                OrderDAO orderDAO = daoFactory.getOrderDAO();
+                orders = orderDAO.findOrders(loggedUser);
+            }
+
+            if(loggedUser != null && !loggedUser.isAdmin() && !orders.isEmpty()) {
+                try {
+                    long user_id = loggedUser.getUserId();
+                    preferencesRetrieve(daoFactory, sessionDAOFactory, request, user_id);
+
+                } catch (NullPointerException e) {
+                    logger.log(Level.SEVERE, "Controller Error (user_id)", e);
+                }
+            }
+
+            int arrayPos;
+            try {
+                if(request.getParameter("arrayPos") != null) {
+                    arrayPos = Integer.parseInt(request.getParameter("arrayPos"));
+                    request.setAttribute("arrayPos", arrayPos);
+                }
+            } catch(NumberFormatException | NullPointerException e) {
+                logger.log(Level.SEVERE, "Controller Error (arrayPos)", e);
+            }
+
+            daoFactory.commitTransaction();
+            sessionDAOFactory.commitTransaction();
+            System.out.println("controller"+language);
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -139,7 +187,7 @@ public class HomeManagement {
         DAOFactory daoFactory = null;
         User loggedUser = null;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -152,6 +200,8 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -179,6 +229,7 @@ public class HomeManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("arrayPos", arrayPos);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
@@ -208,7 +259,7 @@ public class HomeManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -221,6 +272,8 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -242,6 +295,7 @@ public class HomeManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -269,7 +323,7 @@ public class HomeManagement {
 
         DAOFactory sessionDAOFactory=null;
         User loggedUser;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -282,7 +336,10 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "homeManagement/loginView");
@@ -311,7 +368,7 @@ public class HomeManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -324,6 +381,8 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL, null);
             daoFactory.beginTransaction();
@@ -343,7 +402,6 @@ public class HomeManagement {
                 request.setAttribute("viewUrl", "homeManagement/loginView");
             } else {
                 loggedUser = sessionUserDAO.create(user.getUserId(), null, null, null, user.getName(), user.getSurname(), null, null, null, null, null, null, null, null, user.isAdmin());
-
                 if (user != null && user.isAdmin()) {
                     request.setAttribute("viewUrl", "adminManagement/view");
 
@@ -364,6 +422,7 @@ public class HomeManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn", loggedUser != null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -390,7 +449,7 @@ public class HomeManagement {
 
         DAOFactory sessionDAOFactory=null;
         User loggedUser;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -403,8 +462,10 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
-
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "homeManagement/registerView");
@@ -433,7 +494,7 @@ public class HomeManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -446,6 +507,8 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -486,22 +549,26 @@ public class HomeManagement {
                         false);
 
                 applicationMessage = "Registrazione avvenuta con successo. Clicca su Login per effettuare l'accesso";
+                request.setAttribute("language",language);
                 request.setAttribute("viewUrl", "homeManagement/view");
 
 
             } catch (DuplicatedObjectException e) {
                 applicationMessage = "Username già in uso.";
                 logger.log(Level.INFO,"Tentativo di inserimento di un username già esistente.");
+                request.setAttribute("language",language);
                 request.setAttribute("viewUrl", "homeManagement/registerView");
             } catch (Exception e){
                 applicationMessage = "Username troppo lungo - MAX 12 CARATTERI.";
                 logger.log(Level.INFO,"Tentativo di inserimento di un username già esistente.");
+                request.setAttribute("language",language);
                 request.setAttribute("viewUrl", "homeManagement/registerView");
             }
 
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -530,7 +597,7 @@ public class HomeManagement {
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -543,6 +610,8 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             sessionUserDAO.delete(null);
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.create("ita");
             applicationMessage = "Logout effettuato con successo";
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
@@ -554,6 +623,7 @@ public class HomeManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",false);
             request.setAttribute("loggedUser", null);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -580,7 +650,7 @@ public class HomeManagement {
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         User loggedUser;
-
+        Language language = null;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -593,6 +663,8 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -612,6 +684,7 @@ public class HomeManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("searchMode", true);
             request.setAttribute("searchedItem", request.getParameter("searchString"));
             request.setAttribute("loggedOn",loggedUser!=null);
@@ -641,7 +714,7 @@ public class HomeManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -654,6 +727,8 @@ public class HomeManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -663,6 +738,7 @@ public class HomeManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -690,7 +766,7 @@ public class HomeManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -698,9 +774,12 @@ public class HomeManagement {
             Map sessionFactoryParameters=new HashMap<String,Object>();
             sessionFactoryParameters.put("request",request);
             sessionFactoryParameters.put("response",response);
+
             sessionDAOFactory = DAOFactory.getDAOFactory(Configuration.COOKIE_IMPL,sessionFactoryParameters);
             sessionDAOFactory.beginTransaction();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
@@ -739,6 +818,7 @@ public class HomeManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("showcaseMode", true);
             request.setAttribute("wines", wines);
             request.setAttribute("loggedUser", loggedUser);

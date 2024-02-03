@@ -37,25 +37,15 @@
 <%@include file="/include/adminHeader.jsp"%>
 <main class="w-full flex flex-col justify-center items-center">
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl">Vetrina</p>
+        <p class="uppercase font-medium text-gray-800 text-xl"> <%if (languageString.equals("ita")){%>Vetrina<%}if (languageString.equals("eng")){ %>Showcase<% }%></p>
     </div>
 
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl">Lista Vini in vetrina</p>
+        <p class="uppercase font-medium text-gray-800 text-xl"> <%if (languageString.equals("ita")){%>Vini presenti in vetrina<%}if (languageString.equals("eng")){ %>Showcase's Wines<% }%></p>
         <a class="ml-2 mt-1" href="javascript:insertWineForm.requestSubmit()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z"/></svg>
         </a>
     </div>
-
-<%--    <div class="m-4 bg-gray-200 rounded-md border-gray-600 h-120 flex flex-row flex-wrap items-center">--%>
-<%--        <div class="m-4">--%>
-<%--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-blue-500" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm0-9a1 1 0 011 1v4a1 1 0 01-2 0v-4a1 1 0 011-1zm0-4a1 1 0 110 2 1 1 0 010-2z"/></svg>--%>
-<%--        </div>--%>
-<%--        <p class="p-4">--%>
-<%--            Per aggiungere vini in vetrina, <br>--%>
-<%--            utilizzare il menu 'gestione vini'.--%>
-<%--        </p>--%>
-<%--    </div>--%>
 
     <div class="flex flex-wrap flex-col justify-center m-4 w-auto max-w-md">
         <%for (i = 0; i < showcases.size(); i++) {%>

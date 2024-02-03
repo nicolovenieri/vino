@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.vino.vino.model.mo.Language;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -16,6 +18,7 @@ import com.vino.vino.services.logservice.LogService;
 import com.vino.vino.model.mo.User;
 import com.vino.vino.model.mo.Wine;
 import com.vino.vino.model.dao.DAOFactory;
+import com.vino.vino.model.dao.LanguageDAO;
 import com.vino.vino.model.dao.UserDAO;
 import com.vino.vino.model.dao.WineDAO;
 import com.vino.vino.model.dao.exception.DuplicatedObjectException;
@@ -33,6 +36,7 @@ public class WineManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -46,6 +50,8 @@ public class WineManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -65,6 +71,7 @@ public class WineManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("maxViewSize", maxViewSize);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("loggedOn",loggedUser!=null);
@@ -92,7 +99,7 @@ public class WineManagement {
 
         DAOFactory sessionDAOFactory=null;
         User loggedUser;
-
+        Language language;
         Logger logger = LogService.getApplicationLogger();
 
         try {
@@ -105,7 +112,10 @@ public class WineManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "adminManagement/wineInsModView");
@@ -132,6 +142,7 @@ public class WineManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -148,6 +159,8 @@ public class WineManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             WineDAO wineDAO = daoFactory.getWineDAO();
 
@@ -183,6 +196,7 @@ public class WineManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -212,6 +226,7 @@ public class WineManagement {
         DAOFactory sessionDAOFactory=null;
         DAOFactory daoFactory = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -225,6 +240,8 @@ public class WineManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -237,6 +254,7 @@ public class WineManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("wine", wine);
@@ -264,6 +282,7 @@ public class WineManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -277,6 +296,8 @@ public class WineManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -320,6 +341,8 @@ public class WineManagement {
             sessionDAOFactory.commitTransaction();
 
             wineRetrieve(daoFactory, sessionDAOFactory, request);
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -349,6 +372,7 @@ public class WineManagement {
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -362,6 +386,8 @@ public class WineManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -385,6 +411,7 @@ public class WineManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "adminManagement/wineManagement");
@@ -414,6 +441,7 @@ public class WineManagement {
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -427,6 +455,8 @@ public class WineManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
@@ -436,6 +466,7 @@ public class WineManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "adminManagement/wineManagement");

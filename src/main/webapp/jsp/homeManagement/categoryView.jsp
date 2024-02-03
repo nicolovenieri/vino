@@ -49,7 +49,7 @@
                 <input type="hidden" name="controllerAction" value="HomeManagement.searchView">
                 <div class="pt-2 relative mx-auto text-gray-600">
                     <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                           type="search" id="searchString" name="searchString" placeholder="Search">
+                           type="search" id="searchString" name="searchString" placeholder="<%if (languageString.equals("ita")){%>Ricerca <%}if (languageString.equals("eng")){ %>Search <% }%>">
                     <button type="submit" form="searchForm" class="absolute right-0 top-0 mt-5 mr-4">
                         <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -67,7 +67,7 @@
     <div class="container mx-auto flex flex-wrap pb-12">
         <nav id="store" class="w-full z-30 top-0 px-6 py-1">
             <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl">Categoria: <%=(String) request.getParameter("category")%></p>
+                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Categoria<%}if (languageString.equals("eng")){ %>Category<% }%>: <%=(String) request.getParameter("category")%></p>
             </div>
         </nav>
         <%for (i = 0; i < wines.size(); i++) {%>

@@ -77,84 +77,84 @@ boolean loggedOn = (Boolean) request.getAttribute("loggedOn");
   <body>
     <%@include file="/include/adminHeader.jsp"%>
     <main class="flex flex-col justify-center items-center pt-8 pb-8">
-      <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl">Gestione: <%=(action.equals("modify")) ? "Modifica Vino" : "Nuovo Vino"%></h1>
+      <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Gestione <%}if (languageString.equals("eng")){ %>Managment<% }%> <%=(action.equals("modify")) ? "Modifica Vino" : "Nuovo Vino"%></h1>
       <section id="insModFormSection" class="w-1/3">
         <form name="insModForm" action="Dispatcher" method="post">
           <div class="field">
-            <label for="name"><span class="font-medium">Nome</span> (name)</label>
+            <label for="name"><span class="font-medium"><%if (languageString.equals("ita")){%>Nome<%}if (languageString.equals("eng")){ %>Name<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="name" name="name"
                    value="<%=(action.equals("modify")) ? wine.getName() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="name"><span class="font-medium">URL/Path dell'immagine del prodotto</span> (product_image)</label>
+            <label for="name"><span class="font-medium"><%if (languageString.equals("ita")){%>URL/Path dell'immagine del prodotto<%}if (languageString.equals("eng")){ %>URL/Path of product's image<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="product_image" name="product_image"
                    value="<%=(action.equals("modify")) ? wine.getProductImage() : ""%>"
                    required size="20" maxlength="256"/>
           </div>
           <div class="field">
-            <label for="price"><span class="font-medium">Prezzo</span> (price)</label>
+            <label for="price"><span class="font-medium"><%if (languageString.equals("ita")){%>Prezzo<%}if (languageString.equals("eng")){ %>Price<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="price" name="price"
                    value="<%=(action.equals("modify")) ? wine.getPrice() : ""%>"
                    required size="20" maxlength="8"/>
           </div>
           <div class="field">
-            <label for="denominazione"><span class="font-medium">Denominazione</span> (denominazione)</label>
+            <label for="denominazione"><span class="font-medium"><%if (languageString.equals("ita")){%>Denominazione<%}if (languageString.equals("eng")){ %>Denomination<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="denominazione" name="denominazione"
                    value="<%=(action.equals("modify")) ? wine.getDenominazione() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="annata"><span class="font-medium">Annata</span> (annata)</label>
+            <label for="annata"><span class="font-medium"><%if (languageString.equals("ita")){%>Annata<%}if (languageString.equals("eng")){ %>Vine's Age<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="annata" name="annata"
                    value="<%=(action.equals("modify")) ? wine.getAnnata() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="avalaibility"><span class="font-medium">Quantita</span> (avalaibility)</label>
+            <label for="avalaibility"><span class="font-medium"><%if (languageString.equals("ita")){%>Quantita<%}if (languageString.equals("eng")){ %>Availability<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="avalaibility" name="avalaibility"
                    value="<%=(action.equals("modify")) ? wine.getAvalaibility() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="vitigni"><span class="font-medium">Vitigni</span> (vitigni)</label>
+            <label for="vitigni"><span class="font-medium"><%if (languageString.equals("ita")){%>Vitigni<%}if (languageString.equals("eng")){ %>Vines<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="vitigni" name="vitigni"
                    value="<%=(action.equals("modify")) ? wine.getVitigni() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="temperature"><span class="font-medium">Temperatura di servizio</span> (temperature)</label>
+            <label for="temperature"><span class="font-medium"><%if (languageString.equals("ita")){%>Temperatura di servizio<%}if (languageString.equals("eng")){ %>Temperature of service<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="temperature" name="temperature"
                    value="<%=(action.equals("modify")) ? wine.getTemperature() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="format"><span class="font-medium">Formato</span> (format)</label>
+            <label for="format"><span class="font-medium"><%if (languageString.equals("ita")){%>Formato<%}if (languageString.equals("eng")){ %>Format<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="format" name="format"
                    value="<%=(action.equals("modify")) ? wine.getFormat() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="alcool"><span class="font-medium">Alcool</span> (alcool)</label>
+            <label for="alcool"><span class="font-medium">Alcool</span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="alcool" name="alcool"
                    value="<%=(action.equals("modify")) ? wine.getAlcool() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="alcool"><span class="font-medium">Categoria</span> (category)</label>
+            <label for="alcool"><span class="font-medium"><%if (languageString.equals("ita")){%>Categoria<%}if (languageString.equals("eng")){ %>Category<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="category" name="category"
                    value="<%=(action.equals("modify")) ? wine.getCategory() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="alcool"><span class="font-medium">Descrizione</span> (description)</label>
+            <label for="alcool"><span class="font-medium"><%if (languageString.equals("ita")){%>Descrizione<%}if (languageString.equals("eng")){ %>Description<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="description" name="description"
                    value="<%=(action.equals("modify")) ? wine.getDescription() : ""%>"
                    required size="20" maxlength="2048"/>
           </div>
           <div class="field my-4">
-            <input type="button" name ="Invia" class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" value="Invia"/>
-            <input type="button" name="backButton" class="bg-red-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-24 ml-2" value="Annulla"/>
+            <input type="button" name ="Invia" class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" value="<%if (languageString.equals("ita")){%>Invia<%}if (languageString.equals("eng")){ %>Done<% }%>"/>
+            <input type="button" name="backButton" class="bg-red-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-24 ml-2" value="<%if (languageString.equals("ita")){%>Annulla<%}if (languageString.equals("eng")){ %>Back<% }%>"/>
           </div>
           <%if (action.equals("modify")) {%>
           <input type="hidden" name="wine_id" value="<%=wine.getWineId()%>"/>

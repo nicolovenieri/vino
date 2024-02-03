@@ -22,6 +22,7 @@
   </head>
   <body>
     <%@include file="/include/adminHeader.jsp"%>
+    <% if (languageString.equals("ita")) { %>
     <main class="w-full flex flex-col justify-center items-center">
         <div class="my-6">
             <div class="order-1 mt-8 flex flex-row justify-between items-stretch">
@@ -54,6 +55,40 @@
         </form>
 
     </main>
+    <% } if( languageString.equals("eng")) { %>
+    <main class="w-full flex flex-col justify-center items-center">
+        <div class="my-6">
+            <div class="order-1 mt-8 flex flex-row justify-between items-stretch">
+                <a class="bg-gray-700 hover:opacity-75 rounded w-full uppercase font-bold text-white text-2xl py-2 px-6" href="javascript:userManagementForm.requestSubmit()">User Management</a>
+            </div>
+            <div class="order-2 mt-8 flex flex-row justify-between items-stretch w-auto">
+                <a class="bg-gray-700 hover:opacity-75 rounded w-full uppercase font-bold text-white text-2xl py-2 px-6" href="javascript:wineManagementForm.requestSubmit()">Wine Management</a>
+            </div>
+            <div class="order-3 mt-8 flex flex-row justify-between items-stretch w-auto">
+                <a class="bg-gray-700 hover:opacity-75 rounded w-full uppercase font-bold text-white text-2xl py-2 px-6" href="javascript:showcaseManagementForm.requestSubmit()">Showcase Management</a>
+            </div>
+            <div class="order-4 mt-8 flex flex-row justify-between items-stretch w-auto">
+                <a class="bg-gray-700 hover:opacity-75 rounded w-full uppercase font-bold text-white text-2xl py-2 px-6" href="javascript:couponManagementForm.requestSubmit()">Coupon Management</a>
+            </div>
+        </div>
+
+        <form name="wineManagementForm" method="post" action="Dispatcher">
+            <input type="hidden" name="controllerAction" value="WineManagement.view"/>
+        </form>
+
+        <form name="userManagementForm" method="post" action="Dispatcher">
+            <input type="hidden" name="controllerAction" value="UserManagement.view"/>
+        </form>
+        <form name="couponManagementForm" method="post" action="Dispatcher">
+            <input type="hidden" name="controllerAction" value="CouponManagement.view"/>
+        </form>
+
+        <form name="showcaseManagementForm" method="post" action="Dispatcher">
+            <input type="hidden" name="controllerAction" value="ShowcaseManagement.view"/>
+        </form>
+
+    </main>
+    <% }%>
     <div class="fixed w-full bottom-0">
         <%@include file="/include/adminFooter.jsp"%>
     </div>

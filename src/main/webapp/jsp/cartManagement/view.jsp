@@ -65,7 +65,7 @@
     <main class="bg-white">
         <div class="container mx-auto flex flex-wrap justify-center items-center pt-4 pb-12">
             <div class="flex justify-center w-full m-4 mt-8">
-                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl">Carrello</p>
+                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Carrello<%}if (languageString.equals("eng")){ %>Cart<% }%></p>
             </div>
             <div class="flex flex-col flex-wrap pt-4 pb-12">
               <%for (i = 0; i < carts.size(); i++) {%>
@@ -81,7 +81,7 @@
                               <div class="flex flex-col flex-wrap">
                                   <div class="order-1 my-2">
                                       <p class="pt-1 text-gray-900 font-medium"><%=carts.get(i).getWine().getName()%> <span class="font-normal">(<%=carts.get(i).getWine().getPrice()%> &euro;)</span></p>
-                                      <p class="pt-1"><span class="font-medium">annata </span><%=carts.get(i).getWine().getAnnata()%></p>
+                                      <p class="pt-1"><span class="font-medium"><%if (languageString.equals("ita")){%>Annata<%}if (languageString.equals("eng")){ %>Wine age<% }%> </span><%=carts.get(i).getWine().getAnnata()%></p>
                                   </div>
                                   <div class="order-2 flex flex-row flex-no-wrap">
                                       <a href="javascript:RemoveFromCart(<%=carts.get(i).getWine().getWineId()%>)" class="order-1 w-12 m-2 bg-gray-500 hover:bg-gray-700 text-white font-bold rounded-full px-1 py-2 flex flex-row flex-no-wrap justify-center">
@@ -112,9 +112,9 @@
             <div class="w-full float m-2 p-6 bg-gray-200 border border-bg-gray-300 rounded-b-lg rounded-lg flex flex-row flex-no-wrap justify-between">
                 <div class="order-1 m-4 p-2 flex flex-row flex-no-wrap justify-between w-1/3">
                     <div class="order-1 flex flex-col flex-wrap content-around">
-                        <p class="pb-4 font-bold text-2xl">Totale (IVA inclusa)</p>
-                        <p class="pb-2 pt-2">Subtotale</p>
-                        <p class="pb-2 pt-3">Spedizione (5% del totale)</p>
+                        <p class="pb-4 font-bold text-2xl"><%if (languageString.equals("ita")){%>Totale (IVA inclusa)<%}if (languageString.equals("eng")){ %>Total amount (IVA included)<% }%></p>
+                        <p class="pb-2 pt-2"><%if (languageString.equals("ita")){%>Subtotale<%}if (languageString.equals("eng")){ %>Subtotal<% }%></p>
+                        <p class="pb-2 pt-3"><%if (languageString.equals("ita")){%>Spedizione (5% del totale)<%}if (languageString.equals("eng")){ %>Shipping (5% from total)<% }%></p>
                     </div>
                     <div class="order-2 flex flex-col flex-wrap content-around">
                         <p class="pb-4 font-light text-3xl"><%=total_amount.setScale(2, RoundingMode.CEILING)%> &euro;</p>
@@ -124,16 +124,16 @@
                 </div>
                 <div class="order-2 flex flex-col flex-wrap pr-8">
                     <button class="zoom-animation float-left bg-gray-700 hover:bg-gray-dark text-white font-bold px-4 py-2 mt-6 rounded-full w-28" type="submit" form="CheckoutForm">
-                        Procedi al Checkout
+                        <%if (languageString.equals("ita")){%>Procedi al pagamento<%}if (languageString.equals("eng")){ %>Checkout<% }%>
                     </button>
                     <a href="javascript: DeleteCart()" class="float-left bg-red-400 hover:bg-gray-dark text-white font-bold px-4 py-2 ml-6 mt-6 rounded-full w-28" type="submit" form="">
-                        Svuota carrello
+                        <%if (languageString.equals("ita")){%>Svuota il carrello<%}if (languageString.equals("eng")){ %>Empty your cart<% }%>
                     </a>
                 </div>
             </div>
             <%} else {%>
             <div class="text-center w-full">
-                <p class="font-medium mt-6">Il carrello e' vuoto. Aggiungi qualcosa per procedere al checkout.</p>
+                <p class="font-medium mt-6"><%if (languageString.equals("ita")){%>Il carrello e' vuoto, prendi qualcosa da bere<%}if (languageString.equals("eng")){ %>The cart is empty, take a look at the wines<% }%></p>
             </div>
             <%}%>
         </div>

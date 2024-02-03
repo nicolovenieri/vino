@@ -24,6 +24,7 @@ public abstract class DAOFactory {
     public abstract CouponDAO getCouponDAO();
     public abstract ShowcaseDAO getShowcaseDAO();
     public abstract PreferenceDAO getPreferenceDAO();
+    public abstract LanguageDAO getLanguageDAO();
 
     public static DAOFactory getDAOFactory(String whichFactory, Map factoryParameters) {
 

@@ -76,18 +76,18 @@
 <body>
 <%@include file="/include/header.jsp"%>
 <main class="flex flex-col justify-center items-center pt-8 pb-8">
-    <div class="w-full flex flex-row justify-center"><h1 class="my-4 uppercase tracking-wide font-medium text-gray-800 text-xl">Modifica Profilo</h1></div>
+    <div class="w-full flex flex-row justify-center"><h1 class="my-4 uppercase tracking-wide font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Modifica profilo<%}if (languageString.equals("eng")){ %>Edit Profile<% }%></h1></div>
     <section class="w-full flex flex-row flex-no-wrap justify-around">
         <section class="order-1 flex flex-col flex-wrap m-4 w-1/2">
             <div class="float">
                 <div class="float-right flex-row bg-gray-200 rounded-lg border-bg-gray-500 mx-2 my-4 p-4 w-2/3">
                     <div class="flex flex-col m-2">
                         <div class="border-b border-bg-gray-500">
-                            <p class="font-bold pt-2 m-4">Info principali</p>
+                            <p class="font-bold pt-2 m-4"><%if (languageString.equals("ita")){%>Info Utente<%}if (languageString.equals("eng")){ %>User Info<% }%></p>
                         </div>
                         <div class="m-4">
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
-                                Username
+                                <%if (languageString.equals("ita")){%>NomeUtente<%}if (languageString.equals("eng")){ %>Username<% }%>
                             </label>
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="username" name="username" type="text" placeholder="mario123"
                                    value="<%=(user.getUsername() != null) ? user.getUsername() : ""%>" maxlength="32" >
@@ -100,14 +100,14 @@
                             <div class="flex flex-row flex-no-wrap justify-between my-2 py-2 w-full">
                                 <div class="mr-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="cvc">
-                                        Nome
+                                        <%if (languageString.equals("ita")){%>Nome<%}if (languageString.equals("eng")){ %>Name<% }%>
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="name" name="name" type="text" placeholder="Mario"
                                            value="<%=(user.getName() != null) ? user.getName() : ""%>" maxlength="40" >
                                 </div>
                                 <div class="ml-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="exp_date">
-                                        Cognome
+                                        <%if (languageString.equals("ita")){%>Cognome<%}if (languageString.equals("eng")){ %>Surname<% }%>
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="surname" name="surname" type="text" placeholder="Rossi"
                                            value="<%=(user.getSurname() != null) ? user.getSurname() : ""%>" maxlength="40" >
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="ml-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="exp_date">
-                                        Telefono
+                                        <%if (languageString.equals("ita")){%>Telefono<%}if (languageString.equals("eng")){ %>Phone<% }%>
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="phone" name="phone" type="text" placeholder="333 1231234"
                                            value="<%=(user.getPhone() != null) ? user.getPhone() : ""%>" maxlength="10" >
@@ -176,11 +176,11 @@
                 <div class="float-left flex-row bg-gray-100 rounded-lg border-bg-gray-500 mx-2 my-4 p-4 w-2/3">
                     <div class="flex flex-col m-2">
                         <div class="border-b border-bg-gray-500">
-                            <p class="font-bold pt-2 m-4">Info di pagamento</p>
+                            <p class="font-bold pt-2 m-4"><%if (languageString.equals("ita")){%>Info di pagamento<%}if (languageString.equals("eng")){ %>Payment Info<% }%></p>
                         </div>
                         <div class="m-4">
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="card_n">
-                                Numero di Carta
+                                <%if (languageString.equals("ita")){%>Numero di carta<%}if (languageString.equals("eng")){ %>Card number<% }%>
                             </label>
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="card_n" name="card_n" type="text" placeholder="1234 1234 1234 1234"
                                    value="<%=(user.getCard_n() != null) ? user.getCard_n() : ""%>" maxlength="16" >
@@ -194,7 +194,7 @@
                                 </div>
                                 <div class="ml-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="exp_date">
-                                        Data di scadenza
+                                        <%if (languageString.equals("ita")){%>Data di scadenza<%}if (languageString.equals("eng")){ %>Date of expire<% }%>
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="exp_date" name="exp_date" type="text" placeholder="12/34"
                                            value="<%=(user.getExp_date() != null) ? user.getExp_date() : ""%>" maxlength="5" >
@@ -205,17 +205,20 @@
                 </div>
                 <div class="float-left flex-row bg-gray-100 rounded-lg border-bg-gray-500 mx-2 my-4 p-4 w-2/3">
                     <div class="flex flex-col m-2">
-                        <div class="border-b border-bg-gray-500"><p class="font-bold pt-2 m-4">Info di spedizione</p></div>
+                        <div class="border-b border-bg-gray-500"><p class="font-bold pt-2 m-4"><%if (languageString.equals("ita")){%>Info di Spedizione<%}if (languageString.equals("eng")){ %>Shipping Info<% }%>
+                        </p></div>
                         <div class="m-4">
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="street">
-                                Via
+                                <%if (languageString.equals("ita")){%>Via<%}if (languageString.equals("eng")){ %>Street<% }%>
+
                             </label>
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="street" name="street" type="text" placeholder="Via Rossi"
                                    value="<%=(user.getStreet() != null) ? user.getStreet() : ""%>" maxlength="50" >
                             <div class="flex flex-row flex-no-wrap justify-between my-2 py-2 w-full">
                                 <div class="mr-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="civic">
-                                        Civico
+                                        <%if (languageString.equals("ita")){%>Civico<%}if (languageString.equals("eng")){ %>Civic<% }%>
+
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="civic" name="civic" type="text" placeholder="1"
                                            value="<%=(user.getCivic() != null) ? user.getCivic() : ""%>"maxlength="10" >
@@ -229,7 +232,8 @@
                                 </div>
                                 <div class="ml-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="city">
-                                        Citta
+                                        <%if (languageString.equals("ita")){%>Citta<%}if (languageString.equals("eng")){ %>City<% }%>
+
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="city" name="city" type="text" placeholder="Roma"
                                            value="<%=(user.getCity() != null) ? user.getCity() : ""%>" maxlength="30" >
@@ -243,7 +247,8 @@
     </section>
     <div class="w-full flex flex-row justify-center">
         <button class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full" type="submit" form="editProfileForm">
-            Effettua modifiche
+            <%if (languageString.equals("ita")){%>Conferma Modifiche<%}if (languageString.equals("eng")){ %>Confirm Changes<% }%>
+
         </button>
     </div>
 

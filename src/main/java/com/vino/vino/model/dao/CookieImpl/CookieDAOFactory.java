@@ -64,4 +64,9 @@ public class CookieDAOFactory extends DAOFactory {
 
     @Override
     public PreferenceDAO getPreferenceDAO() {throw new UnsupportedOperationException("Not supported yet."); }
+
+    @Override
+    public LanguageDAO getLanguageDAO() {
+        return new LanguageDAOCookieImpl(request,response);
+    }
 }

@@ -28,6 +28,7 @@ public class CouponManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -42,6 +43,9 @@ public class CouponManagement {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
 
@@ -50,6 +54,7 @@ public class CouponManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -75,6 +80,7 @@ public class CouponManagement {
 
         DAOFactory sessionDAOFactory=null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -89,6 +95,10 @@ public class CouponManagement {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "adminManagement/couponInsModView");
@@ -115,6 +125,7 @@ public class CouponManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -131,6 +142,10 @@ public class CouponManagement {
 
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
+
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
 
             CouponDAO couponDAO = daoFactory.getCouponDAO();
 
@@ -161,6 +176,7 @@ public class CouponManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -190,6 +206,8 @@ public class CouponManagement {
         DAOFactory sessionDAOFactory=null;
         DAOFactory daoFactory = null;
         User loggedUser;
+        Language language;
+
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -204,10 +222,14 @@ public class CouponManagement {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
+
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
 
-            Long coupon_id = new Long(request.getParameter("coupon_id"));
+            Long coupon_id = Long.parseLong(request.getParameter("coupon_id"));
 
             CouponDAO couponDAO = daoFactory.getCouponDAO();
             Coupon coupon = couponDAO.findByCouponId(coupon_id);
@@ -215,6 +237,7 @@ public class CouponManagement {
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("coupon", coupon);
@@ -242,6 +265,8 @@ public class CouponManagement {
         DAOFactory daoFactory = null;
         String applicationMessage = null;
         User loggedUser;
+        Language language;
+
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -256,10 +281,14 @@ public class CouponManagement {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
+
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
 
-            Long coupon_id = new Long(request.getParameter("coupon_id"));
+            Long coupon_id = Long.parseLong(request.getParameter("coupon_id"));
 
             CouponDAO couponDAO = daoFactory.getCouponDAO();
             Coupon coupon = couponDAO.findByCouponId(coupon_id);
@@ -289,6 +318,7 @@ public class CouponManagement {
             sessionDAOFactory.commitTransaction();
 
             couponRetrieve(daoFactory, sessionDAOFactory, request);
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
@@ -318,6 +348,8 @@ public class CouponManagement {
         DAOFactory sessionDAOFactory= null;
         DAOFactory daoFactory = null;
         User loggedUser;
+        Language language;
+
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -332,10 +364,14 @@ public class CouponManagement {
             UserDAO sessionUserDAO = sessionDAOFactory.getUserDAO();
             loggedUser = sessionUserDAO.findLoggedUser();
 
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
+
+
             daoFactory = DAOFactory.getDAOFactory(Configuration.DAO_IMPL,null);
             daoFactory.beginTransaction();
 
-            Long coupon_id = new Long(request.getParameter("coupon_id"));
+            Long coupon_id = Long.parseLong(request.getParameter("coupon_id"));
 
             CouponDAO couponDAO = daoFactory.getCouponDAO();
             Coupon coupon = couponDAO.findByCouponId(coupon_id);
@@ -355,7 +391,7 @@ public class CouponManagement {
 
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
-
+            request.setAttribute("language",language);
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("viewUrl", "adminManagement/couponManagement");
@@ -386,6 +422,8 @@ public class CouponManagement {
         DAOFactory daoFactory = null;
         User loggedUser;
         String applicationMessage = null;
+        Language language;
+
 
         Logger logger = LogService.getApplicationLogger();
 
@@ -405,6 +443,9 @@ public class CouponManagement {
 
             UserDAO userDAO = daoFactory.getUserDAO();
             User user = userDAO.findByUserId(loggedUser.getUserId());
+
+            LanguageDAO sessionLanguageDAO = sessionDAOFactory.getLanguageDAO();
+            language = sessionLanguageDAO.findlanguage();
 
             cartRetrieve(daoFactory, sessionDAOFactory, request);
 
@@ -428,7 +469,7 @@ public class CouponManagement {
                 BigDecimal total_discounted = total_amount.subtract(total_amount.multiply(new BigDecimal(discount)));
                 request.setAttribute("total_discounted", total_discounted);
             }
-
+            request.setAttribute("language",language);
             request.setAttribute("user", user);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("loggedOn",loggedUser!=null);
