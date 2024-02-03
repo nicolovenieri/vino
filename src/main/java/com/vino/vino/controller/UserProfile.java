@@ -184,7 +184,16 @@ public class UserProfile {
             //user.setCvc(cvc);
             user.setExp_date(request.getParameter("exp_date"));
 
-            userDAO.update(user);
+            try {
+                userDAO.update(user);
+
+                applicationMessage = "Modifiche effettuate con successo!";
+                request.setAttribute("viewUrl", "userProfile/view");
+            } catch (DuplicatedObjectException e){
+                applicationMessage = "Username già in uso.";
+                logger.log(Level.INFO, "Tentativo di inserimento di un username già esistente.");
+                request.setAttribute("viewUrl", "userProfile/editView");
+            }
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 
@@ -193,7 +202,6 @@ public class UserProfile {
             request.setAttribute("loggedOn",loggedUser!=null);
             request.setAttribute("loggedUser", loggedUser);
             request.setAttribute("applicationMessage", applicationMessage);
-            request.setAttribute("viewUrl", "userProfile/view");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Controller Error", e);

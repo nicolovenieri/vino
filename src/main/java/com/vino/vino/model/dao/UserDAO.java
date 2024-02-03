@@ -26,7 +26,7 @@ public interface UserDAO {
             String exp_date,
             boolean admin) throws DuplicatedObjectException, MysqlDataTruncation;
 
-    public void update(User user);
+    public void update(User user) throws DuplicatedObjectException;
 
     public void delete(User user);
 

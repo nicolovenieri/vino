@@ -122,90 +122,77 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
     }
 
     @Override
-    public void update(User user) {
+    public void update(User user) throws DuplicatedObjectException {
 
         PreparedStatement ps;
+        String sql;
         try {
-
-            String sql
-                    = " SELECT user_id "
+            // controllo solo sull'username, il resto non mi interessa
+            // controllo se l'username (modificato) è già presente in una tupla
+            sql
+                    = " SELECT COUNT(*)username "
                     + " FROM user "
                     + " WHERE "
-                    + " deleted ='N' AND "
-                    + " admin ='N' AND "
-                    + " username = ? AND"
-                    + " password = ? AND"
-                    + " email = ? AND"
-                    + " name = ? AND "
-                    + " surname = ? AND "
-                    + " phone = ? AND "
-                    + " city = ? AND "
-                    + " cap = ? AND "
-                    + " street = ? AND "
-                    + " civic = ? AND "
-                    + " card_n = ? AND "
-                    + " cvc = ? AND "
-                    + " exp_date = ? AND "
-                    + " user_id <> ?";
+                    + " user_id != ? AND "
+                    + " username = ?";
 
             ps = conn.prepareStatement(sql);
             int i = 1;
-            ps.setString(i++, user.getUsername());
-            ps.setString(i++, user.getPassword());
-            ps.setString(i++, user.getEmail());
-            ps.setString(i++, user.getName());
-            ps.setString(i++, user.getSurname());
-            ps.setString(i++, user.getPhone());
-            ps.setString(i++, user.getCity());
-            ps.setLong(i++, user.getCap());
-            ps.setString(i++, user.getStreet());
-            ps.setString(i++, user.getCivic());
-            ps.setString(i++, user.getCard_n());
-            ps.setLong(i++, user.getCvc());
-            ps.setString(i++, user.getExp_date());
             ps.setLong(i++, user.getUserId());
+            ps.setString(i++, user.getUsername());
 
             ResultSet resultSet = ps.executeQuery();
+            int count = 0;
 
-            sql
-                    = " UPDATE user "
-                    + " SET "
-                    + " username = ? ,"
-                    + " password = ? ,"
-                    + " email = ? ,"
-                    + " name = ? , "
-                    + " surname = ? , "
-                    + " phone = ? , "
-                    + " city = ? , "
-                    + " cap = ? , "
-                    + " street = ? , "
-                    + " civic = ? , "
-                    + " card_n = ? , "
-                    + " cvc = ? , "
-                    + " exp_date = ? "
-                    + " WHERE "
-                    + " user_id = ?";
+            if(resultSet.next()){
+                count = resultSet.getInt(1);
+            }
 
-            ps = conn.prepareStatement(sql);
-            i = 1;
-            ps.setString(i++, user.getUsername());
-            ps.setString(i++, user.getPassword());
-            ps.setString(i++, user.getEmail());
-            ps.setString(i++, user.getName());
-            ps.setString(i++, user.getSurname());
-            ps.setString(i++, user.getPhone());
-            ps.setString(i++, user.getCity());
-            ps.setLong(i++, user.getCap());
-            ps.setString(i++, user.getStreet());
-            ps.setString(i++, user.getCivic());
-            ps.setString(i++, user.getCard_n());
-            ps.setLong(i++, user.getCvc());
-            ps.setString(i++, user.getExp_date());
-            ps.setLong(i++, user.getUserId());
+            resultSet.close();
+            if(count != 0) {
+                throw new DuplicatedObjectException("UserDAOJDBCImpl.create: Tentativo di inserimento di un username già esistente.");
+            }
+            else {
+                //se non esiste prosegui con modifica
+                sql
+                        = " UPDATE user "
+                        + " SET "
+                        + " username = ? ,"
+                        + " password = ? ,"
+                        + " email = ? ,"
+                        + " name = ? , "
+                        + " surname = ? , "
+                        + " phone = ? , "
+                        + " city = ? , "
+                        + " cap = ? , "
+                        + " street = ? , "
+                        + " civic = ? , "
+                        + " card_n = ? , "
+                        + " cvc = ? , "
+                        + " exp_date = ? "
+                        + " WHERE "
+                        + " user_id = ?";
 
-            ps.executeUpdate();
+                ps = conn.prepareStatement(sql);
+                i = 1;
+                ps.setString(i++, user.getUsername());
+                ps.setString(i++, user.getPassword());
+                ps.setString(i++, user.getEmail());
+                ps.setString(i++, user.getName());
+                ps.setString(i++, user.getSurname());
+                ps.setString(i++, user.getPhone());
+                ps.setString(i++, user.getCity());
+                ps.setLong(i++, user.getCap());
+                ps.setString(i++, user.getStreet());
+                ps.setString(i++, user.getCivic());
+                ps.setString(i++, user.getCard_n());
+                ps.setLong(i++, user.getCvc());
+                ps.setString(i++, user.getExp_date());
+                ps.setLong(i++, user.getUserId());
 
+                ps.executeUpdate();
 
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -226,9 +213,9 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
 
             String sql
                     = " SELECT * "
-                    + "   FROM user "
+                    + " FROM user "
                     + " WHERE "
-                    + "   user_id = ? AND "
+                    + " user_id = ? AND "
                     + "deleted = 'N'";
 
             ps = conn.prepareStatement(sql);
