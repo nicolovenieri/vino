@@ -138,128 +138,43 @@
             </div>
         </div>
     </div>
-    <%if(!searchMode){%>
+
+    <%if(!searchMode && showcase_wines!=null && !showcase_wines.isEmpty()){%>
     <div class="w-full flex justify-center items-center my-4">
         <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>Today's Wines<%} if(languageString.equals("ita")){ %>Vini del Giorno <%}%></h2>
     </div>
-
-    <!-- CODICE DINAMICO DA VEDERE
     <div id="showcase" class="carousel container mx-auto p-6">
         <div class="carousel-inner relative overflow-hidden w-full rounded-md shadow-md">
-            <% for(int k = 0; k < showcase_wines.size(); k++){ %>
-
-    <input class="carousel-open" type="radio" id="carousel-<%= k+1 %>" name="carousel" aria-hidden="true" hidden="<%= k == 0 ? "" : "hidden" %>" <%= k == 0 ? "checked=checked" : "" %>>
-    <div class="carousel-item absolute opacity-0" style="height:50vh;">
-        <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('<%= showcase_wines.get(k).getProductImage() %>');">
-            <div class="container mx-auto flex justify-center items-center">
-                <div class="flex flex-col w-full lg:w-1/2 items-center px-6 tracking-wide">
-                    <p class="text-white text-2xl my-4"><%= showcase_wines.get(k).getName() %></p>
-                    <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%= showcase_wines.get(k).getWineId() %>)">
-                        <% if(languageString.equals("eng")){ %>View Product<% } if(languageString.equals("ita")){ %>Visualizza Prodotto<% } %>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <label for="carousel-<%= k == 0 ? showcase_wines.size() : k %>" class="prev control-<%= k+1 %> w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto">
-        <
-    </label>
-    <label for="carousel-<%= k == showcase_wines.size() - 1 ? 1 : k+2 %>" class="next control-<%= k+1 %> w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto">
-        >
-    </label>
-    <% } %>
-
-    <ol class="carousel-indicators">
-        <% for(int k = 0; k < showcase_wines.size(); k++){ %>
-        <li class="inline-block mr-3">
-            <label for="carousel-<%= k+1 %>" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">.</label>
-        </li>
-        <% } %>
-    </ol>
-    </div>
-    </div>
-    -->
-
-    <div id="showcase" class="carousel container mx-auto p-6">
-        <div class="carousel-inner relative overflow-hidden w-full rounded-md shadow-md">
-            <!--Slide 1-->
-            <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+            <% for ( i = 0; i < showcase_wines.size(); i++) { %>
+            <!--Slide -->
+            <input class="carousel-open" type="radio" id="carousel-<%= i + 1 %>" name="carousel" aria-hidden="true" hidden="<%= i != 0 ? "true" : "" %>" <%= i == 0 ? "checked" : "" %>>
             <div class="carousel-item absolute opacity-0" style="height:50vh;">
-                <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('https://images.unsplash.com/photo-1562601579-599dec564e06?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');">
-
+                <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('<%= showcase_wines.get(i).getProductImage() %>');">
                     <div class="container mx-auto flex justify-center items-center">
                         <div class="flex flex-col w-full lg:w-1/2 items-center px-6 tracking-wide">
-                            <p class="text-white text-2xl my-4"><%=showcase_wines.get(0).getName()%></p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(0).getWineId()%>)"><% if(languageString.equals("eng")){ %>View Product<%} if(languageString.equals("ita")){ %>Visualizza Prodotto <%}%></a>
+                            <p class="text-white text-2xl my-4"><%= showcase_wines.get(i).getName() %></p>
+                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%= showcase_wines.get(i).getWineId() %>)"><%= languageString.equals("eng") ? "View Product" : "Visualizza Prodotto" %></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <label for="carousel-3" class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto">
-                <
-            </label>
-            <label for="carousel-2" class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto">
-                >
-            </label>
-
-            <!--Slide 2-->
-            <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-            <div class="carousel-item absolute opacity-0 bg-cover bg-right" style="height:50vh;">
-                <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('https://images.unsplash.com/photo-1543060534-2c124acc29ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80');">
-
-
-                    <div class="container mx-auto flex justify-center items-center">
-                        <div class="flex flex-col w-full lg:w-1/2 items-center px-6 tracking-wide">
-                            <p class="text-white text-2xl my-4"><%=showcase_wines.get(1).getName()%></p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(1).getWineId()%>)"><% if(languageString.equals("eng")){ %>View Product<%} if(languageString.equals("ita")){ %>Visualizza Prodotto <%}%></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <label for="carousel-1" class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 left-0 my-auto">
-                <
-            </label>
-            <label for="carousel-3" class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 right-0 my-auto">
-                >
-            </label>
-
-            <!--Slide 3-->
-            <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-            <div class="carousel-item absolute opacity-0" style="height:50vh;">
-                <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom" style="background-image: url('https://images.unsplash.com/photo-1560089168-4169937e37d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80');">
-
-
-                    <div class="container mx-auto flex justify-center items-center">
-                        <div class="flex flex-col w-full lg:w-1/2 items-center px-6 tracking-wide">
-                            <p class="text-white text-2xl my-4"><%=showcase_wines.get(2).getName()%></p>
-                            <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="javascript:productViewFunc(<%=showcase_wines.get(2).getWineId()%>)"><% if(languageString.equals("eng")){ %>View Product<%} if(languageString.equals("ita")){ %>Visualizza Prodotto <%}%></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 left-0 my-auto">
-                <
-            </label>
-            <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center z-10 inset-y-0 right-0 my-auto">
-                >
-            </label>
-
+                <%if(showcase_wines.size()>1){%>
+                    <label for="carousel-<%= (i == 0 ? showcase_wines.size() : i) %>" class="prev control-<%= i + 1 %> w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto">
+                        <
+                    </label>
+                    <label for="carousel-<%= (i == showcase_wines.size() - 1 ? 1 : i + 2) %>" class="next control-<%= i + 1 %> w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto">
+                        >
+                    </label>
+                <% } %>
+            <% } %>
             <!-- Add additional indicators for each slide-->
             <ol class="carousel-indicators">
+                <% for ( i = 0; i < showcase_wines.size(); i++) { %>
                 <li class="inline-block mr-3">
-                    <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">.</label>
+                    <label for="carousel-<%= i + 1 %>" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">.</label>
                 </li>
-                <li class="inline-block mr-3">
-                    <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">.</label>
-                </li>
-                <li class="inline-block mr-3">
-                    <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">.</label>
-                </li>
+                <% } %>
             </ol>
-
         </div>
     </div>
     <%}%>

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.vino.vino.model.dao.ShowcaseDAO;
 import com.vino.vino.model.dao.WineDAO;
+import com.vino.vino.model.dao.exception.DataTruncationException;
 import com.vino.vino.model.dao.exception.DuplicatedObjectException;
 import com.vino.vino.model.mo.Showcase;
 import com.vino.vino.model.mo.Wine;
@@ -22,79 +23,98 @@ public class ShowcaseDAOMySQLJDBCImpl implements ShowcaseDAO {
     public ShowcaseDAOMySQLJDBCImpl(Connection conn) { this.conn = conn; }
 
     @Override
-    public Showcase create(
-            Long wine_id) throws DuplicatedObjectException {
+    public Showcase create(Long wine_id) throws DuplicatedObjectException {
 
         PreparedStatement ps;
         Showcase showcase = new Showcase();
         showcase.setWineId(wine_id);
+        String sql;
 
         try {
-            String sql
-                    = " SELECT * "
+            sql
+                    = " SELECT COUNT(*)num "
                     + " FROM showcase "
-                    + " WHERE "
-                    + " wine_id = ? ";
-
-            ps = conn.prepareStatement(sql);
-            int i = 1;
-            ps.setLong(i++, showcase.getWineId());
-            ResultSet resultSet = ps.executeQuery();
-
-            boolean exist;
-            boolean deleted = true;
-            Long retrived_showcase_id = null;
-            exist = resultSet.next();
-            if (exist) {
-                deleted = resultSet.getString("deleted").equals("Y");
-                retrived_showcase_id = resultSet.getLong("showcase_id");
-            }
-
-            resultSet.close();
-
-            if (exist && !deleted) {
-                throw new DuplicatedObjectException("ShowcaseDAOJDBCImpl.create: Tentativo di inserimento di un vino già in vetrina.");
-            }
-
-            if (exist && deleted){
-                sql = "update showcase set deleted='N' where showcase_id=?";
+                    + " WHERE deleted = 'N' ";
                 ps = conn.prepareStatement(sql);
-                i = 1;
-                ps.setLong(i++, retrived_showcase_id);
-                ps.executeUpdate();
-            }
-            else {
-/*
-                sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
+
+                ResultSet rs = ps.executeQuery();
+                int conta = 0;
+
+                if (rs.next()){
+                    conta = rs.getInt("num");
+                }
+                rs.close();
+
+                if(conta >= 3){
+                    throw new RuntimeException("Limite showcase raggiunto.");
+                }
+
+                sql
+                        = " SELECT * "
+                        + " FROM showcase "
+                        + " WHERE "
+                        + " wine_id = ? ";
 
                 ps = conn.prepareStatement(sql);
-                ps.executeUpdate();
+                int i = 1;
+                ps.setLong(i++, showcase.getWineId());
+                ResultSet resultSet = ps.executeQuery();
 
-                sql = "SELECT counterValue FROM counter where counterId='" + COUNTER_ID + "'";
-
-                ps = conn.prepareStatement(sql);
-                resultSet = ps.executeQuery();
-                resultSet.next();
-
-                showcase.setShowcaseId(resultSet.getLong("counterValue"));
+                boolean exist;
+                boolean deleted = true;
+                Long retrived_showcase_id = null;
+                exist = resultSet.next();
+                if (exist) {
+                    deleted = resultSet.getString("deleted").equals("Y");
+                    retrived_showcase_id = resultSet.getLong("showcase_id");
+                }
 
                 resultSet.close();
 
- */
-                sql
-                        = " INSERT INTO showcase "
-                 //       + "   ( showcase_id,"
-                        + "     (wine_id, "
-                        + "     deleted "
-                        + "   ) "
-                        + " VALUES (?,'N')";    //se reimplemento, ricontrolla
+                if (exist && !deleted) {
+                    throw new DuplicatedObjectException("ShowcaseDAOJDBCImpl.create: Tentativo di inserimento di un vino già in vetrina.");
+                }
 
-                ps = conn.prepareStatement(sql);
-                i = 1;
-            //    ps.setLong(i++, showcase.getShowcaseId());
-                ps.setLong(i++, showcase.getWineId());
-                ps.executeUpdate();
-            }
+                if (exist && deleted) {
+                    sql
+                            = " UPDATE showcase "
+                            + " SET deleted = 'N' "
+                            + " WHERE showcase_id = ? ";
+                    ps = conn.prepareStatement(sql);
+                    i = 1;
+                    ps.setLong(i++, retrived_showcase_id);
+                    ps.executeUpdate();
+                } else {
+        /*
+                        sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
+
+                        ps = conn.prepareStatement(sql);
+                        ps.executeUpdate();
+
+                        sql = "SELECT counterValue FROM counter where counterId='" + COUNTER_ID + "'";
+
+                        ps = conn.prepareStatement(sql);
+                        resultSet = ps.executeQuery();
+                        resultSet.next();
+
+                        showcase.setShowcaseId(resultSet.getLong("counterValue"));
+
+                        resultSet.close();
+
+         */
+                    sql
+                            = " INSERT INTO showcase "
+                            //       + "   ( showcase_id,"
+                            + " (wine_id, "
+                            + " deleted) "
+                            + " VALUES (?,'N')";    //se reimplemento, ricontrolla
+
+                    ps = conn.prepareStatement(sql);
+                    i = 1;
+                    //    ps.setLong(i++, showcase.getShowcaseId());
+                    ps.setLong(i++, showcase.getWineId());
+                    ps.executeUpdate();
+                }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,6 +1,7 @@
 package com.vino.vino.controller;
 
 import com.vino.vino.model.dao.*;
+import com.vino.vino.model.dao.exception.DataTruncationException;
 import com.vino.vino.model.dao.exception.DuplicatedObjectException;
 import com.vino.vino.model.mo.Language;
 import com.vino.vino.model.mo.Showcase;
@@ -246,6 +247,9 @@ public class ShowcaseManagement {
                 applicationMessage = "Vino già in vetrina";
                 logger.log(Level.INFO, "Tentativo di inserimento di vino già in vetrina");
             //    request.setAttribute("viewUrl", "adminManagement/showcaseInsModView");
+            } catch (RuntimeException e){
+                applicationMessage = "Numero massimo di vini in vetrina raggiunto";
+                logger.log(Level.INFO, "Numero massimo di vini in vetrina.");
             }
 
             //wineRetrieve(daoFactory, sessionDAOFactory, request);
