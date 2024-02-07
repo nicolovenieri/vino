@@ -46,9 +46,9 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z"/></svg>
         </a>
     </div>
-    <div class="flex flex-wrap flex-col justify-center m-4 w-1/4 max-w-md">
+    <div class="container mx-auto flex flex-wrap pb-12">
         <%for (i = 0; i < Coupons.size(); i++) {%>
-        <div class="w-full flex items-center justify-between bg-gray-100 rounded-b-md shadow-md py-6 px-4 mb-4">
+        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col">
             <div class="flex flex-no-wrap justify-start">
                 <p class="float-left pt-0 text-gray-900 font-medium pr-4"><%=Coupons.get(i).getName()%></p>
                 <p class="float-left pt-0 text-gray-700 font-medium pr-4">(<%=Coupons.get(i).getDiscount()%>%)</p>

@@ -118,7 +118,7 @@
   <body>
     <%@include file="/include/header.jsp"%>
 
-    <div class="w-full flex justify-center">
+    <div class="w-full flex justify-center bg-yellow-200">
         <div class="w-1/6 flex flex-row flex-no-wrap justify-center items-center m-4 p-2">
             <div class="flex items-center" id="store-nav-content">
                 <div class="pt-2 relative mx-auto text-gray-600">
@@ -140,10 +140,12 @@
     </div>
 
     <%if(!searchMode && showcase_wines!=null && !showcase_wines.isEmpty()){%>
-    <div class="w-full flex justify-center items-center my-4">
-        <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>Today's Wines<%} if(languageString.equals("ita")){ %>Vini del Giorno <%}%></h2>
-    </div>
     <div id="showcase" class="carousel container mx-auto p-6">
+        <nav id="todayswine" class="w-full z-30 top-0 px-6 py-1">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-center mt-0 px-2 py-3">
+                <h2 class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>Showcase<%} if(languageString.equals("ita")){ %>Vetrina<%}%></h2>
+            </div>
+        </nav>
         <div class="carousel-inner relative overflow-hidden w-full rounded-md shadow-md">
             <% for ( i = 0; i < showcase_wines.size(); i++) { %>
             <!--Slide -->

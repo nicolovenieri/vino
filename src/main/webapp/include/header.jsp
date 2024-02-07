@@ -31,32 +31,32 @@
 
 
 </script>
-<header class="w-full z-30 top-0 py-1 bg-gray-300">
+<header class="w-full z-30 top-0 py-1 bg-red-900">
   <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
 
     <nav class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-2">
-      <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
-        <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="javascript:setCategoryFunc('Rosso')">Rossi</a></li>
-        <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="javascript:setCategoryFunc('Bianco')">Bianchi</a></li>
-        <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="javascript:setCategoryFunc('Spumante')">Spumanti</a></li>
-        <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="javascript:setCategoryFunc('Altro')">Altro</a></li>
+      <ul class="md:flex items-center justify-between text-base text-gray-100 pt-4 md:pt-0">
+        <li><a class="inline-block no-underline hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Rosso')">Rossi</a></li>
+        <li><a class="inline-block no-underline  hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Bianco')">Bianchi</a></li>
+        <li><a class="inline-block no-underline hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Spumante')">Spumanti</a></li>
+        <li><a class="inline-block no-underline  hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Altro')">Altro</a></li>
       </ul>
     </nav>
 
-      <a id="logo" href="Dispatcher?controllerAction=HomeManagement.view" class="order-1 md:order-1 flex items-center tracking-wider no-underline hover:no-underline font-bold text-gray-800 text-2xl"><% if(languageString.equals("eng")){ %>FerlaVenieri Winery<%} if(languageString.equals("ita")){ %>Cantina FerlaVenieri <%}%></a>
+      <a id="logo" href="Dispatcher?controllerAction=HomeManagement.view" class="order-1 md:order-1 flex items-center tracking-wider no-underline hover:no-underline font-bold text-white text-2xl"><% if(languageString.equals("eng")){ %>FerlaVenieri Winery<%} if(languageString.equals("ita")){ %>Cantina FerlaVenieri <%}%></a>
       <div class="order-2 md:order-3 flex items-center p-4">
           <div  class="hover-trigger relative inline-block">
               <div class="relative inline-block">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="heroicon-ui hover:text-black" width="24" height="24"><path d="M12 12a5 5 0 110-10 5 5 0 010 10zm0-2a3 3 0 100-6 3 3 0 000 6zm9 11a1 1 0 01-2 0v-2a3 3 0 00-3-3H8a3 3 0 00-3 3v2a1 1 0 01-2 0v-2a5 5 0 015-5h8a5 5 0 015 5v2z"/></svg>
+                  <svg fill="#000000" width="24px" height="24px" viewBox="0 0 24 24" id="user" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color"><path id="primary" d="M21,20a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2,6,6,0,0,1,6-6h6A6,6,0,0,1,21,20Zm-9-8A5,5,0,1,0,7,7,5,5,0,0,0,12,12Z" style="fill: rgb(255, 255, 255);"></path></svg>
               </div>
-              <div class="hover-target absolute hidden bg-gray-400 text-gray-800 rounded px-2 shadow-lg py-4 m-0 z-50">
+              <div class="hover-target absolute hidden bg-red-700 text-white rounded px-2 shadow-lg py-4 m-0 z-50">
                   <%if(!loggedOn) {%>
-                  <a class="hover:bg-gray-500 block py-2 px-4 w-full" href="javascript:loginForm.requestSubmit()"><% if(languageString.equals("eng")){ %>Login<%} if(languageString.equals("ita")){ %>Accedi <%}%></a>
-                  <a class="hover:bg-gray-500 block py-2 px-4 w-full" href="javascript:registerForm.requestSubmit()"><% if(languageString.equals("eng")){ %>Register<%} if(languageString.equals("ita")){ %>Registrati <%}%></a>
+                  <a class="hover:bg-red-500 block py-2 px-4 w-full" href="javascript:loginForm.requestSubmit()"><% if(languageString.equals("eng")){ %>Login<%} if(languageString.equals("ita")){ %>Accedi <%}%></a>
+                  <a class="hover:bg-red-500 block py-2 px-4 w-full" href="javascript:registerForm.requestSubmit()"><% if(languageString.equals("eng")){ %>Register<%} if(languageString.equals("ita")){ %>Registrati <%}%></a>
                   <%} else {%>
-                  <a class="hover:bg-gray-500 block py-2 px-4 w-full" href="javascript:accountViewFunc(<%=loggedUser.getUserId()%>)"><% if(languageString.equals("eng")){ %>Account<%} if(languageString.equals("ita")){ %>Profilo <%}%></a>
-                  <a class="hover:bg-gray-500 block py-2 px-4 w-full" href="javascript:myordersViewFunc(<%=loggedUser.getUserId()%>)"><% if(languageString.equals("eng")){ %>Orders<%} if(languageString.equals("ita")){ %>Ordini <%}%></a>
-                  <a class="hover:bg-gray-500 block py-2 px-4 w-full" href="javascript:logoutForm.requestSubmit()"><% if(languageString.equals("eng")){ %>Logout<%} if(languageString.equals("ita")){ %>Esci <%}%></a>
+                  <a class="hover:bg-red-500 block py-2 px-4 w-full" href="javascript:accountViewFunc(<%=loggedUser.getUserId()%>)"><% if(languageString.equals("eng")){ %>Account<%} if(languageString.equals("ita")){ %>Profilo <%}%></a>
+                  <a class="hover:bg-red-500 block py-2 px-4 w-full" href="javascript:myordersViewFunc(<%=loggedUser.getUserId()%>)"><% if(languageString.equals("eng")){ %>Orders<%} if(languageString.equals("ita")){ %>Ordini <%}%></a>
+                  <a class="hover:bg-red-500 block py-2 px-4 w-full" href="javascript:logoutForm.requestSubmit()"><% if(languageString.equals("eng")){ %>Logout<%} if(languageString.equals("ita")){ %>Esci <%}%></a>
                   <%}%>
               </div>
           </div>
@@ -64,16 +64,16 @@
           <section>
               <%if(loggedUser.isAdmin()){%>
               <a id="admin" href="javascript:AdminZone.requestSubmit()" class="pl-3 inline-block relative">
-              <svg fill="#000000" width="24px" height="24px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
+              <svg style="fill: rgb(255, 255, 255)" width="24px" height="24px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
                   <path d="M983.727 5.421 1723.04 353.62c19.765 9.374 32.414 29.252 32.414 51.162v601.525c0 489.6-424.207 719.774-733.779 887.943l-34.899 18.975c-8.47 4.517-17.731 6.889-27.105 6.889-9.262 0-18.523-2.372-26.993-6.89l-34.9-18.974C588.095 1726.08 164 1495.906 164 1006.306V404.78c0-21.91 12.65-41.788 32.414-51.162L935.727 5.42c15.134-7.228 32.866-7.228 48 0ZM757.088 383.322c-176.075 0-319.285 143.323-319.285 319.398 0 176.075 143.21 319.285 319.285 319.285 1.92 0 3.84 0 5.76-.113l58.504 58.503h83.689v116.781h116.781v83.803l91.595 91.482h313.412V1059.05l-350.57-350.682c.114-1.807.114-3.727.114-5.647 0-176.075-143.21-319.398-319.285-319.398Zm0 112.942c113.732 0 206.344 92.724 205.327 216.62l-3.953 37.271 355.426 355.652v153.713h-153.713l-25.412-25.299v-149.986h-116.78v-116.78H868.108l-63.812-63.7-47.209 5.309c-113.732 0-206.344-92.5-206.344-206.344 0-113.732 92.612-206.456 206.344-206.456Zm4.98 124.98c-46.757 0-84.705 37.948-84.705 84.706s37.948 84.706 84.706 84.706c46.757 0 84.706-37.948 84.706-84.706s-37.949-84.706-84.706-84.706Z" fill-rule="evenodd"/>
               </svg>
               </a>
               <%}%>
               <a id="cart" href="javascript:cartForm.requestSubmit()" class="pl-3 inline-block relative">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui  hover:text-black" d="M17 16a3 3 0 11-2.83 2H9.83a3 3 0 11-5.62-.1A3 3 0 015 12V4H3a1 1 0 110-2h3a1 1 0 011 1v1h14a1 1 0 01.9 1.45l-4 8a1 1 0 01-.9.55H5a1 1 0 000 2h12zM7 12h9.38l3-6H7v6zm0 8a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+              <svg style="fill: rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui  hover:text-black" d="M17 16a3 3 0 11-2.83 2H9.83a3 3 0 11-5.62-.1A3 3 0 015 12V4H3a1 1 0 110-2h3a1 1 0 011 1v1h14a1 1 0 01.9 1.45l-4 8a1 1 0 01-.9.55H5a1 1 0 000 2h12zM7 12h9.38l3-6H7v6zm0 8a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
               </a>
               <a id="wishlist" href="javascript:wishlistForm.requestSubmit()" class="pl-3 inline-block relative">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui" d="M12.76 3.76a6 6 0 018.48 8.48l-8.53 8.54a1 1 0 01-1.42 0l-8.53-8.54a6 6 0 018.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 10-5.66-5.66l-1.46 1.47a1 1 0 01-1.42 0L9.83 5.17a4 4 0 10-5.66 5.66L12 18.66l7.83-7.83z"/></svg>                  </a>
+                  <svg style="fill: rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui" d="M12.76 3.76a6 6 0 018.48 8.48l-8.53 8.54a1 1 0 01-1.42 0l-8.53-8.54a6 6 0 018.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 10-5.66-5.66l-1.46 1.47a1 1 0 01-1.42 0L9.83 5.17a4 4 0 10-5.66 5.66L12 18.66l7.83-7.83z"/></svg>                  </a>
               </a>
           </section>
           <%}%>

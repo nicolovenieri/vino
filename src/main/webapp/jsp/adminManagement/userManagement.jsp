@@ -90,9 +90,9 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-wrap flex-col justify-center m-4 w-auto max-w-md w-1/3">
+    <div class="container mx-auto flex flex-wrap pb-12">
         <%for (i = 0; i < users.size(); i++) {%>
-        <div class="w-full flex items-center justify-between bg-gray-100 rounded-b-md shadow-md py-6 px-4 mb-4" >
+        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col" >
             <div class="float-left flex flex-no-wrap justify-between items-center">
                 <div class="flex flex-col flex-wrap justify-start items-start">
                     <div class="flex flex-row flex-no-wrap justify-center items-center">
