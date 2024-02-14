@@ -176,26 +176,18 @@ public class UserProfile {
                     cvc = Long.parseLong(request.getParameter("cvc"));
                     user.setCvc(cvc);
                 }
-                if (!request.getParameter("card_n").isEmpty()){
-                    card = Long.parseLong(request.getParameter("card_n"));
-                    user.setCard_n(card);
-                }
-                if (!request.getParameter("phone").isEmpty()){
-                    cell = Long.parseLong(request.getParameter("phone"));
-                    user.setCard_n(cell);
-                }
 
                 user.setUsername(request.getParameter("username"));
                 user.setPassword(request.getParameter("password"));
                 user.setEmail(request.getParameter("email"));
                 user.setName(request.getParameter("name"));
                 user.setSurname(request.getParameter("surname"));
-                //user.setPhone(request.getParameter("phone"));
+                user.setPhone(request.getParameter("phone"));
                 user.setCity(request.getParameter("city"));
                 //user.setCap(cap);
                 user.setStreet(request.getParameter("street"));
                 user.setCivic(request.getParameter("civic"));
-                //user.setCard_n(card);
+                user.setCard_n(request.getParameter("card_n"));
                 //user.setCvc(cvc);
                 user.setExp_date(request.getParameter("exp_date"));
 

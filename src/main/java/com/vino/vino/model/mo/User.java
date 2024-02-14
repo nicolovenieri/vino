@@ -7,12 +7,12 @@ public class User {
     private String email;
     private String name;
     private String surname;
-    private Long phone;
+    private String phone;
     private String city;
     private Long cap;
     private String street;
     private String civic;
-    private Long card_n;
+    private String card_n;
     private Long cvc;
     private String exp_date;
     private boolean deleted;
@@ -45,9 +45,9 @@ public class User {
 
     public void setSurname(String surname) { this.surname = surname; }
 
-    public Long getPhone() { return phone; }
+    public String getPhone() { return phone; }
 
-    public void setPhone(Long phone) { this.phone = phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
     public String getCity() { return city; }
 
@@ -65,9 +65,9 @@ public class User {
 
     public void setCivic(String civic) {this.civic = civic;}
 
-    public Long getCard_n() { return card_n; }
+    public String getCard_n() { return card_n; }
 
-    public void setCard_n(Long card_n) { this.card_n = card_n;  }
+    public void setCard_n(String card_n) { this.card_n = card_n;  }
 
     public Long getCvc() { return cvc; }
 
