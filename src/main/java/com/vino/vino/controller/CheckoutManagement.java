@@ -82,7 +82,6 @@ public class CheckoutManagement {
             } catch (Throwable t) {
             }
         }
-
     }
 
     public static void order(HttpServletRequest request, HttpServletResponse response) {

@@ -16,7 +16,7 @@ public interface UserDAO {
             String email,
             String name,
             String surname,
-            String phone,
+            Long phone,
             String city,
             Long cap,
             String street,

@@ -36,7 +36,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             String annata,
             int avalaibility,
             String vitigni,
-            String temperature,
+            String provenance,
             String format,
             int alcool,
             String category,
@@ -53,7 +53,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
         wine.setAnnata(annata);
         wine.setAvalaibility(avalaibility);
         wine.setVitigni(vitigni);
-        wine.setTemperature(temperature);
+        wine.setProvenance(provenance);
         wine.setFormat(format);
         wine.setAlcool(alcool);
         wine.setCategory(category);
@@ -72,7 +72,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                     + " annata = ? AND "
                     + " avalaibility = ? AND "
                     + " vitigni = ? AND "
-                    + " temperature = ? AND "
+                    + " provenance = ? AND "
                     + " format = ? AND "
                     + " category = ? AND "
                     + " description = ? AND "
@@ -87,11 +87,11 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             ps.setString(i++, wine.getAnnata());
             ps.setInt(i++, wine.getAvalaibility());
             ps.setString(i++, wine.getVitigni());
-            ps.setString(i++, wine.getTemperature());
+            ps.setString(i++, wine.getProvenance());
             ps.setString(i++, wine.getFormat());
-            ps.setInt(i++, wine.getAlcool());
             ps.setString(i++, wine.getCategory());
             ps.setString(i++, wine.getDescription());
+            ps.setInt(i++, wine.getAlcool());
 
             ResultSet resultSet = ps.executeQuery();
 
@@ -150,7 +150,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                         + "     annata,"
                         + "     avalaibility,"
                         + "     vitigni,"
-                        + "     temperature,"
+                        + "     provenance,"
                         + "     format,"
                         + "     alcool, "
                         + "     category, "
@@ -169,7 +169,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                 ps.setString(i++, wine.getAnnata());
                 ps.setInt(i++, wine.getAvalaibility());
                 ps.setString(i++, wine.getVitigni());
-                ps.setString(i++, wine.getTemperature());
+                ps.setString(i++, wine.getProvenance());
                 ps.setString(i++, wine.getFormat());
                 ps.setInt(i++, wine.getAlcool());
                 ps.setString(i++, wine.getCategory());
@@ -333,7 +333,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                     + " annata = ? AND "
                     + " avalaibility = ? AND "
                     + " vitigni = ? AND "
-                    + " temperature = ? AND "
+                    + " provenance = ? AND "
                     + " format = ? AND "
                     + " alcool = ? AND "
                     + " category = ? AND "
@@ -349,7 +349,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             ps.setString(i++, wine.getAnnata());
             ps.setInt(i++, wine.getAvalaibility());
             ps.setString(i++, wine.getVitigni());
-            ps.setString(i++, wine.getTemperature());
+            ps.setString(i++, wine.getProvenance());
             ps.setString(i++, wine.getFormat());
             ps.setInt(i++, wine.getAlcool());
             ps.setString(i++, wine.getCategory());
@@ -391,7 +391,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                     + " annata = ? , "
                     + " avalaibility = ? , "
                     + " vitigni = ? , "
-                    + " temperature = ? , "
+                    + " provenance = ? , "
                     + " format = ? , "
                     + " alcool = ? ,"
                     + " category = ? ,"
@@ -408,7 +408,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             ps.setString(i++, wine.getAnnata());
             ps.setInt(i++, wine.getAvalaibility());
             ps.setString(i++, wine.getVitigni());
-            ps.setString(i++, wine.getTemperature());
+            ps.setString(i++, wine.getProvenance());
             ps.setString(i++, wine.getFormat());
             ps.setInt(i++, wine.getAlcool());
             ps.setString(i++, wine.getCategory());
@@ -539,7 +539,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
         } catch (SQLException sqle) {
         }
         try {
-            wine.setTemperature(rs.getString("temperature"));
+            wine.setProvenance(rs.getString("provenance"));
         } catch (SQLException sqle) {
         }
         try {

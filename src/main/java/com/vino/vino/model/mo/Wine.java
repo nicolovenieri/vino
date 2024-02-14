@@ -12,7 +12,7 @@ public class Wine {
     private String annata;
     private int avalaibility;
     private String vitigni;
-    private String temperature;
+    private String provenance;
     private String format;
     private int alcool;
     private String category;
@@ -80,12 +80,12 @@ public class Wine {
         this.vitigni = vitigni;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public String getProvenance() {
+        return provenance;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
+    public void setProvenance(String provenance) {
+        this.provenance = provenance;
     }
 
     public String getFormat() {

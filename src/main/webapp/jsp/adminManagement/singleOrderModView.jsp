@@ -45,7 +45,7 @@
                 <h1 class="pt-2 flex items-center justify-between text-gray-900 font-bold uppercase"><%=order_tuples.get(i).getWine().getName()%></h1>
                 <p class="pt-2 text-gray-900 font-regular">
                 <span class="font-medium text-lg">
-                    <%if (languageString.equals("ita")){%>Quantita<%}if (languageString.equals("eng")){ %>Amount<% }%>
+                    <%if (languageString.equals("ita")){%>Quantita'<%}if (languageString.equals("eng")){ %>Amount<% }%>
                 </span><%=order_tuples.get(i).getQuantity()%>
                 </p>
                 <p class="pt-3 text-gray-900 font-regular">
@@ -72,7 +72,7 @@
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                 </div>
             </div>
-            <a class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 pl-5 rounded-full w-40 mx-6 my-3" href="javascript:changeOrderStatus(<%=order_tuples.get(0).getUser().getUserId()%>, <%=order_tuples.get(0).getTimestamp().getTime()%>)">
+            <a class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 pl-5 rounded-full w-40 mx-6 my-3" href="javascript:changeOrderStatus(<%=order_tuples.get(0).getUser().getUserId()%> <%=order_tuples.get(0).getTimestamp().getTime()%>)">
                 <%if (languageString.equals("ita")){%>Aggiorna stato<%}if (languageString.equals("eng")){ %>Update status<% }%>
             </a>
         </div>

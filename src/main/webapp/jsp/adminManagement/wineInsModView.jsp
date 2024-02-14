@@ -106,7 +106,7 @@ boolean loggedOn = (Boolean) request.getAttribute("loggedOn");
           </div>
           <div class="field">
             <label for="annata"><span class="font-medium"><%if (languageString.equals("ita")){%>Annata<%}if (languageString.equals("eng")){ %>Vine's Age<% }%></span></label>
-            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="annata" name="annata"
+            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="number" min="1900" max="2024" id="annata" name="annata"
                    value="<%=(action.equals("modify")) ? wine.getAnnata() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
@@ -123,31 +123,31 @@ boolean loggedOn = (Boolean) request.getAttribute("loggedOn");
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="temperature"><span class="font-medium"><%if (languageString.equals("ita")){%>Temperatura di servizio<%}if (languageString.equals("eng")){ %>Temperature of service<% }%></span></label>
-            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="temperature" name="temperature"
-                   value="<%=(action.equals("modify")) ? wine.getTemperature() : ""%>"
+            <label for="provenance"><span class="font-medium"><%if (languageString.equals("ita")){%>Provenienza<%}if (languageString.equals("eng")){ %>Provenance<% }%></span></label>
+            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="provenance" name="provenance"
+                   value="<%=(action.equals("modify")) ? wine.getProvenance() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
             <label for="format"><span class="font-medium"><%if (languageString.equals("ita")){%>Formato<%}if (languageString.equals("eng")){ %>Format<% }%></span></label>
-            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="format" name="format"
-                   value="<%=(action.equals("modify")) ? wine.getFormat() : ""%>"
-                   required size="20" maxlength="50"/>
+            <input type="radio" id="format" name="format" value="0.75L" <%=(action.equals("modify") && wine.getCategory().equals("0.75L")) ? "checked" : ""%>/> 0.75L
+            <input type="radio" id="format1" name="format" value="1.75L" <%=(action.equals("modify") && wine.getCategory().equals("1.75L")) ? "checked" : ""%>/> 1.75L
+          </div>
+          <div class="field">
+            <label for="category"><span class="font-medium"><%if (languageString.equals("ita")){%>Categoria<%}if (languageString.equals("eng")){ %>Category<% }%></span></label>
+            <input type="radio" id="category" name="category" value="Bianchi" <%=(action.equals("modify") && wine.getCategory().equals("Bianchi")) ? "checked" : ""%>/> Bianchi
+            <input type="radio" id="category1" name="category" value="Rossi" <%=(action.equals("modify") && wine.getCategory().equals("Rossi")) ? "checked" : ""%> /> Rossi
+            <input type="radio" id="category2" name="category" value="Champagne" <%=(action.equals("modify") && wine.getCategory().equals("Champagne")) ? "checked" : ""%> /> Champagne
+            <input type="radio" id="category3" name="category" value="Altro" <%=(action.equals("modify") && wine.getCategory().equals("Altro")) ? "checked" : ""%> /> Altro
           </div>
           <div class="field">
             <label for="alcool"><span class="font-medium">Alcool</span></label>
-            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="alcool" name="alcool"
+            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="number" id="alcool" name="alcool" min="5.0" max="20.0" step="0.5"
                    value="<%=(action.equals("modify")) ? wine.getAlcool() : ""%>"
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="alcool"><span class="font-medium"><%if (languageString.equals("ita")){%>Categoria<%}if (languageString.equals("eng")){ %>Category<% }%></span></label>
-            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="category" name="category"
-                   value="<%=(action.equals("modify")) ? wine.getCategory() : ""%>"
-                   required size="20" maxlength="50"/>
-          </div>
-          <div class="field">
-            <label for="alcool"><span class="font-medium"><%if (languageString.equals("ita")){%>Descrizione<%}if (languageString.equals("eng")){ %>Description<% }%></span></label>
+            <label for="description"><span class="font-medium"><%if (languageString.equals("ita")){%>Descrizione<%}if (languageString.equals("eng")){ %>Description<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="description" name="description"
                    value="<%=(action.equals("modify")) ? wine.getDescription() : ""%>"
                    required size="20" maxlength="2048"/>

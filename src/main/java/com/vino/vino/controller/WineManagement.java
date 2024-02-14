@@ -177,7 +177,7 @@ public class WineManagement {
                         request.getParameter("annata"),
                         avalaibility,
                         request.getParameter("vitigni"),
-                        request.getParameter("temperature"),
+                        request.getParameter("provenance"),
                         request.getParameter("format"),
                         alcool,
                         request.getParameter("category"),
@@ -318,7 +318,7 @@ public class WineManagement {
             wine.setAnnata(request.getParameter("annata"));
             wine.setAvalaibility(avalaibility);
             wine.setVitigni(request.getParameter("vitigni"));
-            wine.setTemperature(request.getParameter("temperature"));
+            wine.setProvenance(request.getParameter("provenance"));
             wine.setFormat(request.getParameter("format"));
             wine.setAlcool(alcool);
             wine.setCategory(request.getParameter("category"));

@@ -35,7 +35,7 @@
 <head>
     <script lang="javascript">
         var now = Date.now();
-        var NowDate = new Date(now)
+        var NowDate = new Date(now);
 
         function ApplyCoupon() {
             if (document.getElementById("coupon_input").value=="")
@@ -58,9 +58,10 @@
              var EventTriggerName = (e.target.id);
              var data = Date.parse("01/"+document.CompleteOrderForm.exp_date.value);
 
+             console.log("data form" + data);
 
-            if(data<now){
-                alert("La tua carta \u00E8 scaduta, inserisci nel campo '" + EventTriggerName + "' una data superiore a "+NowDate.getMonth()+"/"+NowDate.getFullYear()+" (Oggi)");
+             if(data<now){
+                alert("La tua carta \u00E8 scaduta, inserisci nel campo '" + EventTriggerName + "' una data superiore a " + NowDate.getMonth() + "/" + NowDate.getFullYear() + " (Oggi)");
             }
              if(isNaN(data)){
                  alert("Il campo '" + EventTriggerName + "' richiede una data");
@@ -71,7 +72,8 @@
         function StaticFormCheck(){
             var card_number =  document.CompleteOrderForm.card_n.value;
             var cvc = document.CompleteOrderForm.cvc.value;
-            var data = Date.parse("01/"+document.CompleteOrderForm.exp_date.value);
+            var data = Date.parse("01/" + document.CompleteOrderForm.exp_date.value);
+            var now = new Date(data);
 
             if(isNaN(card_number)){
                 alert("Il campo 'NUMERO DI CARTA' richiede un numero");
@@ -132,21 +134,21 @@
                                 <label class="block text-grey-darker text-sm font-bold mb-2" for="Numero di Carta">
                                     <%if (languageString.equals("ita")){%>Numero di carta<%}if (languageString.equals("eng")){ %>Card number<% }%></p>
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Numero di Carta" name="card_n" type="text" placeholder="1234 1234 1234 1234"
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Numero di Carta" name="card_n" type="text" minlength="16" placeholder="1234 1234 1234 1234"
                                        value="<%=(user.getCard_n() != null) ? user.getCard_n() : ""%>" maxlength="16" required>
                                 <div class="flex flex-row flex-no-wrap justify-between my-2 py-2 w-full">
                                     <div class="mr-2">
                                         <label class="block text-grey-darker text-sm font-bold mb-2" for="CVC/CCV">
                                             CVC/CCV
                                         </label>
-                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="CVC/CCV" name="cvc" type="text" placeholder="567"
+                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="CVC/CCV" name="cvc" type="text" minlength="3" placeholder="567"
                                                value="<%=(user.getCvc() != 0) ? user.getCvc() : ""%>" maxlength="3" required>
                                     </div>
                                     <div class="ml-2">
                                         <label class="block text-grey-darker text-sm font-bold mb-2" for="Data di scadenza">
                                             <%if (languageString.equals("ita")){%>Data di scadenza<%}if (languageString.equals("eng")){ %>Date of expire<% }%></p>
                                         </label>
-                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Data di scadenza" name="exp_date" type="text" placeholder="12/2026"
+                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Data di scadenza" name="exp_date" type="text" minlength="7" placeholder="MM/YYYY"
                                                value="<%=(user.getExp_date() != null) ? user.getExp_date() : ""%>" maxlength="7" required>
                                     </div>
                                 </div>

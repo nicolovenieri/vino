@@ -49,7 +49,7 @@
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
                         Email
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="email" name="email" type="text" placeholder="mario.rossi@example.com" maxlength="40" required>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="email" name="email" type="email" placeholder="mario.rossi@example.com" maxlength="40" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="username">

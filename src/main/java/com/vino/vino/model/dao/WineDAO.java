@@ -15,7 +15,7 @@ public interface WineDAO {
             String annata,
             int avalaibility,
             String vitigni,
-            String temperature,
+            String provenance,
             String format,
             int alcool,
             String category,

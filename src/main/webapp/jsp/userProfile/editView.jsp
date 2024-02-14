@@ -87,7 +87,7 @@
                         </div>
                         <div class="m-4">
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
-                                <%if (languageString.equals("ita")){%>NomeUtente<%}if (languageString.equals("eng")){ %>Username<% }%>
+                                <%if (languageString.equals("ita")){%>Nome Utente<%}if (languageString.equals("eng")){ %>Username<% }%>
                             </label>
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="username" name="username" type="text" placeholder="mario123"
                                    value="<%=(user.getUsername() != null) ? user.getUsername() : ""%>" maxlength="32" >
@@ -119,14 +119,14 @@
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="cvc">
                                         Email
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="email" name="email" type="text" placeholder="mario.rossi@example.com"
+                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="email" name="email" type="email" placeholder="mario.rossi@example.com"
                                            value="<%=(user.getEmail() != null) ? user.getEmail() : ""%>" maxlength="40" >
                                 </div>
                                 <div class="ml-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="exp_date">
                                         <%if (languageString.equals("ita")){%>Telefono<%}if (languageString.equals("eng")){ %>Phone<% }%>
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="phone" name="phone" type="text" placeholder="333 1231234"
+                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="phone" name="phone" type="tel" minlength="10" placeholder="333 1231234"
                                            value="<%=(user.getPhone() != null) ? user.getPhone() : ""%>" maxlength="10" >
                                 </div>
                             </div>
@@ -182,22 +182,22 @@
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="card_n">
                                 <%if (languageString.equals("ita")){%>Numero di carta<%}if (languageString.equals("eng")){ %>Card number<% }%>
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="card_n" name="card_n" type="text" placeholder="1234 1234 1234 1234"
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="card_n" name="card_n" type="text" minlength="16" placeholder="1234 1234 1234 1234"
                                    value="<%=(user.getCard_n() != null) ? user.getCard_n() : ""%>" maxlength="16" >
                             <div class="flex flex-row flex-no-wrap justify-between my-2 py-2 w-full">
                                 <div class="mr-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="cvc">
                                         CVC/CCV
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="cvc" name="cvc" type="text" placeholder="567"
+                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="cvc" name="cvc" type="text" minlength="3" placeholder="567"
                                            value="<%=(user.getCvc() != 0) ? user.getCvc() : ""%>" maxlength="3" >
                                 </div>
                                 <div class="ml-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="exp_date">
                                         <%if (languageString.equals("ita")){%>Data di scadenza<%}if (languageString.equals("eng")){ %>Date of expire<% }%>
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="exp_date" name="exp_date" type="text" placeholder="12/34"
-                                           value="<%=(user.getExp_date() != null) ? user.getExp_date() : ""%>" maxlength="5" >
+                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="exp_date" name="exp_date" type="text" minlength="7" placeholder="MM/YYYY"
+                                           value="<%=(user.getExp_date() != null) ? user.getExp_date() : ""%>" maxlength="7" >
                                 </div>
                             </div>
                         </div>
@@ -227,12 +227,12 @@
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="cap">
                                         CAP
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="cap" name="cap" type="text" placeholder="12345"
-                                           value="<%=(user.getCap() != 0) ? user.getCap() : ""%>"maxlength="5" >
+                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="cap" name="cap" type="text" minlength="5" placeholder="12345"
+                                           value="<%=(user.getCap() != 0) ? user.getCap() : ""%>" maxlength="5" >
                                 </div>
                                 <div class="ml-2">
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="city">
-                                        <%if (languageString.equals("ita")){%>Citta<%}if (languageString.equals("eng")){ %>City<% }%>
+                                        <%if (languageString.equals("ita")){%>Citta'<%}if (languageString.equals("eng")){ %>City<% }%>
 
                                     </label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="city" name="city" type="text" placeholder="Roma"

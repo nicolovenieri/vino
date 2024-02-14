@@ -93,8 +93,8 @@
                         </p>
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
-                        <%if (languageString.equals("ita")){%>Temperatura di Servizio<%}if (languageString.equals("eng")){ %>Service temperature<% }%>
-                    </span><%=wine.getTemperature()%>c
+                        <%if (languageString.equals("ita")){%>Provenienza<%}if (languageString.equals("eng")){ %>Provenance<% }%>
+                    </span><%=wine.getProvenance()%>c
                         </p>
                         <p class="pt-3 text-gray-900 text-3xl">
                             <%=wine.getPrice()%> &euro;

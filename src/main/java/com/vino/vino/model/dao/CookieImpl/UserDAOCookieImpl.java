@@ -26,7 +26,7 @@ public class UserDAOCookieImpl implements UserDAO {
                        String email,
                        String name,
                        String surname,
-                       String phone,
+                       Long phone,
                        String city,
                        Long cap,
                        String street,
@@ -115,9 +115,10 @@ public class UserDAOCookieImpl implements UserDAO {
     }
 
     private String encode(User loggedUser) {
-
+        String name = loggedUser.getName().replace(" ","%fv");  // sostituisco lo spazio con %fv
+        String surname = loggedUser.getSurname().replace(" ","%fv");    // sostituisco lo spazio
         String encodedLoggedUser;
-        encodedLoggedUser = loggedUser.getUserId() + "#" + loggedUser.getName() + "#" + loggedUser.getSurname() + "#" + loggedUser.isAdmin();
+        encodedLoggedUser = loggedUser.getUserId() + "#" + name + "#" + surname + "#" + loggedUser.isAdmin();
         return encodedLoggedUser;
 
     }
@@ -127,10 +128,12 @@ public class UserDAOCookieImpl implements UserDAO {
         User loggedUser = new User();
 
         String[] values = encodedLoggedUser.split("#");
+        String nameD = values[1].replace("%fv", " ");   // riporto ad originale
+        String surnameD = values[2].replace("%fv", " ");   // riporto ad originale
 
         loggedUser.setUserId(Long.parseLong(values[0]));
-        loggedUser.setName(values[1]);
-        loggedUser.setSurname(values[2]);
+        loggedUser.setName(nameD);
+        loggedUser.setSurname(surnameD);
         loggedUser.setAdmin(Boolean.parseBoolean(values[3]));
 
         return loggedUser;

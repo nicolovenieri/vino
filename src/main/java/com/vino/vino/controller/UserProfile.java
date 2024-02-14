@@ -1,10 +1,12 @@
 package com.vino.vino.controller;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.vino.vino.model.dao.exception.DataTruncationException;
 import com.vino.vino.model.mo.*;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
@@ -160,31 +162,44 @@ public class UserProfile {
             UserDAO userDAO = daoFactory.getUserDAO();
             User user = userDAO.findByUserId(loggedUser.getUserId());
 
-            long cap;
-            long cvc;
-            try {
-                cap = Long.parseLong(request.getParameter("cap"));
-                user.setCap(cap);
-
-                cvc = Long.parseLong(request.getParameter("cvc"));
-                user.setCvc(cvc);
-            } catch (NumberFormatException e) { }
-
-            user.setUsername(request.getParameter("username"));
-            user.setPassword(request.getParameter("password"));
-            user.setEmail(request.getParameter("email"));
-            user.setName(request.getParameter("name"));
-            user.setSurname(request.getParameter("surname"));
-            user.setPhone(request.getParameter("phone"));
-            user.setCity(request.getParameter("city"));
-            //user.setCap(cap);
-            user.setStreet(request.getParameter("street"));
-            user.setCivic(request.getParameter("civic"));
-            user.setCard_n(request.getParameter("card_n"));
-            //user.setCvc(cvc);
-            user.setExp_date(request.getParameter("exp_date"));
+            Long cap;
+            Long cvc;
+            Long card;
+            Long cell;
 
             try {
+                if (!request.getParameter("cap").isEmpty()){
+                    cap = Long.parseLong(request.getParameter("cap"));
+                    user.setCap(cap);
+                }
+                if (!request.getParameter("cvc").isEmpty()){
+                    cvc = Long.parseLong(request.getParameter("cvc"));
+                    user.setCvc(cvc);
+                }
+                if (!request.getParameter("card_n").isEmpty()){
+                    card = Long.parseLong(request.getParameter("card_n"));
+                    user.setCard_n(card);
+                }
+                if (!request.getParameter("phone").isEmpty()){
+                    cell = Long.parseLong(request.getParameter("phone"));
+                    user.setCard_n(cell);
+                }
+
+                user.setUsername(request.getParameter("username"));
+                user.setPassword(request.getParameter("password"));
+                user.setEmail(request.getParameter("email"));
+                user.setName(request.getParameter("name"));
+                user.setSurname(request.getParameter("surname"));
+                //user.setPhone(request.getParameter("phone"));
+                user.setCity(request.getParameter("city"));
+                //user.setCap(cap);
+                user.setStreet(request.getParameter("street"));
+                user.setCivic(request.getParameter("civic"));
+                //user.setCard_n(card);
+                //user.setCvc(cvc);
+                user.setExp_date(request.getParameter("exp_date"));
+
+
                 userDAO.update(user);
 
                 applicationMessage = "Modifiche effettuate con successo!";
@@ -193,7 +208,11 @@ public class UserProfile {
                 applicationMessage = "Username già in uso.";
                 logger.log(Level.INFO, "Tentativo di inserimento di un username già esistente.");
                 request.setAttribute("viewUrl", "userProfile/editView");
+            } catch (NumberFormatException e){
+                applicationMessage = "Errore: inserimento di valori inesatti.";
+                request.setAttribute("viewUrl", "userProfile/editView");
             }
+
             daoFactory.commitTransaction();
             sessionDAOFactory.commitTransaction();
 

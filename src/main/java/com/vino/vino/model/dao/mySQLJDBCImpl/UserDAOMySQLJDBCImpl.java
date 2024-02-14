@@ -33,7 +33,7 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
             String email,
             String name,
             String surname,
-            String phone,
+            Long phone,
             String city,
             Long cap,
             String street,
@@ -180,12 +180,12 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
                 ps.setString(i++, user.getEmail());
                 ps.setString(i++, user.getName());
                 ps.setString(i++, user.getSurname());
-                ps.setString(i++, user.getPhone());
+                ps.setLong(i++, user.getPhone());
                 ps.setString(i++, user.getCity());
                 ps.setLong(i++, user.getCap());
                 ps.setString(i++, user.getStreet());
                 ps.setString(i++, user.getCivic());
-                ps.setString(i++, user.getCard_n());
+                ps.setLong(i++, user.getCard_n());
                 ps.setLong(i++, user.getCvc());
                 ps.setString(i++, user.getExp_date());
                 ps.setLong(i++, user.getUserId());
@@ -460,7 +460,7 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
         } catch (SQLException sqle) {
         }
         try {
-            user.setPhone(rs.getString("phone"));
+            user.setPhone(rs.getLong("phone"));
         } catch (SQLException sqle) {
         }
         try {
@@ -480,7 +480,7 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
         } catch (SQLException sqle) {
         }
         try {
-            user.setCard_n(rs.getString("card_n"));
+            user.setCard_n(rs.getLong("card_n"));
         } catch (SQLException sqle) {
         }
         try {
