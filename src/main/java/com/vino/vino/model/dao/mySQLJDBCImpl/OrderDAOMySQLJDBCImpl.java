@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 
 public class OrderDAOMySQLJDBCImpl implements OrderDAO {
 
-    //private final String COUNTER_ID = "order_id";
     Connection conn;
 
     public OrderDAOMySQLJDBCImpl(Connection conn) {
@@ -40,26 +39,8 @@ public class OrderDAOMySQLJDBCImpl implements OrderDAO {
         order.setTotalAmount(total_amount);
 
         try {
-/*
-            String sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
-
-            ps = conn.prepareStatement(sql);
-            ps.executeUpdate();
-
-            sql = "SELECT counterValue FROM counter where counterId='" + COUNTER_ID + "'";
-
-            ps = conn.prepareStatement(sql);
-            ResultSet resultSet = ps.executeQuery();
-            resultSet.next();
-
-            order.setOrderId(resultSet.getLong("counterValue"));
-            resultSet.close();
-
-
- */
             String sql
                     = " INSERT INTO `order` "
-//                  + "     (order_id,"
                     + "   ( user_id,"
                     + "     wine_id,"
                     + "     quantity,"
@@ -68,11 +49,10 @@ public class OrderDAOMySQLJDBCImpl implements OrderDAO {
                     + "     total_amount,"
                     + "     deleted "
                     + "   ) "
-                    + " VALUES (?,?,?,?,?,?,'N')";  //se reimplemento, ricontrolla
+                    + " VALUES (?,?,?,?,?,?,'N')";
 
             ps = conn.prepareStatement(sql);
             int i = 1;
-            //ps.setLong(i++, order.getOrderId());
             ps.setLong(i++, order.getUser().getUserId());
             ps.setLong(i++, order.getWine().getWineId());
             ps.setLong(i++, order.getQuantity());

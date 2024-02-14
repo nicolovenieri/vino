@@ -17,8 +17,6 @@ import com.vino.vino.model.mo.Wine;
 
 
 public class UserDAOMySQLJDBCImpl implements UserDAO {
-
-    // private final String COUNTER_ID = "user_id";
     Connection conn;
 
     public UserDAOMySQLJDBCImpl(Connection conn) {
@@ -45,7 +43,6 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
 
         PreparedStatement ps;
         User user = new User();
-        //user.setUserId(createUserId());
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
@@ -83,7 +80,6 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
                 else {
                 sql
                         = " INSERT INTO user "
-//                      + "     (user_id,"
                         + "     (username,"
                         + "     password,"
                         + "     email,"
@@ -100,11 +96,10 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
                         + "     admin,"
                         + "     deleted "
                         + "   ) "
-                        + " VALUES (?,?,?,?,?,null,null,null,null,null,null,null,null,'N','N')";    //se reimplemento, ricontrolla
+                        + " VALUES (?,?,?,?,?,null,null,null,null,null,null,null,null,'N','N')";
 
                     ps = conn.prepareStatement(sql);
                     i = 1;
-                    //ps.setLong(i++, user.getUserId());
                     ps.setString(i++, user.getUsername());
                     ps.setString(i++, user.getPassword());
                     ps.setString(i++, user.getEmail());
@@ -403,34 +398,6 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
             throw new RuntimeException(e);
         }
     }
-/*
-    Long createUserId() {
-
-        long user_id;
-
-        try {
-
-            String sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.executeUpdate();
-
-            sql = "SELECT counterValue FROM counter where counterId='" + COUNTER_ID + "'";
-
-            ps = conn.prepareStatement(sql);
-            ResultSet resultSet = ps.executeQuery();
-            resultSet.next();
-
-            user_id = resultSet.getLong("counterValue");
-
-            resultSet.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return user_id;
-    }
-*/
 
     User read(ResultSet rs) {
 

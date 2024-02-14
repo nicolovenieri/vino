@@ -7,15 +7,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
-
-
-
 public class MySQLJDBCDAOFactory extends DAOFactory {
-
     private Map factoryParameters;
-
     private Connection connection;
-
     public MySQLJDBCDAOFactory(Map factoryParameters) {
         this.factoryParameters=factoryParameters;
     }

@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WishlistDAOMySQLJDBCImpl implements WishlistDAO {
-
-    //private final String COUNTER_ID = "wishlist_id";
     Connection conn;
 
     public WishlistDAOMySQLJDBCImpl(Connection conn) {
@@ -80,35 +78,16 @@ public class WishlistDAOMySQLJDBCImpl implements WishlistDAO {
                 ps.executeUpdate();
             }
             else {  //non esiste --> LO CREO
-
- /*               sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
-
-                ps = conn.prepareStatement(sql);
-                ps.executeUpdate();
-
-                sql = "SELECT counterValue FROM counter where counterId='" + COUNTER_ID + "'";
-
-                ps = conn.prepareStatement(sql);
-                resultSet = ps.executeQuery();
-                resultSet.next();
-
-                wishlist.setWishlistId(resultSet.getLong("counterValue"));
-
-                resultSet.close();
-
-*/
                 sql
                         = " INSERT INTO wishlist "
-                //      = "     (wishlist_id,"
                         + "     (user_id,"
                         + "     wine_id,"
                         + "     deleted "
                         + "   ) "
-                        + " VALUES (?,?,'N')";      //se reimplemento, ricontrolla
+                        + " VALUES (?,?,'N')";
 
                 ps = conn.prepareStatement(sql);
                 i = 1;
-                //ps.setLong(i++, wishlist.getWishlistId());
                 ps.setLong(i++, wishlist.getUser().getUserId());
                 ps.setLong(i++, wishlist.getWine().getWineId());
 

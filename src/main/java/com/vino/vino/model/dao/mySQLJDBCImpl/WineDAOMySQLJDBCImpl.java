@@ -18,8 +18,6 @@ import com.vino.vino.model.dao.WineDAO;
 import com.vino.vino.model.dao.exception.DuplicatedObjectException;
 
 public class WineDAOMySQLJDBCImpl implements WineDAO {
-
-    //private final String COUNTER_ID = "wine_id";
     Connection conn;
 
     public WineDAOMySQLJDBCImpl(Connection conn) {
@@ -28,7 +26,6 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
 
     @Override
     public Wine create(
-            // Long wine_id,
             String name,
             String product_image,
             BigDecimal price,
@@ -45,7 +42,6 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
 
         PreparedStatement ps;
         Wine wine = new Wine();
-        //wine.setWineId(wine_id);
         wine.setName(name);
         wine.setProductImage(product_image);
         wine.setPrice(price);
@@ -123,26 +119,8 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                 ps.executeUpdate();
             }
             else {
-                /*
-                sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
-
-                ps = conn.prepareStatement(sql);
-                ps.executeUpdate();
-
-                sql = "SELECT counterValue FROM counter where counterId='" + COUNTER_ID + "'";
-
-                ps = conn.prepareStatement(sql);
-                resultSet = ps.executeQuery();
-                resultSet.next();
-
-                wine.setWineId(resultSet.getLong("counterValue"));
-
-                resultSet.close();
-
-                 */
                 sql
                         = " INSERT INTO wine "
-//                      = "     (wine_id,"
                         + "     (name,"
                         + "     product_image,"
                         + "     price,"
@@ -157,11 +135,10 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                         + "     description, "
                         + "     deleted "
                         + "   ) "
-                        + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,'N')";  //se reimplemento, ricontrolla
+                        + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,'N')";
 
                 ps = conn.prepareStatement(sql);
                 i = 1;
-                //ps.setLong(i++, wine.getWineId());
                 ps.setString(i++, wine.getName());
                 ps.setString(i++, wine.getProductImage());
                 ps.setBigDecimal(i++, wine.getPrice());

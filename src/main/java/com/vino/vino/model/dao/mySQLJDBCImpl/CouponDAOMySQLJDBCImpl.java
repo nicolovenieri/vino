@@ -19,8 +19,6 @@ import java.util.List;
 
 
 public class CouponDAOMySQLJDBCImpl implements CouponDAO {
-
-//    private final String COUNTER_ID = "coupon_id";
     Connection conn;
 
     public CouponDAOMySQLJDBCImpl(Connection conn) {
@@ -42,7 +40,6 @@ public class CouponDAOMySQLJDBCImpl implements CouponDAO {
 
 
         try {
-
             //provo a vedere se esite gia una tupla con name uguale
             String sql
                     = " SELECT * "
@@ -81,23 +78,6 @@ public class CouponDAOMySQLJDBCImpl implements CouponDAO {
                 ps.executeUpdate();
             }
             else {
-/*
-                sql = "update counter set counterValue=counterValue+1 where counterId='" + COUNTER_ID + "'";
-
-                ps = conn.prepareStatement(sql);
-                ps.executeUpdate();
-
-                sql = "SELECT counterValue FROM counter where counterId='" + COUNTER_ID + "'";
-
-                ps = conn.prepareStatement(sql);
-                resultSet = ps.executeQuery();
-                resultSet.next();
-
-                coupon.setCouponId(resultSet.getLong("counterValue"));
-
-                resultSet.close();
-
- */
                 sql
                         = " INSERT INTO coupon "
                         + "     (name,"
@@ -109,7 +89,6 @@ public class CouponDAOMySQLJDBCImpl implements CouponDAO {
 
                 ps = conn.prepareStatement(sql);
                 i = 1;
-                //ps.setLong(i++, coupon.getCouponId());
                 ps.setString(i++, coupon.getName());
                 ps.setLong(i++, coupon.getDiscount());
                 ps.setDate(i++, coupon.getExp_date());
@@ -128,7 +107,6 @@ public class CouponDAOMySQLJDBCImpl implements CouponDAO {
 
         PreparedStatement ps;
         try {
-
             //controllo se esite un Coupon uguale ma con diverso id
             String sql
                     = " SELECT coupon_id "
