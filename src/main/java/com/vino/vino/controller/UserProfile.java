@@ -164,8 +164,6 @@ public class UserProfile {
 
             Long cap;
             Long cvc;
-            Long card;
-            Long cell;
 
             try {
                 if (!request.getParameter("cap").isEmpty()){
