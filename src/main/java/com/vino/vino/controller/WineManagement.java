@@ -175,12 +175,12 @@ public class WineManagement {
 
             String den = request.getParameter("denominazione");
             if (den.isEmpty()){
-                den = null;
+                den = "---";
             }
 
             String ann = request.getParameter("annata");
             if (ann.isEmpty()){
-                ann = null;
+                ann = "---";
             }
 
             try {
