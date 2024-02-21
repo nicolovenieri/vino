@@ -40,6 +40,10 @@ public interface UserDAO {
 
     public List<User> findAll();
 
+    public void deleteSpedizione(User user);
+
+    public void deleteCarta(User user);
+
     public void setAdminStatusOn(User user);
 
     public void setAdminStatusOff(User user);

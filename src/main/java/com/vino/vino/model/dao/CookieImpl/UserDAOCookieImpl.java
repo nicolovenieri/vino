@@ -145,5 +145,14 @@ public class UserDAOCookieImpl implements UserDAO {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public void deleteSpedizione(User user) {
+
+    }
+
+    @Override
+    public void deleteCarta(User user) {
+
+    }
 }
 

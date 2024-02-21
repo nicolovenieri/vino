@@ -166,15 +166,34 @@ public class WineManagement {
 
             BigDecimal price = new BigDecimal(request.getParameter("price"));
             int avalaibility = Integer.parseInt(request.getParameter("avalaibility"));
-            int alcool = Integer.parseInt(request.getParameter("alcool"));
+            Float alcool = Float.parseFloat(request.getParameter("alcool"));
+
+            String photo = request.getParameter("product_image");
+            if(photo.isEmpty()){
+                photo = "https://8wines.it/media/catalog/product/cache/c7c042d8294616e945a4ef11616f811c/b/e/bessa-valley-enira-2017_1.png";
+            }
+
+            String den = request.getParameter("denominazione");
+            if (den.isEmpty()){
+                den = null;
+            }
+
+            String ann = request.getParameter("annata");
+            if (ann.isEmpty()){
+                ann = null;
+            }
+
             try {
 
                 wineDAO.create(
                         request.getParameter("name"),
-                        request.getParameter("product_image"),
+                        //request.getParameter("product_image"),
+                        photo,
                         price,
-                        request.getParameter("denominazione"),
-                        request.getParameter("annata"),
+                        //request.getParameter("denominazione"),
+                        //request.getParameter("annata"),
+                        den,
+                        ann,
                         avalaibility,
                         request.getParameter("vitigni"),
                         request.getParameter("provenance"),
@@ -309,7 +328,7 @@ public class WineManagement {
 
             BigDecimal price = new BigDecimal(request.getParameter("price"));
             int avalaibility = Integer.parseInt(request.getParameter("avalaibility"));
-            int alcool = Integer.parseInt(request.getParameter("alcool"));
+            Float alcool = Float.parseFloat(request.getParameter("alcool"));
 
             wine.setName(request.getParameter("name"));
             wine.setProductImage(request.getParameter("product_image"));

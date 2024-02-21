@@ -14,7 +14,7 @@ public class Wine {
     private String vitigni;
     private String provenance;
     private String format;
-    private int alcool;
+    private Float alcool;
     private String category;
     private String description;
     private boolean deleted;
@@ -96,11 +96,11 @@ public class Wine {
         this.format = format;
     }
 
-    public int getAlcool() {
+    public Float getAlcool() {
         return alcool;
     }
 
-    public void setAlcool(int alcool) {
+    public void setAlcool(Float alcool) {
         this.alcool = alcool;
     }
 

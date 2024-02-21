@@ -35,7 +35,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             String vitigni,
             String provenance,
             String format,
-            int alcool,
+            Float alcool,
             String category,
             String description
     ) throws DuplicatedObjectException, DataTruncationException {
@@ -87,7 +87,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             ps.setString(i++, wine.getFormat());
             ps.setString(i++, wine.getCategory());
             ps.setString(i++, wine.getDescription());
-            ps.setInt(i++, wine.getAlcool());
+            ps.setFloat(i++, wine.getAlcool());
 
             ResultSet resultSet = ps.executeQuery();
 
@@ -148,7 +148,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
                 ps.setString(i++, wine.getVitigni());
                 ps.setString(i++, wine.getProvenance());
                 ps.setString(i++, wine.getFormat());
-                ps.setInt(i++, wine.getAlcool());
+                ps.setFloat(i++, wine.getAlcool());
                 ps.setString(i++, wine.getCategory());
                 ps.setString(i++, wine.getDescription());
 
@@ -328,7 +328,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             ps.setString(i++, wine.getVitigni());
             ps.setString(i++, wine.getProvenance());
             ps.setString(i++, wine.getFormat());
-            ps.setInt(i++, wine.getAlcool());
+            ps.setFloat(i++, wine.getAlcool());
             ps.setString(i++, wine.getCategory());
             ps.setString(i++, wine.getDescription());
 //            ps.setLong(i++, wine.getWineId());
@@ -387,7 +387,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
             ps.setString(i++, wine.getVitigni());
             ps.setString(i++, wine.getProvenance());
             ps.setString(i++, wine.getFormat());
-            ps.setInt(i++, wine.getAlcool());
+            ps.setFloat(i++, wine.getAlcool());
             ps.setString(i++, wine.getCategory());
             ps.setString(i++, wine.getDescription());
             ps.setLong(i++, wine.getWineId());
@@ -524,7 +524,7 @@ public class WineDAOMySQLJDBCImpl implements WineDAO {
         } catch (SQLException sqle) {
         }
         try {
-            wine.setAlcool(rs.getInt("alcool"));
+            wine.setAlcool(rs.getFloat("alcool"));
         } catch (SQLException sqle) {
         }
         try {

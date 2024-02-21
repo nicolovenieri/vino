@@ -79,7 +79,7 @@
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
                         <%if (languageString.equals("ita")){%>Formato<%}if (languageString.equals("eng")){ %>Size<% }%>
-                    </span><%=wine.getFormat()%>l
+                    </span><%=wine.getFormat()%>
                         </p>
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
@@ -94,7 +94,7 @@
                         <p class="pt-3 text-gray-900 font-regular">
                     <span class="font-medium text-lg">
                         <%if (languageString.equals("ita")){%>Provenienza<%}if (languageString.equals("eng")){ %>Provenance<% }%>
-                    </span><%=wine.getProvenance()%>c
+                    </span><%=wine.getProvenance()%>
                         </p>
                         <p class="pt-3 text-gray-900 text-3xl">
                             <%=wine.getPrice()%> &euro;

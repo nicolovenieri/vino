@@ -87,10 +87,10 @@ boolean loggedOn = (Boolean) request.getAttribute("loggedOn");
                    required size="20" maxlength="50"/>
           </div>
           <div class="field">
-            <label for="name"><span class="font-medium"><%if (languageString.equals("ita")){%>URL/Path dell'immagine del prodotto<%}if (languageString.equals("eng")){ %>URL/Path of product's image<% }%></span></label>
+            <label for="product_image"><span class="font-medium"><%if (languageString.equals("ita")){%>URL/Path dell'immagine del prodotto<%}if (languageString.equals("eng")){ %>URL/Path of product's image<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="product_image" name="product_image"
                    value="<%=(action.equals("modify")) ? wine.getProductImage() : ""%>"
-                   required size="20" maxlength="256"/>
+                    size="20" maxlength="256"/>
           </div>
           <div class="field">
             <label for="price"><span class="font-medium"><%if (languageString.equals("ita")){%>Prezzo<%}if (languageString.equals("eng")){ %>Price<% }%></span></label>
@@ -102,13 +102,13 @@ boolean loggedOn = (Boolean) request.getAttribute("loggedOn");
             <label for="denominazione"><span class="font-medium"><%if (languageString.equals("ita")){%>Denominazione<%}if (languageString.equals("eng")){ %>Denomination<% }%></span></label>
             <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="denominazione" name="denominazione"
                    value="<%=(action.equals("modify")) ? wine.getDenominazione() : ""%>"
-                   required size="20" maxlength="50"/>
+                    size="20" maxlength="50"/>
           </div>
           <div class="field">
             <label for="annata"><span class="font-medium"><%if (languageString.equals("ita")){%>Annata<%}if (languageString.equals("eng")){ %>Vine's Age<% }%></span></label>
-            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="number" min="1900" max="2024" id="annata" name="annata"
+            <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-4 mt-2" type="text"  id="annata" name="annata"
                    value="<%=(action.equals("modify")) ? wine.getAnnata() : ""%>"
-                   required size="20" maxlength="50"/>
+                    size="20" maxlength="50"/>
           </div>
           <div class="field">
             <label for="avalaibility"><span class="font-medium"><%if (languageString.equals("ita")){%>Quantita<%}if (languageString.equals("eng")){ %>Availability<% }%></span></label>
@@ -130,13 +130,13 @@ boolean loggedOn = (Boolean) request.getAttribute("loggedOn");
           </div>
           <div class="field">
             <label for="format"><span class="font-medium"><%if (languageString.equals("ita")){%>Formato<%}if (languageString.equals("eng")){ %>Format<% }%></span></label>
-            <input type="radio" id="format" name="format" value="0.75L" <%=(action.equals("modify") && wine.getCategory().equals("0.75L")) ? "checked" : ""%>/> 0.75L
-            <input type="radio" id="format1" name="format" value="1.75L" <%=(action.equals("modify") && wine.getCategory().equals("1.75L")) ? "checked" : ""%>/> 1.75L
+            <input type="radio" id="format" name="format" value="750 ml" <%=(action.equals("modify") && wine.getCategory().equals("750 ml")) ? "checked" : ""%>/> 750 ml
+            <input type="radio" id="format1" name="format" value="1.50 l" <%=(action.equals("modify") && wine.getCategory().equals("1.50 l")) ? "checked" : ""%>/> 1.50 l
           </div>
           <div class="field">
             <label for="category"><span class="font-medium"><%if (languageString.equals("ita")){%>Categoria<%}if (languageString.equals("eng")){ %>Category<% }%></span></label>
-            <input type="radio" id="category" name="category" value="Bianchi" <%=(action.equals("modify") && wine.getCategory().equals("Bianchi")) ? "checked" : ""%>/> Bianchi
-            <input type="radio" id="category1" name="category" value="Rossi" <%=(action.equals("modify") && wine.getCategory().equals("Rossi")) ? "checked" : ""%> /> Rossi
+            <input type="radio" id="category" name="category" value="Bianco" <%=(action.equals("modify") && wine.getCategory().equals("Bianco")) ? "checked" : ""%>/> Bianco
+            <input type="radio" id="category1" name="category" value="Rosso" <%=(action.equals("modify") && wine.getCategory().equals("Rosso")) ? "checked" : ""%> /> Rosso
             <input type="radio" id="category2" name="category" value="Champagne" <%=(action.equals("modify") && wine.getCategory().equals("Champagne")) ? "checked" : ""%> /> Champagne
             <input type="radio" id="category3" name="category" value="Altro" <%=(action.equals("modify") && wine.getCategory().equals("Altro")) ? "checked" : ""%> /> Altro
           </div>

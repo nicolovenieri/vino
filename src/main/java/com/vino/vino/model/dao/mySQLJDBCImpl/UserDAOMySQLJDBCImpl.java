@@ -399,6 +399,55 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
         }
     }
 
+    @Override
+    public void deleteCarta(User user) {
+        /*
+        PreparedStatement ps;
+
+        try {
+
+            String sql
+                    = " UPDATE user "
+                    + " SET deleted='Y' "
+                    + " WHERE "
+                    + " user_id=?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setLong(1, user.getUserId());
+            ps.executeUpdate();
+            ps.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        */
+    }
+
+    @Override
+    public void deleteSpedizione(User user) {
+        /*
+        PreparedStatement ps;
+
+        try {
+
+            String sql
+                    = " UPDATE user "
+                    + " SET deleted='Y' "
+                    + " WHERE "
+                    + " user_id=?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setLong(1, user.getUserId());
+            ps.executeUpdate();
+            ps.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+         */
+    }
+
     User read(ResultSet rs) {
 
         User user = new User();

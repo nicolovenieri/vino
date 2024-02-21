@@ -17,7 +17,7 @@ public interface WineDAO {
             String vitigni,
             String provenance,
             String format,
-            int alcool,
+            Float alcool,
             String category,
             String description
     ) throws DuplicatedObjectException, DataTruncationException;

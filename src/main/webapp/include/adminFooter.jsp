@@ -13,4 +13,4 @@
     <div class="text-center w-full py-2 m-0">
         <p class="font-bold text-blue-700">Venieri Nicolo, Matteo Ferla &copy; 2024</p>
     </div>
-</footer>q
+</footer>
