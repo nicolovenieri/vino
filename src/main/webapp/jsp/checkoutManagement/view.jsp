@@ -85,10 +85,6 @@
                 return false;
             }
 
-            if(data<now){
-                alert("La tua carta \u00E8 scaduta, inserisci nel campo 'DATA DI SCADENZA' una data superiore a "+NowDate.getMonth()+"/"+NowDate.getFullYear()+" (Oggi)");
-                return false;
-            }
             if(isNaN(data)){
                 alert("Il campo 'DATA DI SCADENZA' richiede una data");
                 return false;

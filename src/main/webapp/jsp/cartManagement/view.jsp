@@ -84,11 +84,11 @@
                                       <p class="pt-1"><span class="font-medium"><%if (languageString.equals("ita")){%>Annata<%}if (languageString.equals("eng")){ %>Wine age<% }%> </span><%=carts.get(i).getWine().getAnnata()%></p>
                                   </div>
                                   <div class="order-2 flex flex-row flex-no-wrap">
-                                      <a href="javascript:RemoveFromCart(<%=carts.get(i).getWine().getWineId()%>)" class="order-1 w-12 m-2 bg-gray-500 hover:bg-gray-700 text-white font-bold rounded-full px-1 py-2 flex flex-row flex-no-wrap justify-center">
+                                      <a href="javascript:RemoveFromCart(<%=carts.get(i).getWine().getWineId()%>)" class="order-1 w-12 m-2 bg-gray-700 hover:bg-red-500 text-white font-bold rounded-full px-1 py-2 flex flex-row flex-no-wrap justify-center">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-white" d="M17 11a1 1 0 010 2H7a1 1 0 010-2h10z"/></svg>
                                       </a>
-                                          <p class="order-2 m-2 text-gray-700 font-bold rounded-full flex flex-row flex-no-wrap justify-center px-1 py-2"><%=carts.get(i).getQuantity()%></p>
-                                      <a href="javascript:AddToCart(<%=carts.get(i).getWine().getWineId()%>)" class="order-3 w-12 m-2 bg-gray-500 hover:bg-gray-700 text-white font-bold rounded-full px-1 py-2 flex flex-row flex-no-wrap justify-center">
+                                          <p class="order-2 m-2 text-black font-bold rounded-full flex flex-row flex-no-wrap justify-center px-1 py-2"><%=carts.get(i).getQuantity()%></p>
+                                      <a href="javascript:AddToCart(<%=carts.get(i).getWine().getWineId()%>)" class="order-3 w-12 m-2 bg-gray-700 hover:bg-green-500 text-white font-bold rounded-full px-1 py-2 flex flex-row flex-no-wrap justify-center">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-white order-2 mx-1" d="M17 11a1 1 0 010 2h-4v4a1 1 0 01-2 0v-4H7a1 1 0 010-2h4V7a1 1 0 012 0v4h4z"/></svg>
                                       </a>
                                   </div>
@@ -100,7 +100,7 @@
                               <p class="pt-1 font-light text-2xl"><%=carts.get(i).getWine().getPrice().multiply(new BigDecimal(carts.get(i).getQuantity()))%> &euro;</p>
                           </div>
                           <div class="order-2 mx-2 mt-4 w-32">
-                              <a href="javascript:RemoveBlockFromCart(<%=carts.get(i).getWine().getWineId()%>)" class="bg-gray-500 hover:bg-gray-700 text-white font-bold rounded-full flex flex-row flex-wrap justify-center px-1 py-2">
+                              <a href="javascript:RemoveBlockFromCart(<%=carts.get(i).getWine().getWineId()%>)" class="bg-gray-700 hover:bg-red-500 text-white hover:text-black font-bold rounded-full flex flex-row flex-wrap justify-center px-1 py-2">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-white order-2 mx-1" d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 012 2v2h5a1 1 0 010 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V8H3a1 1 0 110-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 011 1v6a1 1 0 01-2 0v-6a1 1 0 011-1zm4 0a1 1 0 011 1v6a1 1 0 01-2 0v-6a1 1 0 011-1z"/></svg>
                               </a>
                           </div>
