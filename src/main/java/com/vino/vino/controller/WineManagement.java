@@ -169,15 +169,18 @@ public class WineManagement {
             Float alcool = Float.parseFloat(request.getParameter("alcool"));
 
             String photo = request.getParameter("product_image");
+            //se la foto non è inserita metto di deafault questa
             if(photo.isEmpty()){
-                photo = "https://8wines.it/media/catalog/product/cache/c7c042d8294616e945a4ef11616f811c/b/e/bessa-valley-enira-2017_1.png";
+                photo = "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile.png";
             }
 
+            //se la denominazione non è inserita metto di default questa
             String den = request.getParameter("denominazione");
             if (den.isEmpty()){
                 den = "---";
             }
 
+            //se l'annata non è inserita metto di default questa
             String ann = request.getParameter("annata");
             if (ann.isEmpty()){
                 ann = "---";

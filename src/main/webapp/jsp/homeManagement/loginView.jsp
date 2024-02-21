@@ -37,14 +37,14 @@
     </script>
     <%@include file="/include/htmlHead.jsp"%>
 </head>
-    <body>
+    <body class="bg-gray-500">
         <%@include file="/include/header.jsp"%>
-        <main class="flex flex-col justify-center items-center pb-8">
+        <main class="flex flex-col justify-center items-center pb-8 bg-gray-500">
 
-            <div class="w-full bg-gray-100 flex justify-center">
+            <div class="w-full bg-gray-500 flex justify-center">
                 <div class="w-1/6 flex flex-row flex-no-wrap justify-between items-center m-4 p-2">
                     <p class="p-1 font-medium"><%if (languageString.equals("ita")){%>Non sei registrato?<%}if (languageString.equals("eng")){ %>You aren't registered yet? <% }%></p>
-                    <a class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-28" href="javascript:registerViewForm.requestSubmit()">
+                    <a class="bg-gray-700 hover:bg-red-500 hover:text-black text-white font-bold py-2 px-4 rounded-full w-28" href="javascript:registerViewForm.requestSubmit()">
                         <%if (languageString.equals("ita")){%>Registrati<%}if (languageString.equals("eng")){ %>Register<% }%>
                     </a>
                 </div>
@@ -63,7 +63,7 @@
                         </label>
                         <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" form="loginForm" id="password" name="password" type="password" placeholder="**************" maxlength="40" required>
                     </div>
-                    <button class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" type="submit" form="loginForm">
+                    <button class="bg-gray-700 hover:bg-green-500 text-white hover:text-black font-bold py-2 px-4 rounded-full w-20" type="submit" form="loginForm">
                         <%if (languageString.equals("ita")){%>Accedi<%}if (languageString.equals("eng")){ %>Login <% }%>
                     </button>
             </div>

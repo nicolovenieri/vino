@@ -17,14 +17,14 @@
     </script>
     <%@include file="/include/htmlHead.jsp"%>
 </head>
-    <body>
+    <body class="bg-gray-500">
         <%@include file="/include/header.jsp"%>
         <main class="flex flex-col justify-center items-center pb-8">
 
-            <div class="w-full bg-gray-100 flex justify-center">
+            <div class="w-full bg-gray-500 flex justify-center">
                 <div class="w-1/6 flex flex-row flex-no-wrap justify-between items-center m-4 p-2">
                     <p class="p-1 font-medium"><%if (languageString.equals("ita")){%>Sei gia' registrato?<%}if (languageString.equals("eng")){ %>Already Registred?<% }%></p>
-                    <a class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" href="javascript:loginViewForm.requestSubmit()">
+                    <a class="bg-gray-700 hover:bg-red-500 hover:text-black text-white font-bold py-2 px-4 rounded-full w-20" href="javascript:loginViewForm.requestSubmit()">
                         <%if (languageString.equals("ita")){%>Accedi<%}if (languageString.equals("eng")){ %>Login<% }%>
                     </a>
                 </div>
@@ -64,7 +64,7 @@
                     <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" form="registerForm" id="password" name="password" type="password" placeholder="******************" maxlength="40" required>
                 </div>
 
-                <button class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-40" type="submit" form="registerForm">
+                <button class="bg-gray-700 hover:bg-green-500 hover:text-black text-white font-bold py-2 px-4 rounded-full w-40" type="submit" form="registerForm">
                     <%if (languageString.equals("ita")){%>Registrati<%}if (languageString.equals("eng")){ %>Register<% }%>
                 </button>
 

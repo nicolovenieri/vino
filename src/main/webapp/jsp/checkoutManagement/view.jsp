@@ -114,16 +114,16 @@
     </script>
     <%@include file="/include/htmlHead.jsp"%>
 </head>
-<body>
+<body class="bg-gray-500">
     <%@include file="/include/header.jsp"%>
     <div class="w-full flex justify-center items-center">
         <div class=" flex justify-center mt-8 w-2/3 pb-4">
-            <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Pagamento<%}if (languageString.equals("eng")){ %>Checkout<% }%></p>
+            <p class="uppercase tracking-wide no-underline hover:no-underline font-extrabold text-black text-xl"><%if (languageString.equals("ita")){%>Pagamento<%}if (languageString.equals("eng")){ %>Checkout<% }%></p>
         </div>
     </div>
-    <main class="flex justify-center mx-8">
-        <section class="w-full flex flex-row flex-no-wrap justify-center">
-            <section id="checkout-field" class="flex flex-col flex-wrap m-4 w-1/2">
+    <main class="flex justify-center mx-8 bg-gray-500">
+        <section class="w-full flex flex-row flex-no-wrap">
+            <section id="checkout-field" class="flex flex-col flex-wrap m-4 w-1/2 justify-center">
                 <div class="float">
                     <div class="float-right flex-row bg-gray-200 rounded-lg border-bg-gray-500 mx-2 my-4 p-4 w-2/3">
                         <div class="flex flex-col m-2">

@@ -40,7 +40,7 @@
 
     </script>
 </head>
-<body>
+<body class="bg-gray-500">
 <%@include file="/include/header.jsp"%>
 <div class="w-full flex justify-center">
     <div class="w-1/6 flex flex-row flex-no-wrap justify-between items-center m-4 p-2">
@@ -63,11 +63,11 @@
         </div>
     </div>
 </div>
-<main class="bg-white">
+<main class="bg-gray-500">
     <div class="container mx-auto flex flex-wrap pb-12">
         <nav id="store" class="w-full z-30 top-0 px-6 py-1">
-            <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Categoria<%}if (languageString.equals("eng")){ %>Category<% }%>: <%=(String) request.getParameter("category")%></p>
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-center mt-0 px-2 py-3">
+                <p class="uppercase tracking-wide no-underline hover:no-underline font-extrabold text-black text-xl"><%if (languageString.equals("ita")){%>Categoria<%}if (languageString.equals("eng")){ %>Category<% }%>: <%=(String) request.getParameter("category")%></p>
             </div>
         </nav>
         <%for (i = 0; i < wines.size(); i++) {%>

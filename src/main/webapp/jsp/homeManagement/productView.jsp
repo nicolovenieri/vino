@@ -47,9 +47,9 @@
     </script>
     <%@include file="/include/htmlHead.jsp"%>
 </head>
-    <body>
+    <body class="bg-gray-500">
         <%@include file="/include/header.jsp"%>
-        <main class="w-full">
+        <main class="w-full ">
             <%--PRODUCT DATA--%>
             <div id="main-container" class="flex flex-col px-32 mb-8">
                 <%if(!loggedOn){%>
@@ -104,7 +104,7 @@
                             <a class="zoom-animation float-left bg-gray-700 hover:bg-blue-dark text-white font-bold px-4 py-2 mt-6 rounded-full w-28" href="javascript:AddToCart(<%=wine.getWineId()%>)">
                                 <%if (languageString.equals("ita")){%>Aggiungi al carrello<%}if (languageString.equals("eng")){ %>Add to cart<% }%>
                             </a>
-                            <a class="zoom-animation float-left bg-red-400 hover:bg-blue-dark text-white font-bold px-4 py-2 ml-6 mt-6 rounded-full w-28" href="javascript:AddToWishlist(<%=wine.getWineId()%>)">
+                            <a class="zoom-animation float-left bg-red-500 hover:bg-blue-dark text-white font-bold px-4 py-2 ml-6 mt-6 rounded-full w-28" href="javascript:AddToWishlist(<%=wine.getWineId()%>)">
                                 <%if (languageString.equals("ita")){%>Aggiungi alla wishlist <%}if (languageString.equals("eng")){ %>Add to wishlist<% }%>
                             </a>
                         </div>

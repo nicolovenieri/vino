@@ -32,12 +32,12 @@
     </script>
     <%@include file="/include/htmlHead.jsp"%>
 </head>
-<body>
+<body class="bg-gray-500">
 <%@include file="/include/header.jsp"%>
-<main>
+<main class="bg-gray-500">
     <div id="main-container" class="container mx-auto flex-col flex-wrap justify-center items-center">
         <h1 class="flex items-center justify-between text-gray-900 font-bold text-2xl mt-12 mb-6 ml-6"><%if (languageString.equals("ita")){%>Ordine del <%}if (languageString.equals("eng")){ %>Date of order: <% }%> <%=dateFormatter.format(order_tuples.get(0).getTimestamp())%> <%if (languageString.equals("ita")){%>alle:<%}if (languageString.equals("eng")){ %>Time: <% }%> <%=timeFormatter.format(order_tuples.get(0).getTimestamp())%></h1>
-        <div class="bg-gray-100 divide-y rounded-md mb-12">
+        <div class="bg-gray-400 divide-y rounded-md mb-12">
             <%for (i = 0; i < order_tuples.size(); i++) {%>
             <section class="mb-4 p-4">
                 <h1 class="pt-2 flex items-center justify-between text-gray-900 font-bold uppercase"><%=order_tuples.get(i).getWine().getName()%></h1>
@@ -55,11 +55,11 @@
             <%}%>
             <h1 class="flex items-center justify-between text-gray-900 font-bold p-6"><%if (languageString.equals("ita")){%>Totale: <%}if (languageString.equals("eng")){ %>Total: <% }%> <%=order_tuples.get(0).getTotalAmount()%> &euro;</h1>
         </div>
-        <div class="bg-gray-100 divide-y rounded-md mb-12">
+        <div class="bg-gray-400 divide-y rounded-md mb-12">
             <h1 class="flex items-center justify-between text-gray-900 font-bold text-xl p-4"><%if (languageString.equals("ita")){%>Tracciamento spedizione<%}if (languageString.equals("eng")){ %>Shipping Tracker<% }%></h1>
             <p class="p-4 ml-2"><%=order_tuples.get(0).getStatus()%></p>
             <%if(!order_tuples.get(0).getStatus().equals("Ordine consegnato") || setDelivered){%>
-            <button class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-64 mb-6 ml-6 mt-3" type="submit" form="setDeliveredForm">
+            <button class="bg-gray-700 text-white hover:bg-green-500 hover:text-black font-bold py-2 px-4 rounded-full w-64 mb-6 ml-6 mt-3" type="submit" form="setDeliveredForm">
                 <%if (languageString.equals("ita")){%>Marca come consegnato<%}if (languageString.equals("eng")){ %>Set as delivered<% }%>
             </button>
             <%}%>

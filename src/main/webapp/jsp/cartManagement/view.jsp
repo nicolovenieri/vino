@@ -60,9 +60,9 @@
           function mainOnLoadHandler() {}
       </script>
   </head>
-  <body>
+  <body  class="bg-black">
     <%@include file="/include/header.jsp"%>
-    <main class="bg-white">
+    <main class="bg-gray-500">
         <div class="container mx-auto flex flex-wrap justify-center items-center pt-4 pb-12">
             <div class="flex justify-center w-full m-4 mt-8">
                 <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Carrello<%}if (languageString.equals("eng")){ %>Cart<% }%></p>
@@ -109,7 +109,7 @@
               <%}%>
             </div>
             <%if(total_amount.compareTo(BigDecimal.ZERO) != 0) {%>
-            <div class="w-full float m-2 p-6 bg-gray-200 border border-bg-gray-300 rounded-b-lg rounded-lg flex flex-row flex-no-wrap justify-between">
+            <div class="w-full float m-2 p-6 bg-gray-400 border border-bg-gray-500 rounded-b-lg rounded-lg flex flex-row flex-no-wrap justify-between">
                 <div class="order-1 m-4 p-2 flex flex-row flex-no-wrap justify-between w-1/3">
                     <div class="order-1 flex flex-col flex-wrap content-around">
                         <p class="pb-4 font-bold text-2xl"><%if (languageString.equals("ita")){%>Totale (IVA inclusa)<%}if (languageString.equals("eng")){ %>Total amount (IVA included)<% }%></p>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="order-2 flex flex-col flex-wrap pr-8">
-                    <button class="zoom-animation float-left bg-gray-700 hover:bg-gray-dark text-white font-bold px-4 py-2 mt-6 rounded-full w-28" type="submit" form="CheckoutForm">
+                    <button class="zoom-animation float-left bg-gray-700 hover:bg-green-500 text-white font-bold px-4 py-2 mt-6 rounded-full w-28" type="submit" form="CheckoutForm">
                         <%if (languageString.equals("ita")){%>Procedi al pagamento<%}if (languageString.equals("eng")){ %>Checkout<% }%>
                     </button>
                     <a href="javascript: DeleteCart()" class="float-left bg-red-400 hover:bg-gray-dark text-white font-bold px-4 py-2 ml-6 mt-6 rounded-full w-28" type="submit" form="">
