@@ -54,45 +54,6 @@
                 alert("Il campo '" + EventTriggerName + "' richiede un numero");
         }
 
-         function DynamicFormCheck_date(e) {
-             var EventTriggerName = (e.target.id);
-             var data = Date.parse("01/"+document.CompleteOrderForm.exp_date.value);
-
-             console.log("data form" + data);
-
-             if(data<now){
-                alert("La tua carta \u00E8 scaduta, inserisci nel campo '" + EventTriggerName + "' una data superiore a " + NowDate.getMonth() + "/" + NowDate.getFullYear() + " (Oggi)");
-            }
-             if(isNaN(data)){
-                 alert("Il campo '" + EventTriggerName + "' richiede una data");
-             }
-
-         }
-
-        function StaticFormCheck(){
-            var card_number =  document.CompleteOrderForm.card_n.value;
-            var cvc = document.CompleteOrderForm.cvc.value;
-            var data = Date.parse("01/" + document.CompleteOrderForm.exp_date.value);
-            var now = new Date(data);
-
-            if(isNaN(card_number)){
-                alert("Il campo 'NUMERO DI CARTA' richiede un numero");
-                return false;
-            }
-
-            if(isNaN(cvc)){
-                alert("Il campo 'CVC/CCV' richiede un numero");
-                return false;
-            }
-
-            if(isNaN(data)){
-                alert("Il campo 'DATA DI SCADENZA' richiede una data");
-                return false;
-            }
-
-            return true;
-        }
-
         function CompleteOrder(coupon_id) {
             if (StaticFormCheck()) {
             document.CompleteOrderForm.coupon_id.value = coupon_id;
@@ -100,11 +61,9 @@
             }
         }
 
-
         function mainOnLoadHandler() {
             document.CompleteOrderForm.card_n.addEventListener("change", DynamicFormCheck_int);
             document.CompleteOrderForm.cvc.addEventListener("change", DynamicFormCheck_int);
-            document.CompleteOrderForm.exp_date.addEventListener("change", DynamicFormCheck_date);
         }
 
     </script>
