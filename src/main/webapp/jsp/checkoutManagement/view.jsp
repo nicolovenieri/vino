@@ -45,7 +45,28 @@
                 document.CouponApplyForm.requestSubmit();
             }
         }
+        function StaticFormCheck(){
+            var card_number =  document.CompleteOrderForm.card_n.value;
+            var cvc = document.CompleteOrderForm.cvc.value;
+            var data = Date.parse("01/"+document.CompleteOrderForm.exp_date.value);
 
+            if(isNaN(card_number)){
+                alert("Il campo 'NUMERO DI CARTA' richiede un numero");
+                return false;
+            }
+
+            if(isNaN(cvc)){
+                alert("Il campo 'CVC/CCV' richiede un numero");
+                return false;
+            }
+
+            if(isNaN(data)){
+                alert("Il campo 'DATA DI SCADENZA' richiede una data");
+                return false;
+            }
+
+            return true;
+        }
         function DynamicFormCheck_int(e) {
             var EventTriggerName = (e.target.id);
             var EventTriggerValue = (e.target.value);

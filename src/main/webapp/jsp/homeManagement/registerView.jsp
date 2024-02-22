@@ -36,20 +36,20 @@
                         <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
                             <%if (languageString.equals("ita")){%>Nome<%}if (languageString.equals("eng")){ %>Name<% }%>
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="name" name="name" type="text" placeholder="Mario" maxlength="40" required>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="name" name="name" type="text" placeholder="Mario" maxlength="20" required>
                     </div>
                     <div class="mb-4 w-1/2 ml-1">
                         <label class="block text-grey-darker text-sm font-bold mb-2" for="surname">
                             <%if (languageString.equals("ita")){%>Surname<%}if (languageString.equals("eng")){ %>Cognome<% }%>
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="surname" name="surname" type="text" placeholder="Rossi" maxlength="40" required>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="surname" name="surname" type="text" placeholder="Rossi" maxlength="20" required>
                     </div>
                 </div>
                 <div class="mb-4">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
                         Email
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="email" name="email" type="email" placeholder="mario.rossi@example.com" maxlength="40" required>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="registerForm" id="email" name="email" type="email" placeholder="mario.rossi@example.com" maxlength="32" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
