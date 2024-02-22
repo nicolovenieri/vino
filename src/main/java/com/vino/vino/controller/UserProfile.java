@@ -308,6 +308,8 @@ public class UserProfile {
 
     }
 
+
+
     private static void wineRetrieve(DAOFactory daoFactory, DAOFactory sessionDAOFactory, HttpServletRequest request) {
 
         WineDAO wineDAO = daoFactory.getWineDAO();

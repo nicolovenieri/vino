@@ -400,17 +400,19 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
     }
 
     @Override
-    public void deleteCarta(User user) {
-        /*
+    public void deleteSpedizione(User user) {
+
         PreparedStatement ps;
 
         try {
 
             String sql
                     = " UPDATE user "
-                    + " SET deleted='Y' "
-                    + " WHERE "
-                    + " user_id=?";
+                    + " SET city = null, "
+                    + " cap = null, "
+                    + " street = null, "
+                    + " civic = null "
+                    + " WHERE user_id = ? ";
 
             ps = conn.prepareStatement(sql);
             ps.setLong(1, user.getUserId());
@@ -420,21 +422,22 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        */
+
     }
 
     @Override
-    public void deleteSpedizione(User user) {
-        /*
+    public void deleteCarta(User user) {
+
         PreparedStatement ps;
 
         try {
 
             String sql
                     = " UPDATE user "
-                    + " SET deleted='Y' "
-                    + " WHERE "
-                    + " user_id=?";
+                    + " SET card_n = null, "
+                    + " cvc = null, "
+                    + " exp_date = null "
+                    + " WHERE user_id = ? ";
 
             ps = conn.prepareStatement(sql);
             ps.setLong(1, user.getUserId());
@@ -444,8 +447,6 @@ public class UserDAOMySQLJDBCImpl implements UserDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-         */
     }
 
     User read(ResultSet rs) {
