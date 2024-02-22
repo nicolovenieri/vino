@@ -318,7 +318,7 @@ public class    WishlistManagement {
 
         PreferenceDAO preferenceDAO = daoFactory.getPreferenceDAO();
         List<Preference> preferences = new ArrayList<Preference>();
-        String[] categoryArray = {"Rosso", "Bianco", "Spumante", "Altro"};
+        String[] categoryArray = {"Rosso", "Bianco", "Champagne", "Altro"};
 
         for (int k = 0; k < categoryArray.length; k++) {
             if(preferenceDAO.findByUserCategory(user_id, categoryArray[k]) != null) {
