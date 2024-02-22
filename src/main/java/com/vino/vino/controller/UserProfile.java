@@ -336,9 +336,6 @@ public class UserProfile {
 
             userRetrieve(daoFactory, sessionDAOFactory, request);
 
-            daoFactory.commitTransaction();
-            sessionDAOFactory.commitTransaction();
-
             UserDAO userDAO = daoFactory.getUserDAO();
             User user = userDAO.findByUserId(loggedUser.getUserId());
 
@@ -346,15 +343,18 @@ public class UserProfile {
                 userDAO.deleteCarta(user);
                 applicationMessage = "Modifiche effettuate con successo.";
 
-                request.setAttribute("language", language);
-                request.setAttribute("loggedOn", loggedUser != null);
-                request.setAttribute("loggedUser", loggedUser);
-                request.setAttribute("applicationMessage", applicationMessage);
-                request.setAttribute("viewUrl", "userProfile/editView");
-
             }catch (Exception e){
                 logger.log(Level.SEVERE, "Dao Error", e);
             }
+
+            daoFactory.commitTransaction();
+            sessionDAOFactory.commitTransaction();
+
+            request.setAttribute("language", language);
+            request.setAttribute("loggedOn", loggedUser != null);
+            request.setAttribute("loggedUser", loggedUser);
+            request.setAttribute("applicationMessage", applicationMessage);
+            request.setAttribute("viewUrl", "userProfile/view");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Controller Error", e);
@@ -400,9 +400,6 @@ public class UserProfile {
 
             userRetrieve(daoFactory, sessionDAOFactory, request);
 
-            daoFactory.commitTransaction();
-            sessionDAOFactory.commitTransaction();
-
             UserDAO userDAO = daoFactory.getUserDAO();
             User user = userDAO.findByUserId(loggedUser.getUserId());
 
@@ -410,15 +407,18 @@ public class UserProfile {
                 userDAO.deleteSpedizione(user);
                 applicationMessage = "Modifiche effettuate con successo.";
 
-                request.setAttribute("language", language);
-                request.setAttribute("loggedOn", loggedUser != null);
-                request.setAttribute("loggedUser", loggedUser);
-                request.setAttribute("applicationMessage", applicationMessage);
-                request.setAttribute("viewUrl", "userProfile/editView");
-
             }catch (Exception e){
                 logger.log(Level.SEVERE, "Dao Error", e);
             }
+
+            daoFactory.commitTransaction();
+            sessionDAOFactory.commitTransaction();
+
+            request.setAttribute("language", language);
+            request.setAttribute("loggedOn", loggedUser != null);
+            request.setAttribute("loggedUser", loggedUser);
+            request.setAttribute("applicationMessage", applicationMessage);
+            request.setAttribute("viewUrl", "userProfile/view");
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Controller Error", e);
