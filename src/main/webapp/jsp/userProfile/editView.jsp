@@ -47,7 +47,7 @@
                                 <%if (languageString.equals("ita")){%>Nome Utente<%}if (languageString.equals("eng")){ %>Username<% }%>
                             </label>
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="username" name="username" type="text" placeholder="mario123"
-                                   value="<%=(user.getUsername() != null) ? user.getUsername() : ""%>" maxlength="32" >
+                                   value="<%=(user.getUsername() != null) ? user.getUsername() : ""%>" maxlength="12" >
                             <label class="block text-grey-darker text-sm font-bold my-2" for="username">
                                 Password
                             </label>
