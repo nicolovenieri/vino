@@ -329,15 +329,33 @@ public class WineManagement {
             WineDAO wineDAO = daoFactory.getWineDAO();
             Wine wine = wineDAO.findByWineId(wine_id);
 
+            String photo = request.getParameter("product_image");
+            //se la foto non è inserita metto di deafault questa
+            if(photo.isEmpty()){
+                photo = "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile.png";
+            }
+
+            //se la denominazione non è inserita metto di default questa
+            String den = request.getParameter("denominazione");
+            if (den.isEmpty()){
+                den = "---";
+            }
+
+            //se l'annata non è inserita metto di default questa
+            String ann = request.getParameter("annata");
+            if (ann.isEmpty()){
+                ann = "---";
+            }
+
             BigDecimal price = new BigDecimal(request.getParameter("price"));
             int avalaibility = Integer.parseInt(request.getParameter("avalaibility"));
             Float alcool = Float.parseFloat(request.getParameter("alcool"));
 
             wine.setName(request.getParameter("name"));
-            wine.setProductImage(request.getParameter("product_image"));
+            wine.setProductImage(photo);
             wine.setPrice(price);
-            wine.setDenominazione(request.getParameter("denominazione"));
-            wine.setAnnata(request.getParameter("annata"));
+            wine.setDenominazione(den);
+            wine.setAnnata(ann);
             wine.setAvalaibility(avalaibility);
             wine.setVitigni(request.getParameter("vitigni"));
             wine.setProvenance(request.getParameter("provenance"));
