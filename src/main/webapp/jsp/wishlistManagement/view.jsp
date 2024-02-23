@@ -47,7 +47,7 @@
     <main class="bg-gray-500">
         <div class="container mx-auto flex flex-wrap pt-4 pb-12 justify-center">
             <div class="flex justify-center w-full m-4 mt-8">
-                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl">Wishlist</p>
+                <p class="uppercase tracking-wide no-underline hover:no-underline font-extrabold text-black text-xl">Wishlist</p>
             </div>
             <div class="flex flex-col flex-wrap pt-4 pb-12">
                 <%for (i = 0; i < wishlist_tuples.size(); i++) {%>

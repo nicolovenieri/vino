@@ -68,7 +68,7 @@
 <%@include file="/include/adminHeader.jsp"%>
 <main class="w-full flex flex-col justify-center items-center bg-gray-500">
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Lista vini<%}if (languageString.equals("eng")){ %>Wines list<% }%></p>
+        <p class="uppercase font-bold text-black text-xl"><%if (languageString.equals("ita")){%>Lista vini<%}if (languageString.equals("eng")){ %>Wines list<% }%></p>
         <a class="ml-2 mt-1" href="javascript:insertWine()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z"/></svg>
         </a>

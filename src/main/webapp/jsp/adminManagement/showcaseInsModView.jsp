@@ -33,7 +33,7 @@
 <%@include file="/include/adminHeader.jsp"%>
 <main class="w-full flex flex-col justify-center items-center bg-gray-500">
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl"> <%if (languageString.equals("ita")){%>Lista vini<%}if (languageString.equals("eng")){ %>Wines list<% }%></p>
+        <p class="uppercase font-bold text-black text-xl"> <%if (languageString.equals("ita")){%>Lista vini<%}if (languageString.equals("eng")){ %>Wines list<% }%></p>
     </div>
     <div class="w-full flex justify-center">
         <div class="w-1/6 flex flex-row flex-no-wrap justify-between items-center m-4 p-2">
@@ -41,7 +41,7 @@
                 <div class="pt-2 relative mx-auto text-gray-600">
                     <form id="searchForm" name="searchForm" action="Dispatcher" method="post">
                         <input type="hidden" name="controllerAction" value="ShowcaseManagement.searchView">
-                        <input type="text" name="searchString" placeholder="Cerca nome vino" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none">
+                        <input type="text" name="searchString" placeholder=" Cerca nome vino" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm  focus:outline-none">
                         <button type="submit" form="searchForm" class="absolute right-0 top-0 mt-5 mr-4">
                             <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
@@ -81,7 +81,7 @@
         <input type="hidden" name="controllerAction" value="ShowcaseManagement.insert"/>
     </form>
 
+    <div class="fixed w-full bottom-0">
+        <%@include file="/include/adminFooter.jsp"%>
+    </div></html>
 </main>
-<div class="fixed w-full bottom-0">
-    <%@include file="/include/adminFooter.jsp"%>
-</div></html>

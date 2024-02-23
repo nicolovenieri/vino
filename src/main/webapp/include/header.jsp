@@ -43,7 +43,7 @@
       </ul>
     </nav>
 
-      <a id="logo" href="Dispatcher?controllerAction=HomeManagement.view" class="order-1 md:order-1 flex items-center tracking-wider no-underline hover:no-underline font-bold text-white text-2xl"><% if(languageString.equals("eng")){ %>Fratelli's Winery<%} if(languageString.equals("ita")){ %>Fratelli Cantina <%}%></a>
+      <a id="logo" href="Dispatcher?controllerAction=HomeManagement.view" class="order-1 md:order-1 flex items-center tracking-wider no-underline hover:no-underline font-bold text-white text-2xl"><% if(languageString.equals("eng")){ %>Brothers Winery<%} if(languageString.equals("ita")){ %>Fratelli Cantina <%}%></a>
       <div class="order-2 md:order-3 flex items-center p-4">
           <div  class="hover-trigger relative inline-block">
               <div class="relative inline-block">
@@ -69,7 +69,9 @@
               </svg>
               </a>
               <%}%>
-              <a id="homenorm" href="Dispatcher?controllerAction=HomeManagement.view" class="pl-3 inline-block relative"><svg fill="#ffffff" width="24" height="24" viewBox="0 0 24 24" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"><path d="M17.568 9.432c0-2.55-.906-5.592-.944-5.72-.128-.423-.517-.712-.958-.712h-7.332c-.441 0-.83.289-.958.712-.038.128-.944 3.17-.944 5.72 0 2.735 1.984 5.011 4.587 5.477l-.019.091v4h-1c-.553 0-1 .447-1 1s.447 1 1 1h4c.553 0 1-.447 1-1s-.447-1-1-1h-1v-4l-.019-.092c2.603-.466 4.587-2.741 4.587-5.476zm-5.568 3.568c-1.773 0-3.236-1.303-3.511-3h7.021c-.274 1.697-1.737 3-3.51 3zm-3.555-4c.062-1.468.422-3.093.653-4h5.803c.231.907.591 2.532.653 4h-7.109z"/></svg></a>
+              <a id="homenorm" href="Dispatcher?controllerAction=HomeManagement.view" class="pl-3 inline-block relative">
+                  <svg fill="#ffff" width="24" height="24" viewBox="0 0 24 24" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"><path d="M12 3s-6.186 5.34-9.643 8.232c-.203.184-.357.452-.357.768 0 .553.447 1 1 1h2v7c0 .553.447 1 1 1h3c.553 0 1-.448 1-1v-4h4v4c0 .552.447 1 1 1h3c.553 0 1-.447 1-1v-7h2c.553 0 1-.447 1-1 0-.316-.154-.584-.383-.768-3.433-2.892-9.617-8.232-9.617-8.232z"/></svg>
+              </a>
               <a id="cart" href="javascript:cartForm.requestSubmit()" class="pl-3 inline-block relative">
               <svg style="fill: rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui  hover:text-black" d="M17 16a3 3 0 11-2.83 2H9.83a3 3 0 11-5.62-.1A3 3 0 015 12V4H3a1 1 0 110-2h3a1 1 0 011 1v1h14a1 1 0 01.9 1.45l-4 8a1 1 0 01-.9.55H5a1 1 0 000 2h12zM7 12h9.38l3-6H7v6zm0 8a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
               </a>

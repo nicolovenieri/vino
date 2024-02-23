@@ -62,7 +62,7 @@
 <main class="bg-gray-500">
     <div class="container mx-auto flex flex-wrap py-4">
         <div class="flex justify-center w-full m-4 mt-8">
-            <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%> Ordini di : <%=user.getName()%> <%}if (languageString.equals("eng")){ %> <%=user.getName()%>'s Orders <% }%></p>
+            <p class="uppercase tracking-wide no-underline hover:no-underline font-black text-black text-xl"><%if (languageString.equals("ita")){%> Ordini di : <%=user.getName()%> <%}if (languageString.equals("eng")){ %> <%=user.getName()%>'s Orders <% }%></p>
         </div>
         <div class="w-full flex flex-col flex-wrap justify-center py-4 bg-gray-500 divide-y rounded-md mb-8">
             <%for(Timestamp k : ordersBySingleOrder.keySet()) {%>

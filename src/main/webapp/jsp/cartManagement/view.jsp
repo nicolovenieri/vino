@@ -65,7 +65,7 @@
     <main class="bg-gray-500">
         <div class="container mx-auto flex flex-wrap justify-center items-center pt-4 pb-12">
             <div class="flex justify-center w-full m-4 mt-8">
-                <p class="uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Carrello<%}if (languageString.equals("eng")){ %>Cart<% }%></p>
+                <p class="uppercase tracking-wide no-underline hover:no-underline font-extrabold text-black text-xl"><%if (languageString.equals("ita")){%>Carrello<%}if (languageString.equals("eng")){ %>Cart<% }%></p>
             </div>
             <div class="flex flex-col flex-wrap pt-4 pb-12">
               <%for (i = 0; i < carts.size(); i++) {%>
@@ -110,7 +110,7 @@
             </div>
             <%if(total_amount.compareTo(BigDecimal.ZERO) != 0) {%>
             <div class="w-full float m-2 p-6 bg-gray-400 border border-bg-gray-500 rounded-b-lg rounded-lg flex flex-row flex-no-wrap justify-between">
-                <div class="order-1 m-4 p-2 flex flex-row flex-no-wrap justify-between w-1/3">
+                <div class="order-1 m-4 p-2 flex flex-row flex-no-wrap justify-between w-1/2">
                     <div class="order-1 flex flex-col flex-wrap content-around">
                         <p class="pb-4 font-bold text-2xl"><%if (languageString.equals("ita")){%>Totale (IVA inclusa)<%}if (languageString.equals("eng")){ %>Total amount (IVA included)<% }%></p>
                         <p class="pb-2 pt-2"><%if (languageString.equals("ita")){%>Subtotale<%}if (languageString.equals("eng")){ %>Subtotal<% }%></p>

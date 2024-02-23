@@ -38,7 +38,7 @@
 <%@include file="/include/adminHeader.jsp"%>
 <main class="w-full bg-gray-500">
     <div id="main-container" class="w-full container mx-auto flex-col flex-wrap justify-center items-center">
-        <h1 class="flex items-center justify-between text-gray-900 font-bold text-2xl mt-12 mb-6 ml-6"><%if (languageString.equals("ita")){%>Ordine del <%}if (languageString.equals("eng")){ %>Date of order: <% }%> <%=dateFormatter.format(order_tuples.get(0).getTimestamp())%> <%if (languageString.equals("ita")){%>alle:<%}if (languageString.equals("eng")){ %>Time: <% }%><%=dateFormatter.format(order_tuples.get(0).getTimestamp())%> alle <%=timeFormatter.format(order_tuples.get(0).getTimestamp())%></h1>
+        <h1 class="flex items-center justify-between text-black font-bold text-2xl mt-12 mb-6 ml-6"><%if (languageString.equals("ita")){%>Ordine del <%}if (languageString.equals("eng")){ %>Date of order: <% }%> <%=dateFormatter.format(order_tuples.get(0).getTimestamp())%> <%if (languageString.equals("ita")){%>alle:<%}if (languageString.equals("eng")){ %>Time: <% }%><%=dateFormatter.format(order_tuples.get(0).getTimestamp())%> alle <%=timeFormatter.format(order_tuples.get(0).getTimestamp())%></h1>
         <div class="bg-gray-100 divide-y rounded-md mb-12">
             <%for (i = 0; i < order_tuples.size(); i++) {%>
             <section class="mb-4 p-4">
@@ -72,7 +72,7 @@
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                 </div>
             </div>
-            <a class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 pl-5 rounded-full w-40 mx-6 my-3" href="javascript:changeOrderStatus(<%=order_tuples.get(0).getUser().getUserId()%> <%=order_tuples.get(0).getTimestamp().getTime()%>)">
+            <a class="bg-gray-700 hover:bg-green-500 hover:text-black text-white font-bold py-2 pl-5 rounded-full w-40 mx-6 my-3" href="javascript:changeOrderStatus(<%=order_tuples.get(0).getUser().getUserId()%> <%=order_tuples.get(0).getTimestamp().getTime()%>)">
                 <%if (languageString.equals("ita")){%>Aggiorna stato<%}if (languageString.equals("eng")){ %>Update status<% }%>
             </a>
         </div>

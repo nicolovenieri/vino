@@ -73,7 +73,7 @@
 <body class="bg-gray-500">
 <%@include file="/include/adminHeader.jsp"%>
 <main class="flex flex-col justify-center items-center pt-8 pb-8 bg-gray-500">
-    <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Gestione<%}if (languageString.equals("eng")){ %>Management<% }%>: <%=(action.equals("modify")) ? "Modifica Coupon" : "Nuovo Coupon"%></h1>
+    <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-bold text-black text-xl"><%if (languageString.equals("ita")){%>Gestione<%}if (languageString.equals("eng")){ %>Management<% }%>: <%=(action.equals("modify")) ? "Modifica Coupon" : "Nuovo Coupon"%></h1>
     <section id="insModFormSection" class="w-2/5">
         <form name="insModForm" action="Dispatcher" method="post">
             <div class="field">
