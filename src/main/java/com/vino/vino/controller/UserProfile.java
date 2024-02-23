@@ -487,45 +487,4 @@ public class UserProfile {
         request.setAttribute("user", user);
     }
 
-    private static void preferencesRetrieve(DAOFactory daoFactory, DAOFactory sessionDAOFactory, HttpServletRequest request, Long user_id) {
-
-        List<Wine> wines = new ArrayList<Wine>();
-        WineDAO wineDAO = daoFactory.getWineDAO();
-
-        PreferenceDAO preferenceDAO = daoFactory.getPreferenceDAO();
-        List<Preference> preferences = new ArrayList<Preference>();
-        String[] categoryArray = {"Rosso", "Bianco", "Champagne", "Altro"};
-
-        for (int k = 0; k < categoryArray.length; k++) {
-            if(preferenceDAO.findByUserCategory(user_id, categoryArray[k]) != null) {
-                preferences.add(preferenceDAO.findByUserCategory(user_id, categoryArray[k]));
-            }
-        }
-
-        Long preferredCategoryCounter = 0L;
-        String preferredCategory = null;
-
-        for(int k = 0; k < preferences.size(); k++) {
-            if(preferences.get(k).getTimes() > preferredCategoryCounter) {
-                preferredCategoryCounter = preferences.get(k).getTimes();
-                preferredCategory = preferences.get(k).getCategory();
-            }
-        }
-
-        wines = wineDAO.filterByCategory(preferredCategory);
-        Random rand = new Random();
-        int upperbound = wines.size();
-        List<Wine> preferred_wines = new ArrayList<Wine>();
-
-        for(int k = 0; k < 5 && preferred_wines.size()<upperbound; k++) {
-            Wine randomItem = wines.get(rand.nextInt(upperbound));
-            int z=0;
-            while(preferred_wines.contains(randomItem) && preferred_wines.size()<upperbound) {
-                randomItem = wines.get(rand.nextInt(upperbound));
-                z++;
-            }
-            preferred_wines.add(randomItem);
-        }
-        request.setAttribute("preferred_wines", preferred_wines);
-    }
 }

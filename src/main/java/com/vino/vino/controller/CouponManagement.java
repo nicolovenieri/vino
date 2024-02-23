@@ -531,6 +531,7 @@ public class CouponManagement {
             carts.get(i).setWine(wine);
         }
 
+        //calcolo della spedizione
         total_amount = subtotal.multiply(new BigDecimal("1.10"));
         shipping = total_amount.subtract(subtotal);
 

@@ -208,7 +208,7 @@
 
           <%for (i = arrayPos; i < arrayPos + viewSize; i++) {%>
           <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col">
-                  <%if(loggedOn){%>
+              <%if(loggedOn){%>
                   <div>
                       <a class="absolute top-0 right-0 rounded-full bg-white z-50 mt-8 mr-8" href="javascript:AddToCart(<%=wines.get(i).getWineId()%>)">
                           <svg xmlns="http://www.w3.org/2000/svg" class="heroicon-ui fill-current text-gray-700" width="24" height="24"><path d="M17 11a1 1 0 010 2h-4v4a1 1 0 01-2 0v-4H7a1 1 0 010-2h4V7a1 1 0 012 0v4h4z"/></svg>
@@ -218,11 +218,13 @@
                       </a>
                   </div>
                   <%}%>
+
                   <a id="product-image" href="javascript:productViewFunc(<%=wines.get(i).getWineId()%>)">
                       <img src="<%=wines.get(i).getProductImage()%>" class="object-contain h-70 w-full hover:shadow-lg rounded " alt="stock wine image">
                       <p class="pt-3 flex items-center justify-between text-gray-900 font-medium"><%=wines.get(i).getName()%></p>
                       <p class="pt-1 font-light text-xl subpixel-antialiased"><%=wines.get(i).getPrice()%> &euro;</p>
                   </a>
+
               </div>
           <%}%>
         </div>

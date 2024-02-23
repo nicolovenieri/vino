@@ -57,7 +57,7 @@
                             <li class="flex flex-col font-medium text-gray-300">
                                 <a class="inline-block no-underline hover:text-green-500  hover:underline py-1" href="#">Facebook</a>
                                 <a class="inline-block no-underline hover:text-red-500 hover:underline py-1" href="#">Instagram</a>
-                                <a class="inline-block no-underline hover:text-blue-500 hover:underline py-1" href="#">Twitter</a>
+                                <a class="inline-block no-underline hover:text-blue-500 hover:underline py-1" href="#">Linkedin</a>
                             </li>
                         </ul>
                     </div>

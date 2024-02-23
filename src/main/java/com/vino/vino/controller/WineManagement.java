@@ -171,7 +171,7 @@ public class WineManagement {
             String photo = request.getParameter("product_image");
             //se la foto non è inserita metto di deafault questa
             if(photo.isEmpty()){
-                photo = "https://media.istockphoto.com/vectors/grunge-blue-not-available-word-round-rubber-seal-stamp-on-white-vector-id1168699906?k=6&m=1168699906&s=612x612&w=0&h=mwj0JNzbRecuoTpZgdjE911iVSXz_uFpAZFTyuWrV9M=";
+                photo = "https://media.istockphoto.com/id/1472933890/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?s=612x612&w=0&k=20&c=Rdn-lecwAj8ciQEccm0Ep2RX50FCuUJOaEM8qQjiLL0=" ;
             }
 
             //se la denominazione non è inserita metto di default questa
@@ -332,7 +332,7 @@ public class WineManagement {
             String photo = request.getParameter("product_image");
             //se la foto non è inserita metto di deafault questa
             if(photo.isEmpty()){
-                photo = "https://media.istockphoto.com/vectors/grunge-blue-not-available-word-round-rubber-seal-stamp-on-white-vector-id1168699906?k=6&m=1168699906&s=612x612&w=0&h=mwj0JNzbRecuoTpZgdjE911iVSXz_uFpAZFTyuWrV9M=";
+                photo = "https://media.istockphoto.com/id/1472933890/vector/no-image-vector-symbol-missing-available-icon-no-gallery-for-this-moment-placeholder.jpg?s=612x612&w=0&k=20&c=Rdn-lecwAj8ciQEccm0Ep2RX50FCuUJOaEM8qQjiLL0=" ;
             }
 
             //se la denominazione non è inserita metto di default questa

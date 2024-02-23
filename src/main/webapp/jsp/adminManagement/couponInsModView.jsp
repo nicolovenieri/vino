@@ -43,11 +43,6 @@
                 return false;
             }
 
-            if( data<now || isNaN(data)){
-               alert("Il campo 'DATA DI SCADENZA' richiede una data superiore a "+NowDate.getDate()+"/"+NowDate.getMonth()+"/"+NowDate.getFullYear()+" (Oggi)");
-                return false;
-            }
-
             return true;
         }
 

@@ -83,7 +83,7 @@
                                     <label class="block text-grey-darker text-sm font-bold mb-2" for="exp_date">
                                         <%if (languageString.equals("ita")){%>Telefono<%}if (languageString.equals("eng")){ %>Phone<% }%>
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="phone" name="phone" type="tel" minlength="10" placeholder="333 1231234"
+                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="phone" name="phone" type="tel" minlength="10" placeholder="3331231234"
                                            value="<%=(user.getPhone() != null) ? user.getPhone() : ""%>" maxlength="10" >
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                             <label class="block text-grey-darker text-sm font-bold mb-2" for="card_n">
                                 <%if (languageString.equals("ita")){%>Numero di carta<%}if (languageString.equals("eng")){ %>Card number<% }%>
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="card_n" name="card_n" type="text" minlength="16" placeholder="1234 1234 1234 1234"
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="editProfileForm" id="card_n" name="card_n" type="text" minlength="16" placeholder="1234567891987654"
                                    value="<%=(user.getCard_n() != null) ? user.getCard_n() : ""%>" maxlength="16" >
                             <div class="flex flex-row flex-no-wrap justify-between my-2 py-2 w-full">
                                 <div class="mr-2">

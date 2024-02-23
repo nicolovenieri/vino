@@ -253,6 +253,7 @@
         </form>
 
     </main>
+    <div class="w-full bottom-0">
     <%@include file="/include/footer.jsp"%>
-</body>
+</div>
 </html>

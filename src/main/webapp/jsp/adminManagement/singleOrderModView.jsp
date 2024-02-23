@@ -72,21 +72,21 @@
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                 </div>
             </div>
-            <a class="bg-gray-700 hover:bg-green-500 hover:text-black text-white font-bold py-2 pl-5 rounded-full w-40 mx-6 my-3" href="javascript:changeOrderStatus(<%=order_tuples.get(0).getUser().getUserId()%> <%=order_tuples.get(0).getTimestamp().getTime()%>)">
+            <a class="bg-gray-700 hover:bg-green-500 hover:text-black text-white font-bold py-2 pl-5 rounded-full w-40 mx-6 my-3" href="javascript:changeOrderStatus(<%=order_tuples.get(0).getUser().getUserId()%>, <%=order_tuples.get(0).getTimestamp().getTime()%>)">
                 <%if (languageString.equals("ita")){%>Aggiorna stato<%}if (languageString.equals("eng")){ %>Update status<% }%>
             </a>
         </div>
     </div>
 
     <form name="changeOrderStatusForm" action="Dispatcher" method="post">
-        <input type="hidden" name="status">
-        <input type="hidden" name="user_id">
-        <input type="hidden" name="order_date">
-        <input type="hidden" name="controllerAction" value="UserManagement.changeStatus">
+        <input type="hidden" name="status"/>
+        <input type="hidden" name="user_id"/>
+        <input type="hidden" name="order_date"/>
+        <input type="hidden" name="controllerAction" value="UserManagement.changeStatus"/>
     </form>
 
 </main>
-<div class="fixed w-full bottom-0">
+<div class=" w-full bottom-0">
     <%@include file="/include/adminFooter.jsp"%>
 </div>
 
