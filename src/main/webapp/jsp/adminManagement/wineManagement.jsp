@@ -148,6 +148,7 @@
     </form>
 
 </main>
-<div class="fixed w-full bottom-0">
+</body>
+<div class=" w-full bottom-0">
     <%@include file="/include/adminFooter.jsp"%>
 </div>

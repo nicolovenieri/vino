@@ -171,7 +171,7 @@ public class WineManagement {
             String photo = request.getParameter("product_image");
             //se la foto non è inserita metto di deafault questa
             if(photo.isEmpty()){
-                photo = "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile.png";
+                photo = "https://media.istockphoto.com/vectors/grunge-blue-not-available-word-round-rubber-seal-stamp-on-white-vector-id1168699906?k=6&m=1168699906&s=612x612&w=0&h=mwj0JNzbRecuoTpZgdjE911iVSXz_uFpAZFTyuWrV9M=";
             }
 
             //se la denominazione non è inserita metto di default questa
@@ -332,7 +332,7 @@ public class WineManagement {
             String photo = request.getParameter("product_image");
             //se la foto non è inserita metto di deafault questa
             if(photo.isEmpty()){
-                photo = "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile.png";
+                photo = "https://media.istockphoto.com/vectors/grunge-blue-not-available-word-round-rubber-seal-stamp-on-white-vector-id1168699906?k=6&m=1168699906&s=612x612&w=0&h=mwj0JNzbRecuoTpZgdjE911iVSXz_uFpAZFTyuWrV9M=";
             }
 
             //se la denominazione non è inserita metto di default questa

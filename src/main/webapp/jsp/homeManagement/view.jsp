@@ -219,7 +219,7 @@
                   </div>
                   <%}%>
                   <a id="product-image" href="javascript:productViewFunc(<%=wines.get(i).getWineId()%>)">
-                      <img src="<%=wines.get(i).getProductImage()%>" class="hover:shadow-lg rounded" alt="stock wine image">
+                      <img src="<%=wines.get(i).getProductImage()%>" class="object-contain h-70 w-full hover:shadow-lg rounded " alt="stock wine image">
                       <p class="pt-3 flex items-center justify-between text-gray-900 font-medium"><%=wines.get(i).getName()%></p>
                       <p class="pt-1 font-light text-xl subpixel-antialiased"><%=wines.get(i).getPrice()%> &euro;</p>
                   </a>
