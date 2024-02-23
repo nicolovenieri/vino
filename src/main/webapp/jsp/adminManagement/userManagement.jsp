@@ -64,11 +64,11 @@
 
     </script>
 </head>
-<body>
+<body class="bg-gray-500">
 <%@include file="/include/adminHeader.jsp"%>
-<main class="w-full flex flex-col justify-center items-center">
+<main class="w-full flex flex-col justify-center items-center bg-gray-500">
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl"><%if(languageString.equals("ita")){%>Lista Utenti<%}if(languageString.equals("eng")){%>User List<%}%></p>
+        <p class="uppercase font-bold text-black text-xl"><%if(languageString.equals("ita")){%>Lista Utenti<%}if(languageString.equals("eng")){%>User List<%}%></p>
     </div>
     <div class="w-full flex justify-center">
         <div class="w-1/6 flex flex-row flex-no-wrap justify-center items-center m-4 p-2">
@@ -92,13 +92,13 @@
     </div>
     <div class="container mx-auto flex flex-wrap pb-12">
         <%for (i = 0; i < users.size(); i++) {%>
-        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col" >
-            <div class="float-left flex flex-no-wrap justify-between items-center">
+        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col border" >
+            <div class="float-left flex flex-no-wrap justify-between items-center ">
                 <div class="flex flex-col flex-wrap justify-start items-start">
                     <div class="flex flex-row flex-no-wrap justify-center items-center">
                         <a href="javascript:orderManagement(<%=users.get(i).getUserId()%>)" class="pt-3 text-gray-900 font-medium pr-4"><%=users.get(i).getName()%> <%=users.get(i).getSurname()%></a>
                         <%if(users.get(i).isAdmin()){%>
-                            <p class="pt-3 text-green-400 font-bold ml-1"><%if(languageString.equals("ita")){%>Amministratore<%}if(languageString.equals("eng")){%>Admin User<%}%></p>
+                            <p class="pt-3 text-green-600 font-bold ml-1"><%if(languageString.equals("ita")){%>Amministratore<%}if(languageString.equals("eng")){%>Admin User<%}%></p>
                         <%}%>
                     </div>
                     <p class="pt-3 text-gray-900 font-normal text-sm pr-4">
@@ -110,7 +110,7 @@
             <div class="float-right flex flex-no-wrap flex-row">
                 <%if(!users.get(i).isAdmin()){%>
                 <a href="javascript:setAdmin(<%=users.get(i).getUserId()%>)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-green-400" d="M11.85 17.56a1.5 1.5 0 01-1.06.44H10v.5c0 .83-.67 1.5-1.5 1.5H8v.5c0 .83-.67 1.5-1.5 1.5H4a2 2 0 01-2-2v-2.59A2 2 0 012.59 16l5.56-5.56A7.03 7.03 0 0115 2a7 7 0 11-1.44 13.85l-1.7 1.71zm1.12-3.95l.58.18a5 5 0 10-3.34-3.34l.18.58L4 17.4V20h2v-.5c0-.83.67-1.5 1.5-1.5H8v-.5c0-.83.67-1.5 1.5-1.5h1.09l2.38-2.39zM18 9a1 1 0 01-2 0 1 1 0 00-1-1 1 1 0 010-2 3 3 0 013 3z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-green-600" d="M11.85 17.56a1.5 1.5 0 01-1.06.44H10v.5c0 .83-.67 1.5-1.5 1.5H8v.5c0 .83-.67 1.5-1.5 1.5H4a2 2 0 01-2-2v-2.59A2 2 0 012.59 16l5.56-5.56A7.03 7.03 0 0115 2a7 7 0 11-1.44 13.85l-1.7 1.71zm1.12-3.95l.58.18a5 5 0 10-3.34-3.34l.18.58L4 17.4V20h2v-.5c0-.83.67-1.5 1.5-1.5H8v-.5c0-.83.67-1.5 1.5-1.5h1.09l2.38-2.39zM18 9a1 1 0 01-2 0 1 1 0 00-1-1 1 1 0 010-2 3 3 0 013 3z"/></svg>
                 </a>
                 <%}else{%>
                 <a href="javascript:setAdmin(<%=users.get(i).getUserId()%>)">
@@ -125,10 +125,10 @@
         <%}%>
         <div class="w-full m-4 flex justify-center items-center">
             <%if(maxViewSize == users.size()){%>
-            <p class="bg-gray-500 text-white font-bold py-2 px-4 rounded-full"><%if(languageString.equals("ita")){%>Altro<%}if(languageString.equals("eng")){%>More<%}%></p>
+            <p class="bg-blue-400 text-white font-bold py-2 px-4 rounded-full"><%if(languageString.equals("ita")){%>Altro<%}if(languageString.equals("eng")){%>More<%}%></p>
             <%} else {%>
 
-            <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            <a class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                href="javascript:maxViewSizeInc(<%=maxViewSize%>)">
                 <%if(languageString.equals("ita")){%>Altri<%}if(languageString.equals("eng")){%>More<%}%>
             </a>
@@ -158,6 +158,6 @@
     </form>
 
 </main>
-<div class="w-full bottom-0">
+<div class="fixed w-full bottom-0">
     <%@include file="/include/adminFooter.jsp"%>
-</div></html>
+</div>

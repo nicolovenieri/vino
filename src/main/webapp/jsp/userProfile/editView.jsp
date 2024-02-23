@@ -33,7 +33,7 @@
 <body class="bg-gray-500">
 <%@include file="/include/header.jsp"%>
 <main class="flex flex-col justify-center items-center pt-8 pb-8">
-    <div class="w-full flex flex-row justify-center"><h1 class="my-4 uppercase tracking-wide font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Modifica profilo<%}if (languageString.equals("eng")){ %>Edit Profile<% }%></h1></div>
+    <div class="w-full flex flex-row justify-center"><h1 class="my-4 uppercase tracking-wide font-bold text-black text-xl"><%if (languageString.equals("ita")){%>Modifica profilo<%}if (languageString.equals("eng")){ %>Edit Profile<% }%></h1></div>
     <section class="w-full flex flex-row flex-no-wrap justify-around">
         <section class="order-1 flex flex-col flex-wrap m-4 w-1/2">
             <div class="float">
@@ -195,7 +195,7 @@
         </section>
     </section>
     <div class="w-full flex flex-row justify-center">
-        <button class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full" type="submit" form="editProfileForm">
+        <button class="bg-gray-700 hover:bg-green-500 text-white hover:text-black font-bold py-2 px-4 rounded-full" type="submit" form="editProfileForm">
             <%if (languageString.equals("ita")){%>Conferma Modifiche<%}if (languageString.equals("eng")){ %>Confirm Changes<% }%>
 
         </button>

@@ -37,23 +37,21 @@
 
     </script>
 </head>
-<body>
+<body class="bg-gray-500">
 <%@include file="/include/adminHeader.jsp"%>
-<main class="w-full flex flex-col justify-center items-center">
+<main class="w-full flex flex-col justify-center items-center bg-gray-500">
     <div class="mt-8 flex flex-row justify-between items-stretch">
-        <p class="uppercase font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Lista coupon<%}if (languageString.equals("eng")){ %>Coupons list<% }%></p>
+        <p class="uppercase font-bold text-black text-xl"><%if (languageString.equals("ita")){%>Lista coupon<%}if (languageString.equals("eng")){ %>Coupons list<% }%></p>
         <a class="ml-2 mt-1" href="javascript:insertCoupon()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z"/></svg>
         </a>
     </div>
     <div class="container mx-auto flex flex-wrap pb-12">
         <%for (i = 0; i < Coupons.size(); i++) {%>
-        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col">
+        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col border">
             <div class="flex flex-no-wrap justify-start">
                 <p class="float-left pt-0 text-gray-900 font-medium pr-4"><%=Coupons.get(i).getName()%></p>
                 <p class="float-left pt-0 text-gray-700 font-medium pr-4">(<%=Coupons.get(i).getDiscount()%>%)</p>
-                <%--            <p class="float-left pt-0 text-gray-700 font-medium pr-4"><%=Coupons.get(i).getExp_date()%></p>--%>
-                <%--            <p class="float-left pt-0 text-gray-700 font-medium pr-4"><%=Coupons.get(i).getCouponId()%></p>--%>
             </div>
             <div class="float-right flex flex-no-wrap flex-row">
                 <a href="javascript:modifyCoupon(<%=Coupons.get(i).getCouponId()%>)">

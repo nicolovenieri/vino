@@ -74,10 +74,10 @@ boolean loggedOn = (Boolean) request.getAttribute("loggedOn");
       }
     </script>
   </head>
-  <body>
+  <body class="bg-gray-500">
     <%@include file="/include/adminHeader.jsp"%>
     <main class="flex flex-col justify-center items-center pt-8 pb-8">
-      <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Gestione <%}if (languageString.equals("eng")){ %>Managment<% }%> <%=(action.equals("modify")) ? "Modifica Vino" : "Nuovo Vino"%></h1>
+      <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Gestione <%}if (languageString.equals("eng")){ %>Managment<% }%> <%=(action.equals("modify")) ? "Modifica vino" : "Nuovo Vino"%></h1>
       <section id="insModFormSection" class="w-1/3">
         <form name="insModForm" action="Dispatcher" method="post">
           <div class="field">
@@ -153,7 +153,7 @@ boolean loggedOn = (Boolean) request.getAttribute("loggedOn");
                    required size="20" maxlength="2048"/>
           </div>
           <div class="field my-4">
-            <input type="button" name ="Invia" class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" value="<%if (languageString.equals("ita")){%>Invia<%}if (languageString.equals("eng")){ %>Done<% }%>"/>
+            <input type="button" name ="Invia" class="bg-gray-700 hover:bg-green-500 hover:text-black text-white font-bold py-2 px-4 rounded-full w-20" value="<%if (languageString.equals("ita")){%>Invia<%}if (languageString.equals("eng")){ %>Done<% }%>"/>
             <input type="button" name="backButton" class="bg-red-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-24 ml-2" value="<%if (languageString.equals("ita")){%>Annulla<%}if (languageString.equals("eng")){ %>Back<% }%>"/>
           </div>
           <%if (action.equals("modify")) {%>

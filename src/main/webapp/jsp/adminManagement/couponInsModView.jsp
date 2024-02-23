@@ -70,9 +70,9 @@
         }
     </script>
 </head>
-<body>
+<body class="bg-gray-500">
 <%@include file="/include/adminHeader.jsp"%>
-<main class="flex flex-col justify-center items-center pt-8 pb-8">
+<main class="flex flex-col justify-center items-center pt-8 pb-8 bg-gray-500">
     <h1 class="my-4 uppercase tracking-wide no-underline hover:no-underline font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Gestione<%}if (languageString.equals("eng")){ %>Management<% }%>: <%=(action.equals("modify")) ? "Modifica Coupon" : "Nuovo Coupon"%></h1>
     <section id="insModFormSection" class="w-2/5">
         <form name="insModForm" action="Dispatcher" method="post">
@@ -98,7 +98,7 @@
                        required size="20" maxlength="50"/>
             </div>
             <div class="field my-4">
-                <input type="button" name ="Invia" class="bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-20" value="<%if (languageString.equals("ita")){%>Invia<%}if (languageString.equals("eng")){ %>Done<% }%>"/>
+                <input type="button" name ="Invia" class="bg-gray-700 hover:bg-green-500 hover:text-black text-white font-bold py-2 px-4 rounded-full w-20" value="<%if (languageString.equals("ita")){%>Invia<%}if (languageString.equals("eng")){ %>Done<% }%>"/>
                 <input type="button" name="backButton" class="bg-red-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full w-24 ml-2" value="<%if (languageString.equals("ita")){%>Annulla<%}if (languageString.equals("eng")){ %>Delete<% }%>"/>
             </div>
             <%if (action.equals("modify")) {%>
@@ -113,7 +113,8 @@
     </form>
 
 </main>
-<%@include file="/include/adminFooter.jsp"%>
 </body>
-
+<div class="fixed w-full bottom-0">
+    <%@include file="/include/adminFooter.jsp"%>
+</div>
 </html>

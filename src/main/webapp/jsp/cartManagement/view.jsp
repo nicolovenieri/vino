@@ -114,7 +114,7 @@
                     <div class="order-1 flex flex-col flex-wrap content-around">
                         <p class="pb-4 font-bold text-2xl"><%if (languageString.equals("ita")){%>Totale (IVA inclusa)<%}if (languageString.equals("eng")){ %>Total amount (IVA included)<% }%></p>
                         <p class="pb-2 pt-2"><%if (languageString.equals("ita")){%>Subtotale<%}if (languageString.equals("eng")){ %>Subtotal<% }%></p>
-                        <p class="pb-2 pt-3"><%if (languageString.equals("ita")){%>Spedizione (5% del totale)<%}if (languageString.equals("eng")){ %>Shipping (5% from total)<% }%></p>
+                        <p class="pb-2 pt-3"><%if (languageString.equals("ita")){%>Spedizione (10% del totale)<%}if (languageString.equals("eng")){ %>Shipping (10% from total)<% }%></p>
                     </div>
                     <div class="order-2 flex flex-col flex-wrap content-around">
                         <p class="pb-4 font-light text-3xl"><%=total_amount.setScale(2, RoundingMode.CEILING)%> &euro;</p>

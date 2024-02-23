@@ -64,9 +64,9 @@
 
     </script>
 </head>
-<body>
+<body class="bg-gray-500">
 <%@include file="/include/adminHeader.jsp"%>
-<main class="w-full flex flex-col justify-center items-center">
+<main class="w-full flex flex-col justify-center items-center bg-gray-500">
     <div class="mt-8 flex flex-row justify-between items-stretch">
         <p class="uppercase font-medium text-gray-800 text-xl"><%if (languageString.equals("ita")){%>Lista vini<%}if (languageString.equals("eng")){ %>Wines list<% }%></p>
         <a class="ml-2 mt-1" href="javascript:insertWine()">
@@ -95,7 +95,7 @@
     </div>
     <div class="container mx-auto flex flex-wrap pb-12">
         <%for (i = 0; i < maxViewSize; i++) {%>
-        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col">
+        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col border">
             <div class="order-1 w-full flex flex-col flex-wrap items-center justify-between py-6 px-4">
                 <section id="wine-info" class="w-full flex pb-2">
                     <p class="float-left text-gray-900 font-medium pr-4"><%=wines.get(i).getName()%></p>
@@ -148,6 +148,6 @@
     </form>
 
 </main>
-<div class="w-full bottom-0">
+<div class="fixed w-full bottom-0">
     <%@include file="/include/adminFooter.jsp"%>
-</div></html>
+</div>

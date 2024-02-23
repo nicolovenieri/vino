@@ -36,14 +36,14 @@
 
     <nav class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-2">
       <ul class="md:flex items-center justify-between text-base text-gray-100 pt-4 md:pt-0">
-        <li><a class="inline-block no-underline hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Rosso')">Rossi</a></li>
-        <li><a class="inline-block no-underline  hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Bianco')">Bianchi</a></li>
+        <li><a class="inline-block no-underline hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Rosso')"><% if(languageString.equals("ita")){ %>Vini rossi<%} if(languageString.equals("eng")){ %>Red Wines<%}%></a></li>
+        <li><a class="inline-block no-underline  hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Bianco')"><% if(languageString.equals("ita")){ %>Vini bianchi<%} if(languageString.equals("eng")){ %>White Wines<%}%></a></li>
         <li><a class="inline-block no-underline hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Champagne')">Champagne</a></li>
-        <li><a class="inline-block no-underline  hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Altro')">Altro</a></li>
+        <li><a class="inline-block no-underline  hover:text-red-200 hover:underline py-2 px-4" href="javascript:setCategoryFunc('Altro')"><% if(languageString.equals("ita")){ %>Altri vini<%} if(languageString.equals("eng")){ %>Other wines<%}%></a></li>
       </ul>
     </nav>
 
-      <a id="logo" href="Dispatcher?controllerAction=HomeManagement.view" class="order-1 md:order-1 flex items-center tracking-wider no-underline hover:no-underline font-bold text-white text-2xl"><% if(languageString.equals("eng")){ %>FerlaVenieri Winery<%} if(languageString.equals("ita")){ %>Cantina FerlaVenieri <%}%></a>
+      <a id="logo" href="Dispatcher?controllerAction=HomeManagement.view" class="order-1 md:order-1 flex items-center tracking-wider no-underline hover:no-underline font-bold text-white text-2xl"><% if(languageString.equals("eng")){ %>Fratelli's Winery<%} if(languageString.equals("ita")){ %>Fratelli Cantina <%}%></a>
       <div class="order-2 md:order-3 flex items-center p-4">
           <div  class="hover-trigger relative inline-block">
               <div class="relative inline-block">
@@ -69,6 +69,7 @@
               </svg>
               </a>
               <%}%>
+              <a id="homenorm" href="Dispatcher?controllerAction=HomeManagement.view" class="pl-3 inline-block relative"><svg fill="#ffffff" width="24" height="24" viewBox="0 0 24 24" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"><path d="M17.568 9.432c0-2.55-.906-5.592-.944-5.72-.128-.423-.517-.712-.958-.712h-7.332c-.441 0-.83.289-.958.712-.038.128-.944 3.17-.944 5.72 0 2.735 1.984 5.011 4.587 5.477l-.019.091v4h-1c-.553 0-1 .447-1 1s.447 1 1 1h4c.553 0 1-.447 1-1s-.447-1-1-1h-1v-4l-.019-.092c2.603-.466 4.587-2.741 4.587-5.476zm-5.568 3.568c-1.773 0-3.236-1.303-3.511-3h7.021c-.274 1.697-1.737 3-3.51 3zm-3.555-4c.062-1.468.422-3.093.653-4h5.803c.231.907.591 2.532.653 4h-7.109z"/></svg></a>
               <a id="cart" href="javascript:cartForm.requestSubmit()" class="pl-3 inline-block relative">
               <svg style="fill: rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui  hover:text-black" d="M17 16a3 3 0 11-2.83 2H9.83a3 3 0 11-5.62-.1A3 3 0 015 12V4H3a1 1 0 110-2h3a1 1 0 011 1v1h14a1 1 0 01.9 1.45l-4 8a1 1 0 01-.9.55H5a1 1 0 000 2h12zM7 12h9.38l3-6H7v6zm0 8a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
               </a>

@@ -110,14 +110,14 @@
                                 <label class="block text-grey-darker text-sm font-bold mb-2" for="Numero di Carta">
                                     <%if (languageString.equals("ita")){%>Numero di carta<%}if (languageString.equals("eng")){ %>Card number<% }%></p>
                                 </label>
-                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Numero di Carta" name="card_n" type="text" minlength="16" placeholder="1234 1234 1234 1234"
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="Numero di Carta" name="card_n" type="text" minlength="16" placeholder="1234567891098765"
                                        value="<%=(user.getCard_n() != null) ? user.getCard_n() : ""%>" maxlength="16" required>
                                 <div class="flex flex-row flex-no-wrap justify-between my-2 py-2 w-full">
                                     <div class="mr-2">
                                         <label class="block text-grey-darker text-sm font-bold mb-2" for="CVC/CCV">
                                             CVC/CCV
                                         </label>
-                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="CVC/CCV" name="cvc" type="text" minlength="3" placeholder="567"
+                                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" form="CompleteOrderForm" id="CVC/CCV" name="cvc" type="text" minlength="3" placeholder="123"
                                                value="<%=(user.getCvc() != 0) ? user.getCvc() : ""%>" maxlength="3" required>
                                     </div>
                                     <div class="ml-2">
@@ -174,7 +174,7 @@
                        <p class="font-bold m-4">Coupon</p>
                        <div class="m-4 flex flex-col flex-wrap">
                            <input class="shadow appearance-none border border-red rounded w-3/4 py-2 px-3 text-grey-darker mb-4 mt-2" type="text" id="coupon_input" name="coupon_input"
-                                  placeholder="SUMMER"
+                                  placeholder="Welcome10"
                                   required size="20" maxlength="48"/>
                            <div class="w-2/3 mt-4">
                                <a href="javascript:ApplyCoupon()" class="mb-2 bg-gray-700 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">
@@ -203,7 +203,7 @@
                                    <%if(total_discounted==null){%>
                                    <p class="pb-4 font-bold text-xl"><%if (languageString.equals("ita")){%>Totale(IVA inclusa)<%}if (languageString.equals("eng")){ %>Total(IVA included)<% }%></p></p>
                                    <p class="pb-2"><%if (languageString.equals("ita")){%>Subtotale<%}if (languageString.equals("eng")){ %>Subtotal<% }%></p>
-                                   <p class="pb-2"><%if (languageString.equals("ita")){%>Spedizione (5% del totale)<%}if (languageString.equals("eng")){ %>Shipping (5% from total)<% }%></p>
+                                   <p class="pb-2"><%if (languageString.equals("ita")){%>Spedizione (10% del totale)<%}if (languageString.equals("eng")){ %>Shipping (10% from total)<% }%></p>
                                    <%} else {%>
                                    <p class="pb-4 font-bold text-xl"><%if (languageString.equals("ita")){%>Totale(IVA inclusa)<%}if (languageString.equals("eng")){ %>Total(IVA included)<% }%> (- <%=coupon.getDiscount()%>%)</p>
                                    <%}%>

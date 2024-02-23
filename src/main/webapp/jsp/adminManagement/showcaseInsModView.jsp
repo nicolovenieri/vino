@@ -25,29 +25,13 @@
             f.requestSubmit();
         }
 
-        // function deleteWine(id) {
-        //     document.deleteForm.wine_id.value = id;
-        //     document.deleteForm.requestSubmit();
-        // }
-        //
-        // function modifyWine(id) {
-        //     document.modifyForm.wine_id.value = id;
-        //     document.modifyForm.requestSubmit();
-        // }
-        //
-        // function searchFunc(name) {
-        //     f = document.searchForm;
-        //     f.searchString.value = name;
-        //     f.requestSubmit();
-        // }
-
         function mainOnLoadHandler() {}
 
     </script>
 </head>
-<body>
+<body class="bg-gray-500">
 <%@include file="/include/adminHeader.jsp"%>
-<main class="w-full flex flex-col justify-center items-center">
+<main class="w-full flex flex-col justify-center items-center bg-gray-500">
     <div class="mt-8 flex flex-row justify-between items-stretch">
         <p class="uppercase font-medium text-gray-800 text-xl"> <%if (languageString.equals("ita")){%>Lista vini<%}if (languageString.equals("eng")){ %>Wines list<% }%></p>
     </div>
@@ -73,7 +57,7 @@
     </div>
     <div class="flex flex-col flex-no-wrap justify-center m-4 w-auto max-w-md">
         <%for (i = 0; i < wines.size(); i++) {%>
-        <div class="flex flex-row justify-between p-2 m-2 bg-gray-100 rounded-b-md shadow-md items-center">
+        <div class="flex flex-row justify-between p-2 m-2 bg-gray-100 rounded shadow-md items-center">
             <div class="order-1 w-full flex flex-col flex-wrap items-center justify-between py-6 px-4">
                 <section id="wine-info" class="w-full flex pb-2">
                     <p class="float-left text-gray-900 font-medium pr-4"><%=wines.get(i).getName()%></p>
@@ -98,6 +82,6 @@
     </form>
 
 </main>
-<div class="w-full bottom-0">
+<div class="fixed w-full bottom-0">
     <%@include file="/include/adminFooter.jsp"%>
 </div></html>

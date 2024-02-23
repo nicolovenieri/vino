@@ -394,7 +394,8 @@ public class CartManagement {
             carts.get(i).setWine(wine);
         }
 
-        total_amount = subtotal.multiply(new BigDecimal("1.05"));
+        //qui calcolo le spese di spedizione che consideriamo il 10% dell'ordine, moltiplico il totale per 1.10 e poi a questo sottraggo il costo del totale in modo da ottenere le spese di spedizione da mostrare a video
+        total_amount = subtotal.multiply(new BigDecimal("1.10"));
         shipping = total_amount.subtract(subtotal);
 
         request.setAttribute("total_amount", total_amount);

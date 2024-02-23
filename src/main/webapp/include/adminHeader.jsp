@@ -11,10 +11,10 @@
     }
 %>
 <% if (languageString.equals("ita")) { %>
-<header class="w-full z-30 top-0 py-1 bg-red-900">
+<header class="w-full z-30 top-0 py-1 bg-black">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
         <section class="order-1 md:order-1 flex items-center">
-            <a id="logo" class="no-underline hover:no-underline tracking-wider font-bold text-white text-2xl" href="Dispatcher?controllerAction=AdminManagement.view">Cantina FerlaVenieri</a>
+            <a id="logo" class="no-underline hover:no-underline tracking-wider font-bold text-white text-2xl" href="Dispatcher?controllerAction=AdminManagement.view">Fratelli Cantina</a>
             <p class="font-medium text-green-400 text-sm uppercase pl-4 pt-2">Accesso eseguito come amministratore</p>
         </section>
         <div class="order-2 md:order-3 flex items-center p-4">
@@ -22,12 +22,14 @@
                 <button class="relative inline-block">
                     <svg style="fill: rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg" class="heroicon-ui hover:text-black" width="24" height="24"><path d="M12 12a5 5 0 110-10 5 5 0 010 10zm0-2a3 3 0 100-6 3 3 0 000 6zm9 11a1 1 0 01-2 0v-2a3 3 0 00-3-3H8a3 3 0 00-3 3v2a1 1 0 01-2 0v-2a5 5 0 015-5h8a5 5 0 015 5v2z"/></svg>
                 </button>
-                <div class="hover-target absolute hidden bg-red-700 text-white rounded px-2 shadow-lg py-4 m-0 z-50">
-                    <a class="hover:bg-red-500 block py-2 px-4 w-full"href="javascript:logoutForm.requestSubmit()">Esci</a>
+                <div class="hover-target absolute hidden bg-gray-700 text-white rounded px-2 shadow-lg py-4 m-0 z-50">
+                    <a class="hover:bg-gray-800 block py-2 px-4 w-full"href="javascript:logoutForm.requestSubmit()">Esci</a>
                 </div>
             </div>
             <div class="hover-trigger relative inline-block">
                 <section>
+                    <a id="homeadmin" class="pl-3 inline-block relative" href="Dispatcher?controllerAction=AdminManagement.view">
+                        <svg fill="#000000" width="24" height="24" viewBox="0 0 24 24" id="key" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><path id="primary" d="M9,12H21m-1,0V10m-4,2V10M6,9a3,3,0,1,0,3,3A3,3,0,0,0,6,9Z" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>                    </a>
                     <a id="home" href="javascript:HomeForm.requestSubmit()" class="pl-3 inline-block relative">
                         <svg style="fill: rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg"
                              width="24px" height="24px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve">
@@ -48,10 +50,10 @@
     </div>
 </header>
 <% } if (languageString.equals("eng")) { %>
-<header class="w-full z-30 top-0 py-1 bg-red-900">
+<header class="w-full z-30 top-0 py-1  bg-black">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
         <section class="order-1 md:order-1 flex items-center">
-            <a id="logoeng" class="no-underline hover:no-underline tracking-wider font-bold text-white text-2xl" href="Dispatcher?controllerAction=AdminManagement.view">FerlaVenieri Winery</a>
+            <a id="logoeng" class="no-underline hover:no-underline tracking-wider font-bold text-white text-2xl" href="Dispatcher?controllerAction=AdminManagement.view">Fratelli's Winery</a>
             <p class="font-medium text-green-400 text-sm uppercase pl-4 pt-2">Logged as administrator</p>
         </section>
         <div class="order-2 md:order-3 flex items-center p-4">
@@ -59,8 +61,8 @@
                 <button class="relative inline-block">
                     <svg style="fill: rgb(255, 255, 255)" xmlns="http://www.w3.org/2000/svg" class="heroicon-ui hover:text-black" width="24" height="24"><path d="M12 12a5 5 0 110-10 5 5 0 010 10zm0-2a3 3 0 100-6 3 3 0 000 6zm9 11a1 1 0 01-2 0v-2a3 3 0 00-3-3H8a3 3 0 00-3 3v2a1 1 0 01-2 0v-2a5 5 0 015-5h8a5 5 0 015 5v2z"/></svg>
                 </button>
-                <div class="hover-target absolute hidden bg-red-700 text-white rounded px-2 shadow-lg py-4 m-0 z-50">
-                    <a class="hover:bg-red-500 block py-2 px-4 w-full"href="javascript:logoutForm.requestSubmit()">Logout</a>
+                <div class="hover-target absolute hidden bg-gray-700 text-white rounded px-2 shadow-lg py-4 m-0 z-50">
+                    <a class="hover:bg-gray-800 block py-2 px-4 w-full"href="javascript:logoutForm.requestSubmit()">Logout</a>
                 </div>
             </div>
             <div class="hover-trigger relative inline-block">

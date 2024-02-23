@@ -34,9 +34,9 @@
     </script>
     <%@include file="/include/htmlHead.jsp"%>
 </head>
-<body>
+<body class="bg-gray-500">
 <%@include file="/include/adminHeader.jsp"%>
-<main class="w-full">
+<main class="w-full bg-gray-500">
     <div id="main-container" class="w-full container mx-auto flex-col flex-wrap justify-center items-center">
         <h1 class="flex items-center justify-between text-gray-900 font-bold text-2xl mt-12 mb-6 ml-6"><%if (languageString.equals("ita")){%>Ordine del <%}if (languageString.equals("eng")){ %>Date of order: <% }%> <%=dateFormatter.format(order_tuples.get(0).getTimestamp())%> <%if (languageString.equals("ita")){%>alle:<%}if (languageString.equals("eng")){ %>Time: <% }%><%=dateFormatter.format(order_tuples.get(0).getTimestamp())%> alle <%=timeFormatter.format(order_tuples.get(0).getTimestamp())%></h1>
         <div class="bg-gray-100 divide-y rounded-md mb-12">
@@ -86,6 +86,8 @@
     </form>
 
 </main>
-<%@include file="/include/adminFooter.jsp"%>
-</body>
+<div class="fixed w-full bottom-0">
+    <%@include file="/include/adminFooter.jsp"%>
+</div>
+
 </html>
