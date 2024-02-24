@@ -341,7 +341,7 @@ public class    WishlistManagement {
         int upperbound = wines.size();
         List<Wine> preferred_wines = new ArrayList<Wine>();
 
-        //metto nella request tre vini scelti casualmente dalla categoria preferita dell'utente
+        //metto nella request cinque vini scelti casualmente dalla categoria preferita dell'utente
 
         for(int k = 0; k < 5 && preferred_wines.size()<upperbound; k++) {
             Wine randomItem = wines.get(rand.nextInt(upperbound));

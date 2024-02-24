@@ -55,12 +55,12 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col flex-no-wrap justify-center m-4 w-auto max-w-md">
+    <div class="container mx-auto flex flex-wrap pb-12">
         <%for (i = 0; i < wines.size(); i++) {%>
-        <div class="flex flex-row justify-between p-2 m-2 bg-gray-100 rounded shadow-md items-center">
+        <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col border">
             <div class="order-1 w-full flex flex-col flex-wrap items-center justify-between py-6 px-4">
                 <section id="wine-info" class="w-full flex pb-2">
-                    <p class="float-left text-gray-900 font-medium pr-4"><%=wines.get(i).getName()%></p>
+                    <p class="float-left text-gray-900 font-bold pr-4"><%=wines.get(i).getName()%></p>
                 </section>
                 <section id="wine-avalaibility" class="pt-2 w-full flex p-1 border-t border-gray-400">
                     <p> <%if (languageString.equals("ita")){%>Quantita' disponibile in magazzino: <%}if (languageString.equals("eng")){ %>Quantity available in stock<% }%>: <%=wines.get(i).getAvalaibility()%></p>
@@ -68,7 +68,7 @@
             </div>
             <div class="order-2 float-right flex flex-no-wrap flex-row mx-4">
                 <a href="javascript:insert(<%=wines.get(i).getWineId()%>)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-gray-600" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z"/></svg>                </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path class="heroicon-ui fill-current text-black" d="M12 22a10 10 0 110-20 10 10 0 010 20zm0-2a8 8 0 100-16 8 8 0 000 16zm1-9h2a1 1 0 010 2h-2v2a1 1 0 01-2 0v-2H9a1 1 0 010-2h2V9a1 1 0 012 0v2z"/></svg>                </a>
             </div>
         </div>
         <%}%>
@@ -80,8 +80,6 @@
         <input type="hidden" name="wine_id"/>
         <input type="hidden" name="controllerAction" value="ShowcaseManagement.insert"/>
     </form>
-
-    <div class="fixed w-full bottom-0">
-        <%@include file="/include/adminFooter.jsp"%>
-    </div></html>
 </main>
+    <%@include file="/include/adminFooter.jsp"%>
+</html>

@@ -98,7 +98,7 @@
         <div class="relative w-full md:w-1/3 xl:w-1/4 sm:w-1/3 p-6 flex flex-col border">
             <div class="order-1 w-full flex flex-col flex-wrap items-center justify-between py-6 px-4">
                 <section id="wine-info" class="w-full flex pb-2">
-                    <p class="float-left text-gray-900 font-medium pr-4"><%=wines.get(i).getName()%></p>
+                    <p class="float-left text-gray-900 font-bold pr-4"><%=wines.get(i).getName()%></p>
                 </section>
                 <section id="wine-avalaibility" class="pt-2 w-full flex p-1 border-t border-gray-400">
                     <p><%if (languageString.equals("ita")){%>Quantita' disponibile in magazzino<%}if (languageString.equals("eng")){ %>Stock available quantity<% }%> <%=wines.get(i).getAvalaibility()%></p>

@@ -164,6 +164,8 @@
                 </form>
 
         </main>
-    <%@include file="/include/footer.jsp"%>
+        <div class="w-full bottom-0">
+            <%@include file="/include/footer.jsp"%>
+        </div>
     </body>
 </html>

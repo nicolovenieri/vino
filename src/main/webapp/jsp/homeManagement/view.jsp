@@ -157,7 +157,7 @@
                             <img class="hover:shadow-lg rounded" src="<%= showcase_wines.get(i).getProductImage() %>">
                         </div>
                         <div class="flex flex-col w-full lg:w-1/2 items-center px-6 tracking-wide">
-                            <p class="text-white fond-extrabold text-2xl my-4"><%= showcase_wines.get(i).getName() %></p>
+                            <p class="text-white font-extrabold text-2xl my-4"><%= showcase_wines.get(i).getName() %></p>
                             <a class="text-white font-bold text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-red-500 hover:border-red-500" href="javascript:productViewFunc(<%= showcase_wines.get(i).getWineId() %>)"><%= languageString.equals("eng") ? "View Product" : "Visualizza Prodotto" %></a>
                         </div>
                     </div>

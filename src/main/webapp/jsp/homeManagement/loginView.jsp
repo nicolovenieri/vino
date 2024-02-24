@@ -77,7 +77,8 @@
             </form>
 
         </main>
-        <div class="h-20"></div>
-        <%@include file="/include/footer.jsp"%>
+        <div class="fixed w-full bottom-0">
+            <%@include file="/include/footer.jsp"%>
+        </div>
     </body>
 </html>

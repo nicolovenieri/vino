@@ -42,7 +42,7 @@
           function mainOnLoadHandler() {}
       </script>
   </head>
-  <body class="bg-black">
+  <body class="bg-gray-500">
     <%@include file="/include/header.jsp"%>
     <main class="bg-gray-500">
         <div class="container mx-auto flex flex-wrap pt-4 pb-12 justify-center">
@@ -109,6 +109,8 @@
         </form>
 
         </main>
+
         <%@include file="/include/footer.jsp"%>
+
     </body>
 </html>
