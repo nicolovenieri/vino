@@ -19,7 +19,6 @@ public class Configuration {
     public static final String DATABASE_DRIVER="com.mysql.cj.jdbc.Driver";
     public static final String SERVER_TIMEZONE=Calendar.getInstance().getTimeZone().getID();
     public static final String DATABASE_URL="jdbc:mysql://localhost/brewbazar?user=root&password=4994&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone="+SERVER_TIMEZONE;
-//    public static final String DATABASE_URL="jdbc:mysql://localhost:3306/brewbazar?user=root&password=riccardo08&useSSL=false&serverTimezone="+SERVER_TIMEZONE;
 
 
     /* Session Configuration */
